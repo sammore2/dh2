@@ -1,4 +1,4 @@
-import { LoomActorSheet, LoomHandlebarsMixin, dispatchRoll } from '/_loom/sdk/index.js';
+import { LoomActorSheet, LoomHandlebarsMixin, dispatchRoll, showToast } from '/_loom/sdk/index.js';
 
 export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorSheet) {
   static DEFAULT_OPTIONS = {
@@ -53,6 +53,36 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
         value: Number(sys.attributes?.knowledge || 0),
       },
     };
+
+    // ── Domain Cards (Loadout vs Vault) ──────────────────────────────────────
+    const embeddedDomainItems = Array.from(doc.items || []).filter((i) => i.type === 'domainCard');
+    const allDomainCards = [
+      ...embeddedDomainItems.map((item) => ({
+        id: item.id,
+        isItem: true,
+        name: item.name,
+        domain: item.systemData?.domain || 'Blade',
+        level: Number(item.systemData?.level || 1),
+        cost: item.systemData?.cost || '',
+        description: item.systemData?.description || '',
+        inLoadout: item.systemData?.inLoadout !== false,
+      })),
+      ...(sys.domainCards || []).map((card, idx) => ({
+        id: `inline-${idx}`,
+        isItem: false,
+        idx,
+        name: card.name || `Carta ${idx + 1}`,
+        domain: card.domain || 'Blade',
+        level: Number(card.level || 1),
+        cost: card.cost || '',
+        description: card.description || '',
+        inLoadout: card.inLoadout !== false,
+      })),
+    ];
+
+    context.activeLoadout = allDomainCards.filter((c) => c.inLoadout);
+    context.vaultCards = allDomainCards.filter((c) => !c.inLoadout);
+    context.activeLoadoutCount = context.activeLoadout.length;
 
     return context;
   }
@@ -216,6 +246,185 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
 
         if (window.Loom?.showToast) {
           window.Loom.showToast(`1 Esperança gasta! Adicione +${exp?.modifier || 0} (${exp?.name || 'Experiência'}) à sua rolagem!`, 'success');
+        }
+      });
+    });
+
+    // ── Domain Cards Loadout Handlers ────────────────────────────────────────
+    const notify = (msg, type = 'info') => {
+      if (typeof showToast === 'function') showToast(msg, type);
+      else if (window.Loom?.showToast) window.Loom.showToast(msg, type);
+    };
+
+    // Add Domain Card
+    const addCardBtns = html.querySelectorAll('[data-action="addDomainCard"]');
+    addCardBtns.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (!this.isEditable) return;
+        const currentCards = [...(this.document.systemData?.domainCards || [])];
+        const activeCount = currentCards.filter((c) => c.inLoadout !== false).length;
+        const inLoadout = activeCount < 5;
+
+        currentCards.push({
+          name: `Nova Carta de Domínio`,
+          domain: 'Blade',
+          level: 1,
+          cost: '1 Hope',
+          description: 'Descreva a habilidade ou feitiço da carta de domínio...',
+          inLoadout,
+        });
+
+        await this.document.update({ 'systemData.domainCards': currentCards });
+        notify(inLoadout ? 'Carta adicionada ao Loadout ativo!' : 'Carta guardada no Vault (Loadout já tem 5 cartas).', 'info');
+      });
+    });
+
+    // Toggle Loadout vs Vault
+    const toggleBtns = html.querySelectorAll('[data-action="toggleCardLoadout"]');
+    toggleBtns.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (!this.isEditable) return;
+        const idx = parseInt(btn.dataset.idx, 10);
+        const cardId = btn.dataset.cardId;
+
+        // If embedded item
+        if (cardId && !cardId.startsWith('inline-')) {
+          const item = this.document.items?.get ? this.document.items.get(cardId) : null;
+          if (item) {
+            const currentlyIn = item.systemData?.inLoadout !== false;
+            if (!currentlyIn) {
+              const activeCount = Array.from(this.document.items || []).filter((i) => i.type === 'domainCard' && i.systemData?.inLoadout !== false).length +
+                (this.document.systemData?.domainCards || []).filter((c) => c.inLoadout !== false).length;
+              if (activeCount >= 5) {
+                notify('Limite máximo de 5 Cartas de Domínio no Loadout atingido!', 'warning');
+                return;
+              }
+            }
+            await item.update({ 'systemData.inLoadout': !currentlyIn });
+            return;
+          }
+        }
+
+        // Inline card
+        const currentCards = [...(this.document.systemData?.domainCards || [])];
+        if (!isNaN(idx) && currentCards[idx]) {
+          const currentlyIn = currentCards[idx].inLoadout !== false;
+          if (!currentlyIn) {
+            const activeCount = currentCards.filter((c) => c.inLoadout !== false).length;
+            if (activeCount >= 5) {
+              notify('Limite máximo de 5 Cartas de Domínio no Loadout atingido!', 'warning');
+              return;
+            }
+          }
+          currentCards[idx] = { ...currentCards[idx], inLoadout: !currentlyIn };
+          await this.document.update({ 'systemData.domainCards': currentCards });
+        }
+      });
+    });
+
+    // Delete Domain Card
+    const deleteBtns = html.querySelectorAll('[data-action="deleteDomainCard"]');
+    deleteBtns.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (!this.isEditable) return;
+        const idx = parseInt(btn.dataset.idx, 10);
+        const cardId = btn.dataset.cardId;
+
+        if (cardId && !cardId.startsWith('inline-')) {
+          const item = this.document.items?.get ? this.document.items.get(cardId) : null;
+          if (item) {
+            await item.delete();
+            return;
+          }
+        }
+
+        const currentCards = [...(this.document.systemData?.domainCards || [])];
+        if (!isNaN(idx)) {
+          currentCards.splice(idx, 1);
+          await this.document.update({ 'systemData.domainCards': currentCards });
+        }
+      });
+    });
+
+    // Activate Domain Card (Spends Hope/Stress & Broadcasts to Chat)
+    const activateBtns = html.querySelectorAll('[data-action="activateDomainCard"]');
+    activateBtns.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const idx = parseInt(btn.dataset.idx, 10);
+        const cardId = btn.dataset.cardId;
+
+        let card = null;
+        if (cardId && !cardId.startsWith('inline-')) {
+          const item = this.document.items?.get ? this.document.items.get(cardId) : null;
+          if (item) {
+            card = {
+              name: item.name,
+              domain: item.systemData?.domain,
+              level: item.systemData?.level,
+              cost: item.systemData?.cost,
+              description: item.systemData?.description,
+            };
+          }
+        } else if (!isNaN(idx)) {
+          card = this.document.systemData?.domainCards?.[idx];
+        }
+
+        if (!card) return;
+
+        const costStr = String(card.cost || '').toLowerCase();
+        let hopeSpent = 0;
+        let stressMarked = 0;
+
+        // Detect Hope cost (e.g. "1 Hope", "2 Hope")
+        const hopeMatch = costStr.match(/(\d+)\s*hope/);
+        if (hopeMatch) {
+          const needed = parseInt(hopeMatch[1], 10);
+          const currentHope = Number(this.document.systemData?.hope?.value || 0);
+          if (currentHope < needed) {
+            notify(`Esperança insuficiente para ativar ${card.name}! Necessário: ${needed}`, 'warning');
+            return;
+          }
+          await this.document.update({ 'systemData.hope.value': currentHope - needed });
+          hopeSpent = needed;
+        }
+
+        // Detect Stress cost (e.g. "1 Stress", "2 Stress")
+        const stressMatch = costStr.match(/(\d+)\s*stress/);
+        if (stressMatch) {
+          const added = parseInt(stressMatch[1], 10);
+          const currentStress = Number(this.document.systemData?.stress?.value || 0);
+          const maxStress = Number(this.document.systemData?.stress?.max || 6);
+          if (currentStress + added > maxStress) {
+            notify(`Estresse estourará o limite! Estresse atual: ${currentStress}/${maxStress}`, 'warning');
+            return;
+          }
+          await this.document.update({ 'systemData.stress.value': currentStress + added });
+          stressMarked = added;
+        }
+
+        notify(`Carta ativada: ${card.name}` + (hopeSpent ? ` (-${hopeSpent} Hope)` : '') + (stressMarked ? ` (+${stressMarked} Stress)` : ''), 'success');
+
+        // Post chat message announcement
+        if (window.Loom?.api?.post) {
+          await window.Loom.api.post('/chat', {
+            content: `
+              <div class="dh-roll-card dh-domain-chat-card">
+                <div class="dh-card-header">
+                  <div class="dh-card-title-group">
+                    <span class="dh-card-crest">🃏</span>
+                    <span class="dh-card-title">${this.document.name} — ${card.name}</span>
+                  </div>
+                  <span class="dh-card-dc">${card.domain || 'Domínio'} (Nv.${card.level || 1})</span>
+                </div>
+                ${card.cost ? `<div class="dh-modifier-tag" style="margin: 6px 0;">Custo: ${card.cost}</div>` : ''}
+                <div class="dh-outcome-desc">${card.description || ''}</div>
+              </div>
+            `,
+          }).catch(() => {});
         }
       });
     });

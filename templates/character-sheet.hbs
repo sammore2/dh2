@@ -332,25 +332,75 @@
       <section class="dh-tab-pane" data-tab="loadout">
         <div class="dh-loadout-panel">
           <div class="dh-panel-header">
-            <h3><i class="fa-solid fa-cards"></i> Cartas de Domínio (Loadout Ativo)</h3>
-            <span class="dh-loadout-counter">Limite máximo: 5 cartas ativas</span>
+            <div class="dh-panel-title-group">
+              <h3><i class="fa-solid fa-cards"></i> Cartas de Domínio (Loadout Ativo)</h3>
+              <span class="dh-loadout-counter {{#if (eq activeLoadoutCount 5)}}full{{/if}}">
+                {{activeLoadoutCount}} / 5 Cartas Ativas
+              </span>
+            </div>
+            <button type="button" class="dh-btn-add-action" data-action="addDomainCard">+ Adicionar Carta</button>
           </div>
 
           <div class="dh-cards-grid active-loadout">
-            <div class="dh-empty-card-slot">
-              <i class="fa-solid fa-plus"></i>
-              <span>Arraste ou adicione uma Carta de Domínio</span>
-            </div>
+            {{#each activeLoadout as |card|}}
+              <div class="dh-domain-card" data-card-id="{{card.id}}" data-is-item="{{card.isItem}}" data-idx="{{card.idx}}">
+                <div class="dh-domain-card-header">
+                  <span class="dh-card-domain-badge {{card.domain}}">{{card.domain}} (Nv.{{card.level}})</span>
+                  {{#if card.cost}}
+                    <span class="dh-card-cost-badge">{{card.cost}}</span>
+                  {{/if}}
+                </div>
+                <div class="dh-card-name-title">{{card.name}}</div>
+                <div class="dh-card-desc-body">{{card.description}}</div>
+                <div class="dh-card-actions-bar">
+                  <button type="button" class="dh-card-btn dh-btn-use-card" data-action="activateDomainCard" data-card-id="{{card.id}}" data-idx="{{card.idx}}" title="Ativar Habilidade da Carta">
+                    🔮 Ativar
+                  </button>
+                  <button type="button" class="dh-card-btn dh-btn-toggle-loadout" data-action="toggleCardLoadout" data-card-id="{{card.id}}" data-idx="{{card.idx}}" title="Guardar no Vault">
+                    ⇄ Vault
+                  </button>
+                  <button type="button" class="dh-card-btn dh-btn-delete-card" data-action="deleteDomainCard" data-card-id="{{card.id}}" data-idx="{{card.idx}}" title="Remover Carta">
+                    ✕
+                  </button>
+                </div>
+              </div>
+            {{else}}
+              <div class="dh-empty-card-slot" data-action="addDomainCard">
+                <i class="fa-solid fa-plus"></i>
+                <span>Nenhuma carta no Loadout ativo. Clique para adicionar!</span>
+              </div>
+            {{/each}}
           </div>
 
           <div class="dh-panel-header vault-header">
             <h3><i class="fa-solid fa-vault"></i> Grimório / Cofre de Domínios (Vault)</h3>
           </div>
           <div class="dh-cards-grid vault-loadout">
-            <div class="dh-empty-card-slot vault">
-              <i class="fa-solid fa-scroll"></i>
-              <span>Cartas guardadas no Vault</span>
-            </div>
+            {{#each vaultCards as |card|}}
+              <div class="dh-domain-card vault" data-card-id="{{card.id}}" data-is-item="{{card.isItem}}" data-idx="{{card.idx}}">
+                <div class="dh-domain-card-header">
+                  <span class="dh-card-domain-badge {{card.domain}}">{{card.domain}} (Nv.{{card.level}})</span>
+                  {{#if card.cost}}
+                    <span class="dh-card-cost-badge">{{card.cost}}</span>
+                  {{/if}}
+                </div>
+                <div class="dh-card-name-title">{{card.name}}</div>
+                <div class="dh-card-desc-body">{{card.description}}</div>
+                <div class="dh-card-actions-bar">
+                  <button type="button" class="dh-card-btn dh-btn-toggle-loadout" data-action="toggleCardLoadout" data-card-id="{{card.id}}" data-idx="{{card.idx}}" title="Equipar no Loadout Ativo">
+                    ⇄ Equipar (Loadout)
+                  </button>
+                  <button type="button" class="dh-card-btn dh-btn-delete-card" data-action="deleteDomainCard" data-card-id="{{card.id}}" data-idx="{{card.idx}}" title="Remover Carta">
+                    ✕
+                  </button>
+                </div>
+              </div>
+            {{else}}
+              <div class="dh-empty-card-slot vault">
+                <i class="fa-solid fa-scroll"></i>
+                <span>Nenhuma carta guardada no Vault.</span>
+              </div>
+            {{/each}}
           </div>
         </div>
       </section>

@@ -2013,3 +2013,162 @@
   border-color: #a855f7;
   color: #e9d5ff;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   9. DOMAIN CARDS & LOADOUT STYLES (SRD 2.0)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.dh-panel-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dh-loadout-counter.full {
+  color: #f59e0b;
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.dh-domain-card {
+  background: linear-gradient(160deg, #181827 0%, #0d0d16 100%);
+  border: 1.5px solid var(--dh-border-metal);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 180px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.dh-domain-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--dh-gold);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7), 0 0 12px var(--dh-gold-glow);
+}
+
+.dh-domain-card.vault {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.dh-domain-card.vault:hover {
+  opacity: 1;
+  border-style: solid;
+}
+
+.dh-domain-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-card-domain-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(229, 184, 66, 0.15);
+  border: 1px solid var(--dh-gold-dim);
+  color: var(--dh-gold);
+  text-transform: uppercase;
+}
+
+.dh-card-domain-badge.Blade { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; }
+.dh-card-domain-badge.Bone { background: rgba(241, 245, 249, 0.15); border-color: #cbd5e1; color: #f1f5f9; }
+.dh-card-domain-badge.Codex { background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #7dd3fc; }
+.dh-card-domain-badge.Grace { background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #34d399; }
+.dh-card-domain-badge.Midnight { background: rgba(139, 92, 246, 0.15); border-color: #8b5cf6; color: #c084fc; }
+.dh-card-domain-badge.Sage { background: rgba(34, 197, 94, 0.15); border-color: #22c55e; color: #4ade80; }
+.dh-card-domain-badge.Splendor { background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #fbbf24; }
+.dh-card-domain-badge.Valor { background: rgba(249, 115, 22, 0.15); border-color: #f97316; color: #fb923c; }
+.dh-card-domain-badge.Fear { background: rgba(168, 85, 247, 0.2); border-color: #a855f7; color: #d8b4fe; }
+
+.dh-card-cost-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 2px 7px;
+  border-radius: 8px;
+}
+
+.dh-card-name-title {
+  font-family: var(--dh-font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  border-bottom: 1px solid var(--dh-border-subtle);
+  padding-bottom: 4px;
+}
+
+.dh-card-desc-body {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--dh-text-muted);
+  flex: 1;
+}
+
+.dh-card-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid var(--dh-border-subtle);
+  padding-top: 8px;
+  margin-top: auto;
+}
+
+.dh-btn-use-card {
+  background: linear-gradient(135deg, #7c3aed 0%, #581c87 100%);
+  border: 1px solid #a855f7;
+  color: #fff;
+  flex: 1;
+  justify-content: center;
+}
+
+.dh-btn-toggle-loadout {
+  background: #1c1c2b;
+  border: 1px solid var(--dh-border-metal);
+  color: var(--dh-text-main);
+  flex: 1;
+  justify-content: center;
+}
+
+.dh-btn-toggle-loadout:hover {
+  border-color: var(--dh-gold);
+  color: var(--dh-gold);
+}
+
+.dh-btn-delete-card {
+  background: transparent;
+  border: 1px solid var(--dh-border-subtle);
+  color: var(--dh-text-faint);
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dh-btn-delete-card:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Chat Card for Domain Cards */
+.dh-domain-chat-card {
+  border-color: var(--dh-gold);
+  background: linear-gradient(160deg, #1c1a2e 0%, #0d0c18 100%);
+}
+
+.dh-domain-chat-card .dh-card-crest {
+  color: var(--dh-gold);
+}
