@@ -14,6 +14,13 @@
       "Consumable": "Consumível",
       "Equipment": "Equipamento"
     },
+    "Header": {
+      "Name": "Nome do Personagem",
+      "Pronouns": "Pronomes",
+      "Heritage": "Herança (Ancestralidade & Comunidade)",
+      "ClassSubclass": "Classe & Subclasse",
+      "Level": "Nível"
+    },
     "Traits": {
       "Agility": "Agilidade",
       "Strength": "Força",
@@ -26,23 +33,61 @@
       "FinesseShort": "DES",
       "InstinctShort": "INS",
       "PresenceShort": "PRE",
-      "KnowledgeShort": "CON"
+      "KnowledgeShort": "CON",
+      "Sub": {
+        "Agility": "Correr • Saltar • Manobrar",
+        "Strength": "Erguer • Esmagar • Agarrar",
+        "Finesse": "Controlar • Ocultar • Consertar",
+        "Instinct": "Perceber • Pressentir • Navegar",
+        "Presence": "Cativar • Atuar • Enganar",
+        "Knowledge": "Recordar • Analisar • Decifrar"
+      }
     },
     "Resources": {
       "HP": "Pontos de Vida",
       "HPShort": "HP",
       "Stress": "Estresse",
       "Hope": "Esperança",
+      "HopeHint": "Gaste 1 Esperança para usar uma Experiência ou Ajudar um aliado.",
       "Armor": "Armadura",
       "ArmorSlots": "Slots de Armadura",
-      "ArmorScore": "Pontuação de Armadura",
-      "Evasion": "Evasão"
+      "ArmorScore": "Armadura",
+      "Evasion": "Evasão",
+      "Proficiency": "Proficiência"
     },
     "Thresholds": {
       "Title": "Limiares de Dano",
+      "Subtitle": "Adicione o seu nível atual aos limiares da armadura.",
       "Minor": "Menor (Minor)",
+      "MinorHint": "Marca 1 HP",
       "Major": "Maior (Major)",
-      "Severe": "Severo (Severe)"
+      "MajorHint": "Marca 2 HP",
+      "Severe": "Severo (Severe)",
+      "SevereHint": "Marca 3 HP"
+    },
+    "Combat": {
+      "ActiveWeapons": "Armas Ativas",
+      "PrimaryWeapon": "Arma Primária",
+      "SecondaryWeapon": "Arma Secundária",
+      "ActiveArmor": "Armadura Ativa",
+      "TraitAndRange": "Traço & Alcance",
+      "DamageDiceType": "Dado de Dano & Tipo",
+      "BaseThresholds": "Limiares Base",
+      "BaseScore": "Pontuação Base",
+      "RollAttack": "Rolar Ataque",
+      "RollDamage": "Rolar Dano"
+    },
+    "Features": {
+      "HopeFeature": "Habilidade de Esperança",
+      "ClassFeature": "Habilidade de Classe",
+      "Experiences": "Experiências",
+      "AddExperience": "+ Adicionar Experiência"
+    },
+    "Gold": {
+      "Title": "Riqueza & Ouro",
+      "Handfuls": "Punhados (1-10)",
+      "Bags": "Bolsas (1-10)",
+      "Chest": "Baú de Riquezas"
     },
     "Duality": {
       "Roll": "Rolagem de Dualidade",
@@ -62,25 +107,12 @@
       "Attacks": "Ataques",
       "Experiences": "Experiências"
     },
-    "Character": {
-      "Class": "Classe",
-      "Subclass": "Subclasse",
-      "Ancestry": "Ancestralidade",
-      "Community": "Comunidade",
-      "Level": "Nível",
-      "Tier": "Tier",
-      "Loadout": "Loadout Ativo",
-      "Vault": "Grimório (Vault)",
-      "Gold": "Ouro / Moedas"
-    },
     "Tabs": {
-      "Main": "Geral",
-      "Loadout": "Loadout",
-      "Vault": "Vault",
-      "Features": "Habilidades",
-      "Inventory": "Inventário",
-      "Notes": "Notas",
-      "Biography": "Biografia"
+      "Combat": "Combate",
+      "Loadout": "Domínios & Cartas",
+      "Features": "Habilidades & Experiência",
+      "Inventory": "Inventário & Ouro",
+      "Notes": "Notas & Biografia"
     }
   }
 }

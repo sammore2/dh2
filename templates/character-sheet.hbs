@@ -1,157 +1,459 @@
 <form class="dh-sheet dh-character-sheet" autocomplete="off">
-  {{!-- Header: Name, Pronouns, Class, Subclass, Level, Tier --}}
-  <header class="dh-sheet-header">
-    <div class="dh-portrait-block">
-      <img class="dh-portrait" src="{{document.avatarUrl}}" alt="{{document.name}}" data-edit="avatarUrl" />
-    </div>
 
-    <div class="dh-header-details">
-      <div class="dh-name-row">
-        <input class="dh-char-name" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.Character.Name'}}" />
-        <span class="dh-tier-badge">{{localize 'DH.Character.Tier'}} {{system.tier}}</span>
-        <span class="dh-level-badge">{{localize 'DH.Character.Level'}} {{system.level}}</span>
+  {{!-- ══════════════════════════════════════════════════════════════════════ --}}
+  {{!-- 1. FIXED TOP REGION (Pinned stats, traits & vitality bar)              --}}
+  {{!-- ══════════════════════════════════════════════════════════════════════ --}}
+  <header class="dh-fixed-top">
+    {{!-- Top Metadata Row --}}
+    <div class="dh-header-row">
+      <div class="dh-portrait-frame">
+        <img class="dh-portrait" src="{{document.avatarUrl}}" alt="{{document.name}}" data-edit="avatarUrl" title="Clique para trocar imagem" />
       </div>
 
-      <div class="dh-meta-grid">
-        <div class="dh-meta-field">
-          <label>{{localize 'DH.Character.Class'}}</label>
-          <input name="systemData.class" type="text" value="{{system.class}}" />
+      <div class="dh-identity-block">
+        <div class="dh-name-line">
+          <input class="dh-char-name" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.Header.Name'}}" />
+          <div class="dh-level-shield">
+            <span class="dh-shield-label">{{localize 'DH.Header.Level'}}</span>
+            <input class="dh-level-input" name="systemData.level" type="number" value="{{system.level}}" min="1" max="10" />
+          </div>
         </div>
-        <div class="dh-meta-field">
-          <label>{{localize 'DH.Character.Subclass'}}</label>
-          <input name="systemData.subclass" type="text" value="{{system.subclass}}" />
+
+        <div class="dh-meta-subgrid">
+          <div class="dh-meta-cell">
+            <label>{{localize 'DH.Header.Pronouns'}}</label>
+            <input name="systemData.pronouns" type="text" value="{{system.pronouns}}" placeholder="ex: Ele/Dele, Ela/Dela" />
+          </div>
+          <div class="dh-meta-cell">
+            <label>{{localize 'DH.Header.Heritage'}}</label>
+            <input name="systemData.heritage" type="text" value="{{system.heritage}}" placeholder="Ancestralidade & Comunidade" />
+          </div>
+          <div class="dh-meta-cell">
+            <label>{{localize 'DH.Header.ClassSubclass'}}</label>
+            <input name="systemData.class" type="text" value="{{system.class}}" placeholder="Classe" />
+          </div>
+          <div class="dh-meta-cell">
+            <label>Subclasse</label>
+            <input name="systemData.subclass" type="text" value="{{system.subclass}}" placeholder="Subclasse" />
+          </div>
         </div>
-        <div class="dh-meta-field">
-          <label>{{localize 'DH.Character.Ancestry'}}</label>
-          <input name="systemData.ancestry" type="text" value="{{system.ancestry}}" />
+      </div>
+    </div>
+
+    {{!-- Core Defenses & 6 Traits Bar --}}
+    <div class="dh-stats-deck">
+      {{!-- Defenses: Evasion, Armor, Armor Slots --}}
+      <div class="dh-defenses-pod">
+        <div class="dh-defense-crest dh-evasion-crest">
+          <span class="dh-crest-tag">{{localize 'DH.Resources.Evasion'}}</span>
+          <span class="dh-crest-num">{{derived.evasion}}</span>
         </div>
-        <div class="dh-meta-field">
-          <label>{{localize 'DH.Character.Community'}}</label>
-          <input name="systemData.community" type="text" value="{{system.community}}" />
+
+        <div class="dh-defense-crest dh-armor-crest">
+          <span class="dh-crest-tag">{{localize 'DH.Resources.ArmorScore'}}</span>
+          <span class="dh-crest-num">{{derived.armorScore}}</span>
+        </div>
+
+        <div class="dh-armor-slots-box">
+          <label class="dh-sub-label">{{localize 'DH.Resources.ArmorSlots'}}</label>
+          <div class="dh-armor-pips-grid" data-resource="armorSlots">
+            {{#numLoop system.armor.slots}}
+              <span class="dh-armor-pip {{#if (lt @index ../system.armor.slotsMarked)}}marked{{/if}}" data-index="{{@index}}" title="Slot de Armadura"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+      </div>
+
+      {{!-- 6 Traits Crests --}}
+      <div class="dh-traits-pod">
+        {{#each traits as |trait key|}}
+          <div class="dh-trait-shield" data-trait="{{key}}">
+            <div class="dh-trait-header">
+              <span class="dh-trait-title">{{localize trait.label}}</span>
+            </div>
+            <button type="button" class="dh-trait-score-btn" data-action="rollTrait" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
+              <span class="dh-score-val">{{numberFormat trait.value sign=true}}</span>
+              <i class="fa-solid fa-dice-d20 dh-dice-ico"></i>
+            </button>
+            <input class="dh-trait-edit-input" name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" />
+            <div class="dh-trait-subtext" title="{{localize trait.subLabel}}">
+              {{localize trait.subLabel}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    {{!-- Vitality & Resources Bar (Damage & Health, Stress, Hope) --}}
+    <div class="dh-vitality-strip">
+      {{!-- Thresholds Banner --}}
+      <div class="dh-thresholds-banner">
+        <div class="dh-threshold-node minor">
+          <span class="dh-th-name">{{localize 'DH.Thresholds.Minor'}}</span>
+          <span class="dh-th-val">1 HP</span>
+          <span class="dh-th-hint">{{localize 'DH.Thresholds.MinorHint'}}</span>
+        </div>
+        <div class="dh-threshold-arrow">❯</div>
+        <div class="dh-threshold-node major">
+          <span class="dh-th-name">{{localize 'DH.Thresholds.Major'}}</span>
+          <span class="dh-th-val">{{derived.thresholdMajor}}</span>
+          <span class="dh-th-hint">{{localize 'DH.Thresholds.MajorHint'}}</span>
+        </div>
+        <div class="dh-threshold-arrow">❯</div>
+        <div class="dh-threshold-node severe">
+          <span class="dh-th-name">{{localize 'DH.Thresholds.Severe'}}</span>
+          <span class="dh-th-val">{{derived.thresholdSevere}}</span>
+          <span class="dh-th-hint">{{localize 'DH.Thresholds.SevereHint'}}</span>
+        </div>
+      </div>
+
+      {{!-- Vitality Trackers --}}
+      <div class="dh-vitality-trackers">
+        {{!-- HP --}}
+        <div class="dh-tracker-item hp">
+          <div class="dh-tracker-head">
+            <span class="dh-tracker-label"><i class="fa-solid fa-heart-pulse"></i> {{localize 'DH.Resources.HP'}}</span>
+            <span class="dh-tracker-count">{{system.hp.value}} / {{system.hp.max}}</span>
+          </div>
+          <div class="dh-dots-row" data-resource="hp">
+            {{#numLoop system.hp.max}}
+              <span class="dh-dot hp {{#if (lt @index ../system.hp.value)}}marked{{/if}}" data-index="{{@index}}" title="Marcar/Desmarcar HP"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+
+        {{!-- Stress --}}
+        <div class="dh-tracker-item stress">
+          <div class="dh-tracker-head">
+            <span class="dh-tracker-label"><i class="fa-solid fa-fire-flame-curved"></i> {{localize 'DH.Resources.Stress'}}</span>
+            <span class="dh-tracker-count">{{system.stress.value}} / {{system.stress.max}}</span>
+          </div>
+          <div class="dh-dots-row" data-resource="stress">
+            {{#numLoop system.stress.max}}
+              <span class="dh-dot stress {{#if (lt @index ../system.stress.value)}}marked{{/if}}" data-index="{{@index}}" title="Marcar/Desmarcar Stress"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+
+        {{!-- Hope --}}
+        <div class="dh-tracker-item hope">
+          <div class="dh-tracker-head">
+            <span class="dh-tracker-label"><i class="fa-solid fa-sun"></i> {{localize 'DH.Resources.Hope'}}</span>
+            <span class="dh-tracker-count">{{system.hope.value}} / {{system.hope.max}}</span>
+          </div>
+          <div class="dh-dots-row" data-resource="hope">
+            {{#numLoop system.hope.max}}
+              <span class="dh-dot hope {{#if (lt @index ../system.hope.value)}}marked{{/if}}" data-index="{{@index}}" title="Slot de Esperança"></span>
+            {{/numLoop}}
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  {{!-- Resources Strip: HP, Stress, Hope, Armor, Evasion, Thresholds --}}
-  <section class="dh-resources-strip">
-    <div class="dh-resource-box dh-resource-hp">
-      <div class="dh-resource-header">
-        <label>{{localize 'DH.Resources.HP'}}</label>
-        <span class="dh-resource-value">{{system.hp.value}} / {{system.hp.max}}</span>
-      </div>
-      <div class="dh-dots-container" data-resource="hp">
-        {{#numLoop system.hp.max}}
-          <span class="dh-pip {{#if (lt @index ../system.hp.value)}}filled{{/if}}" data-index="{{@index}}"></span>
-        {{/numLoop}}
-      </div>
-    </div>
-
-    <div class="dh-resource-box dh-resource-stress">
-      <div class="dh-resource-header">
-        <label>{{localize 'DH.Resources.Stress'}}</label>
-        <span class="dh-resource-value">{{system.stress.value}} / {{system.stress.max}}</span>
-      </div>
-      <div class="dh-dots-container" data-resource="stress">
-        {{#numLoop system.stress.max}}
-          <span class="dh-pip {{#if (lt @index ../system.stress.value)}}filled{{/if}}" data-index="{{@index}}"></span>
-        {{/numLoop}}
-      </div>
-    </div>
-
-    <div class="dh-resource-box dh-resource-hope">
-      <div class="dh-resource-header">
-        <label>{{localize 'DH.Resources.Hope'}}</label>
-        <span class="dh-resource-value">{{system.hope.value}} / {{system.hope.max}}</span>
-      </div>
-      <div class="dh-dots-container" data-resource="hope">
-        {{#numLoop system.hope.max}}
-          <span class="dh-pip {{#if (lt @index ../system.hope.value)}}filled{{/if}}" data-index="{{@index}}"></span>
-        {{/numLoop}}
-      </div>
-    </div>
-
-    <div class="dh-resource-box dh-resource-defenses">
-      <div class="dh-defense-item">
-        <label>{{localize 'DH.Resources.Evasion'}}</label>
-        <span class="dh-defense-val">{{derived.evasion}}</span>
-      </div>
-      <div class="dh-defense-item">
-        <label>{{localize 'DH.Resources.ArmorScore'}}</label>
-        <span class="dh-defense-val">{{derived.armorScore}}</span>
-      </div>
-    </div>
-
-    <div class="dh-resource-box dh-thresholds-box">
-      <label class="dh-thresholds-title">{{localize 'DH.Thresholds.Title'}}</label>
-      <div class="dh-thresholds-row">
-        <span><strong>{{localize 'DH.Thresholds.Minor'}}:</strong> 1 HP</span>
-        <span><strong>{{localize 'DH.Thresholds.Major'}}:</strong> {{derived.thresholdMajor}}</span>
-        <span><strong>{{localize 'DH.Thresholds.Severe'}}:</strong> {{derived.thresholdSevere}}</span>
-      </div>
-    </div>
-  </section>
-
-  {{!-- Core Traits Bar: Agility, Strength, Finesse, Instinct, Presence, Knowledge --}}
-  <nav class="dh-traits-grid">
-    {{#each traits as |trait key|}}
-      <div class="dh-trait-card" data-trait="{{key}}">
-        <button type="button" class="dh-trait-roll-btn" data-action="rollTrait" data-trait="{{key}}">
-          <span class="dh-trait-name">{{localize trait.label}}</span>
-          <span class="dh-trait-value">{{numberFormat trait.value sign=true}}</span>
-        </button>
-      </div>
-    {{/each}}
-  </nav>
-
-  {{!-- Tabs Content --}}
-  <div class="dh-sheet-tabs-container">
+  {{!-- ══════════════════════════════════════════════════════════════════════ --}}
+  {{!-- 2. TABBED REGION                                                       --}}
+  {{!-- ══════════════════════════════════════════════════════════════════════ --}}
+  <div class="dh-tab-container">
     <nav class="dh-tabs-nav" data-group="primary">
-      <button type="button" class="dh-tab-btn active" data-tab="loadout">{{localize 'DH.Tabs.Loadout'}}</button>
-      <button type="button" class="dh-tab-btn" data-tab="features">{{localize 'DH.Tabs.Features'}}</button>
-      <button type="button" class="dh-tab-btn" data-tab="inventory">{{localize 'DH.Tabs.Inventory'}}</button>
-      <button type="button" class="dh-tab-btn" data-tab="vault">{{localize 'DH.Tabs.Vault'}}</button>
-      <button type="button" class="dh-tab-btn" data-tab="notes">{{localize 'DH.Tabs.Notes'}}</button>
+      <button type="button" class="dh-tab-btn active" data-tab="combat">
+        <i class="fa-solid fa-shield-halved"></i> {{localize 'DH.Tabs.Combat'}}
+      </button>
+      <button type="button" class="dh-tab-btn" data-tab="loadout">
+        <i class="fa-solid fa-cards"></i> {{localize 'DH.Tabs.Loadout'}}
+      </button>
+      <button type="button" class="dh-tab-btn" data-tab="features">
+        <i class="fa-solid fa-sparkles"></i> {{localize 'DH.Tabs.Features'}}
+      </button>
+      <button type="button" class="dh-tab-btn" data-tab="inventory">
+        <i class="fa-solid fa-sack-dollar"></i> {{localize 'DH.Tabs.Inventory'}}
+      </button>
+      <button type="button" class="dh-tab-btn" data-tab="notes">
+        <i class="fa-solid fa-book-bookmark"></i> {{localize 'DH.Tabs.Notes'}}
+      </button>
     </nav>
 
-    <div class="dh-tab-body">
-      {{!-- Tab: Loadout --}}
-      <section class="dh-tab-pane active" data-tab="loadout">
-        <div class="dh-loadout-grid">
-          <div class="dh-section-header">
-            <h3>{{localize 'DH.Character.Loadout'}}</h3>
+    <div class="dh-tab-viewport">
+      {{!-- TAB 1: COMBAT --}}
+      <section class="dh-tab-pane active" data-tab="combat">
+        {{!-- Proficiency Bar --}}
+        <div class="dh-proficiency-bar">
+          <div class="dh-prof-label">
+            <i class="fa-solid fa-hand-fist"></i> {{localize 'DH.Resources.Proficiency'}}
           </div>
-          <p class="dh-empty-hint">Cartas de domínio e equipamentos ativos.</p>
+          <div class="dh-dots-row" data-resource="proficiency">
+            {{#numLoop 5}}
+              <span class="dh-dot prof {{#if (lt @index ../system.proficiency)}}marked{{/if}}" data-index="{{@index}}" title="Nível de Proficiência"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+
+        <div class="dh-combat-layout">
+          {{!-- Active Weapons Box --}}
+          <div class="dh-combat-card dh-weapons-section">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-swords"></i> {{localize 'DH.Combat.ActiveWeapons'}}
+            </div>
+
+            {{!-- Primary Weapon --}}
+            <div class="dh-weapon-entry">
+              <div class="dh-weapon-head">
+                <span class="dh-weapon-tag primary">{{localize 'DH.Combat.PrimaryWeapon'}}</span>
+                <input class="dh-weapon-name" name="systemData.weapons.primary.name" type="text" value="{{system.weapons.primary.name}}" placeholder="Nome da Arma Primária" />
+                <button type="button" class="dh-action-btn roll-atk" data-action="rollWeaponAttack" data-slot="primary" title="Rolar Ataque">
+                  <i class="fa-solid fa-dice-d20"></i> Ataque
+                </button>
+                <button type="button" class="dh-action-btn roll-dmg" data-action="rollWeaponDamage" data-slot="primary" title="Rolar Dano">
+                  <i class="fa-solid fa-bolt"></i> Dano
+                </button>
+              </div>
+
+              <div class="dh-weapon-specs">
+                <div class="dh-spec-field">
+                  <label>{{localize 'DH.Combat.TraitAndRange'}}</label>
+                  <div class="dh-input-dual">
+                    <select name="systemData.weapons.primary.trait">
+                      <option value="agility" {{#if (eq system.weapons.primary.trait "agility")}}selected{{/if}}>Agility</option>
+                      <option value="strength" {{#if (eq system.weapons.primary.trait "strength")}}selected{{/if}}>Strength</option>
+                      <option value="finesse" {{#if (eq system.weapons.primary.trait "finesse")}}selected{{/if}}>Finesse</option>
+                      <option value="instinct" {{#if (eq system.weapons.primary.trait "instinct")}}selected{{/if}}>Instinct</option>
+                      <option value="presence" {{#if (eq system.weapons.primary.trait "presence")}}selected{{/if}}>Presence</option>
+                      <option value="knowledge" {{#if (eq system.weapons.primary.trait "knowledge")}}selected{{/if}}>Knowledge</option>
+                    </select>
+                    <input name="systemData.weapons.primary.range" type="text" value="{{system.weapons.primary.range}}" placeholder="Alcance (ex: Melee)" />
+                  </div>
+                </div>
+
+                <div class="dh-spec-field">
+                  <label>{{localize 'DH.Combat.DamageDiceType'}}</label>
+                  <div class="dh-input-dual">
+                    <input name="systemData.weapons.primary.damage" type="text" value="{{system.weapons.primary.damage}}" placeholder="ex: 1d8" />
+                    <input name="systemData.weapons.primary.damageType" type="text" value="{{system.weapons.primary.damageType}}" placeholder="Físico / Mágico" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="dh-weapon-feature">
+                <input name="systemData.weapons.primary.feature" type="text" value="{{system.weapons.primary.feature}}" placeholder="Habilidade especial da arma primária..." />
+              </div>
+            </div>
+
+            {{!-- Secondary Weapon --}}
+            <div class="dh-weapon-entry secondary">
+              <div class="dh-weapon-head">
+                <span class="dh-weapon-tag secondary">{{localize 'DH.Combat.SecondaryWeapon'}}</span>
+                <input class="dh-weapon-name" name="systemData.weapons.secondary.name" type="text" value="{{system.weapons.secondary.name}}" placeholder="Nome da Arma Secundária" />
+                <button type="button" class="dh-action-btn roll-atk" data-action="rollWeaponAttack" data-slot="secondary" title="Rolar Ataque">
+                  <i class="fa-solid fa-dice-d20"></i> Ataque
+                </button>
+                <button type="button" class="dh-action-btn roll-dmg" data-action="rollWeaponDamage" data-slot="secondary" title="Rolar Dano">
+                  <i class="fa-solid fa-bolt"></i> Dano
+                </button>
+              </div>
+
+              <div class="dh-weapon-specs">
+                <div class="dh-spec-field">
+                  <label>{{localize 'DH.Combat.TraitAndRange'}}</label>
+                  <div class="dh-input-dual">
+                    <select name="systemData.weapons.secondary.trait">
+                      <option value="agility" {{#if (eq system.weapons.secondary.trait "agility")}}selected{{/if}}>Agility</option>
+                      <option value="strength" {{#if (eq system.weapons.secondary.trait "strength")}}selected{{/if}}>Strength</option>
+                      <option value="finesse" {{#if (eq system.weapons.secondary.trait "finesse")}}selected{{/if}}>Finesse</option>
+                      <option value="instinct" {{#if (eq system.weapons.secondary.trait "instinct")}}selected{{/if}}>Instinct</option>
+                      <option value="presence" {{#if (eq system.weapons.secondary.trait "presence")}}selected{{/if}}>Presence</option>
+                      <option value="knowledge" {{#if (eq system.weapons.secondary.trait "knowledge")}}selected{{/if}}>Knowledge</option>
+                    </select>
+                    <input name="systemData.weapons.secondary.range" type="text" value="{{system.weapons.secondary.range}}" placeholder="Alcance (ex: Very Close)" />
+                  </div>
+                </div>
+
+                <div class="dh-spec-field">
+                  <label>{{localize 'DH.Combat.DamageDiceType'}}</label>
+                  <div class="dh-input-dual">
+                    <input name="systemData.weapons.secondary.damage" type="text" value="{{system.weapons.secondary.damage}}" placeholder="ex: 1d6" />
+                    <input name="systemData.weapons.secondary.damageType" type="text" value="{{system.weapons.secondary.damageType}}" placeholder="Físico / Mágico" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="dh-weapon-feature">
+                <input name="systemData.weapons.secondary.feature" type="text" value="{{system.weapons.secondary.feature}}" placeholder="Habilidade especial da arma secundária..." />
+              </div>
+            </div>
+          </div>
+
+          {{!-- Active Armor Box --}}
+          <div class="dh-combat-card dh-armor-section">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-shield"></i> {{localize 'DH.Combat.ActiveArmor'}}
+            </div>
+
+            <div class="dh-armor-form-grid">
+              <div class="dh-armor-name-row">
+                <label>Nome</label>
+                <input name="systemData.activeArmor.name" type="text" value="{{system.activeArmor.name}}" placeholder="Nome da Armadura" />
+              </div>
+
+              <div class="dh-armor-num-row">
+                <div class="dh-armor-subfield">
+                  <label>{{localize 'DH.Combat.BaseThresholds'}}</label>
+                  <div class="dh-thresholds-inputs">
+                    <input name="systemData.thresholds.baseMajor" type="number" value="{{system.thresholds.baseMajor}}" title="Base Major" />
+                    <span>/</span>
+                    <input name="systemData.thresholds.baseSevere" type="number" value="{{system.thresholds.baseSevere}}" title="Base Severe" />
+                  </div>
+                </div>
+
+                <div class="dh-armor-subfield">
+                  <label>{{localize 'DH.Combat.BaseScore'}}</label>
+                  <input name="systemData.armor.score" type="number" value="{{system.armor.score}}" min="0" />
+                </div>
+
+                <div class="dh-armor-subfield">
+                  <label>Max Slots</label>
+                  <input name="systemData.armor.slots" type="number" value="{{system.armor.slots}}" min="0" max="12" />
+                </div>
+              </div>
+
+              <div class="dh-armor-feature-row">
+                <label>Efeito / Habilidade da Armadura</label>
+                <textarea name="systemData.activeArmor.feature" rows="2" placeholder="ex: Reduz dano de projéteis...">{{system.activeArmor.feature}}</textarea>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {{!-- Tab: Features --}}
+      {{!-- TAB 2: DOMAIN CARDS & LOADOUT --}}
+      <section class="dh-tab-pane" data-tab="loadout">
+        <div class="dh-loadout-panel">
+          <div class="dh-panel-header">
+            <h3><i class="fa-solid fa-cards"></i> Cartas de Domínio (Loadout Ativo)</h3>
+            <span class="dh-loadout-counter">Limite máximo: 5 cartas ativas</span>
+          </div>
+
+          <div class="dh-cards-grid active-loadout">
+            <div class="dh-empty-card-slot">
+              <i class="fa-solid fa-plus"></i>
+              <span>Arraste ou adicione uma Carta de Domínio</span>
+            </div>
+          </div>
+
+          <div class="dh-panel-header vault-header">
+            <h3><i class="fa-solid fa-vault"></i> Grimório / Cofre de Domínios (Vault)</h3>
+          </div>
+          <div class="dh-cards-grid vault-loadout">
+            <div class="dh-empty-card-slot vault">
+              <i class="fa-solid fa-scroll"></i>
+              <span>Cartas guardadas no Vault</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{!-- TAB 3: FEATURES & EXPERIENCES --}}
       <section class="dh-tab-pane" data-tab="features">
-        <div class="dh-section-header">
-          <h3>{{localize 'DH.Tabs.Features'}}</h3>
+        <div class="dh-features-layout">
+          {{!-- Class Feature Box --}}
+          <div class="dh-feature-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-gem"></i> {{localize 'DH.Features.ClassFeature'}}
+            </div>
+            <textarea name="systemData.classFeature" rows="4" placeholder="Habilidades principais e mecânicas da sua classe...">{{system.classFeature}}</textarea>
+          </div>
+
+          {{!-- Hope Feature Box --}}
+          <div class="dh-feature-card hope-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-sun"></i> {{localize 'DH.Features.HopeFeature'}}
+            </div>
+            <textarea name="systemData.hopeFeature" rows="3" placeholder="Gaste Hope para ativar esta habilidade especial...">{{system.hopeFeature}}</textarea>
+          </div>
+
+          {{!-- Experiences Box --}}
+          <div class="dh-feature-card experiences-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-compass"></i> {{localize 'DH.Features.Experiences'}}
+              <span class="dh-exp-hint">Gaste 1 Esperança para adicionar o bônus da Experiência à sua rolagem de ação</span>
+            </div>
+
+            <div class="dh-experiences-list">
+              {{#each system.experiences as |exp idx|}}
+                <div class="dh-experience-row" data-index="{{idx}}">
+                  <span class="dh-exp-num">✦</span>
+                  <input class="dh-exp-name" name="systemData.experiences.{{idx}}.name" type="text" value="{{exp.name}}" placeholder="ex: Guarda Real Veterano, Batedor da Floresta..." />
+                  <div class="dh-exp-mod-box">
+                    <span class="dh-mod-label">Mod</span>
+                    <input class="dh-exp-mod" name="systemData.experiences.{{idx}}.modifier" type="number" value="{{exp.modifier}}" />
+                  </div>
+                  <button type="button" class="dh-exp-use-btn" data-action="useExperience" data-index="{{idx}}" title="Aplicar bônus desta Experiência">
+                    <i class="fa-solid fa-plus"></i> Usar
+                  </button>
+                </div>
+              {{/each}}
+            </div>
+          </div>
         </div>
-        <p class="dh-empty-hint">Habilidades de classe, subclasse, ancestralidade e comunidade.</p>
       </section>
 
-      {{!-- Tab: Inventory --}}
+      {{!-- TAB 4: INVENTORY & WEALTH --}}
       <section class="dh-tab-pane" data-tab="inventory">
-        <div class="dh-section-header">
-          <h3>{{localize 'DH.Tabs.Inventory'}}</h3>
+        <div class="dh-inventory-layout">
+          {{!-- Gold & Wealth Strip --}}
+          <div class="dh-wealth-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-coins"></i> {{localize 'DH.Gold.Title'}}
+            </div>
+
+            <div class="dh-wealth-row">
+              <div class="dh-wealth-group">
+                <label>{{localize 'DH.Gold.Handfuls'}}</label>
+                <div class="dh-dots-row" data-resource="goldHandfuls">
+                  {{#numLoop 10}}
+                    <span class="dh-dot coin {{#if (lt @index ../system.gold.handfuls)}}marked{{/if}}" data-index="{{@index}}"></span>
+                  {{/numLoop}}
+                </div>
+              </div>
+
+              <div class="dh-wealth-group">
+                <label>{{localize 'DH.Gold.Bags'}}</label>
+                <div class="dh-dots-row" data-resource="goldBags">
+                  {{#numLoop 10}}
+                    <span class="dh-dot bag {{#if (lt @index ../system.gold.bags)}}marked{{/if}}" data-index="{{@index}}"></span>
+                  {{/numLoop}}
+                </div>
+              </div>
+
+              <div class="dh-wealth-group chest-group">
+                <label>{{localize 'DH.Gold.Chest'}}</label>
+                <label class="dh-chest-toggle">
+                  <input name="systemData.gold.chest" type="checkbox" {{#if system.gold.chest}}checked{{/if}} />
+                  <span class="dh-chest-box"><i class="fa-solid fa-chest"></i> Baú Possuído</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {{!-- Gear & Bag Notes --}}
+          <div class="dh-inventory-notes-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-backpack"></i> Equipamentos, Mochila & Pertences
+            </div>
+            <textarea name="systemData.inventoryNotes" rows="8" placeholder="Itens consumíveis, ferramentas, troféus e pertences guardados...">{{system.inventoryNotes}}</textarea>
+          </div>
         </div>
-        <p class="dh-empty-hint">Armas, armaduras, consumíveis e equipamentos.</p>
       </section>
 
-      {{!-- Tab: Vault --}}
-      <section class="dh-tab-pane" data-tab="vault">
-        <div class="dh-section-header">
-          <h3>{{localize 'DH.Character.Vault'}}</h3>
-        </div>
-        <p class="dh-empty-hint">Cartas de domínio reservadas (Vault).</p>
-      </section>
-
-      {{!-- Tab: Notes --}}
+      {{!-- TAB 5: NOTES & LORE --}}
       <section class="dh-tab-pane" data-tab="notes">
-        <textarea name="systemData.notes" rows="8">{{system.notes}}</textarea>
+        <div class="dh-notes-layout">
+          <div class="dh-notes-card">
+            <div class="dh-card-title">
+              <i class="fa-solid fa-feather-pointed"></i> Conexões com o Grupo & Perguntas de Campanha
+            </div>
+            <textarea name="systemData.notes" rows="10" placeholder="Anotações de campanha, laços com os outros personagens, histórias e objetivos...">{{system.notes}}</textarea>
+          </div>
+        </div>
       </section>
     </div>
   </div>

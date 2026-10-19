@@ -14,6 +14,13 @@
       "Consumable": "Consumable",
       "Equipment": "Equipment"
     },
+    "Header": {
+      "Name": "Character Name",
+      "Pronouns": "Pronouns",
+      "Heritage": "Heritage (Ancestry & Community)",
+      "ClassSubclass": "Class & Subclass",
+      "Level": "Level"
+    },
     "Traits": {
       "Agility": "Agility",
       "Strength": "Strength",
@@ -26,23 +33,61 @@
       "FinesseShort": "FIN",
       "InstinctShort": "INS",
       "PresenceShort": "PRE",
-      "KnowledgeShort": "KNO"
+      "KnowledgeShort": "KNO",
+      "Sub": {
+        "Agility": "Sprint • Leap • Maneuver",
+        "Strength": "Lift • Smash • Grapple",
+        "Finesse": "Control • Hide • Tinker",
+        "Instinct": "Perceive • Sense • Navigate",
+        "Presence": "Charm • Perform • Deceive",
+        "Knowledge": "Recall • Analyze • Comprehend"
+      }
     },
     "Resources": {
       "HP": "Hit Points",
       "HPShort": "HP",
       "Stress": "Stress",
       "Hope": "Hope",
+      "HopeHint": "Spend a Hope to use an experience or help an ally.",
       "Armor": "Armor",
       "ArmorSlots": "Armor Slots",
-      "ArmorScore": "Armor Score",
-      "Evasion": "Evasion"
+      "ArmorScore": "Armor",
+      "Evasion": "Evasion",
+      "Proficiency": "Proficiency"
     },
     "Thresholds": {
-      "Title": "Damage Thresholds",
-      "Minor": "Minor",
-      "Major": "Major",
-      "Severe": "Severe"
+      "Title": "Damage & Health",
+      "Subtitle": "Add your current level to your damage thresholds.",
+      "Minor": "Minor Damage",
+      "MinorHint": "Mark 1 HP",
+      "Major": "Major Damage",
+      "MajorHint": "Mark 2 HP",
+      "Severe": "Severe Damage",
+      "SevereHint": "Mark 3 HP"
+    },
+    "Combat": {
+      "ActiveWeapons": "Active Weapons",
+      "PrimaryWeapon": "Primary Weapon",
+      "SecondaryWeapon": "Secondary Weapon",
+      "ActiveArmor": "Active Armor",
+      "TraitAndRange": "Trait & Range",
+      "DamageDiceType": "Damage Dice & Type",
+      "BaseThresholds": "Base Thresholds",
+      "BaseScore": "Base Score",
+      "RollAttack": "Roll Attack",
+      "RollDamage": "Roll Damage"
+    },
+    "Features": {
+      "HopeFeature": "Hope Feature",
+      "ClassFeature": "Class Feature",
+      "Experiences": "Experiences",
+      "AddExperience": "+ Add Experience"
+    },
+    "Gold": {
+      "Title": "Gold & Wealth",
+      "Handfuls": "Handfuls (1-10)",
+      "Bags": "Bags (1-10)",
+      "Chest": "Chest of Wealth"
     },
     "Duality": {
       "Roll": "Duality Roll",
@@ -57,30 +102,17 @@
     "Adversary": {
       "Tier": "Tier",
       "Difficulty": "Difficulty",
-      "Motives": "Motives & Tactics",
+      "Motives": "Motivos & Tactics",
       "FearFeatures": "Fear Features",
       "Attacks": "Attacks",
       "Experiences": "Experiences"
     },
-    "Character": {
-      "Class": "Class",
-      "Subclass": "Subclass",
-      "Ancestry": "Ancestry",
-      "Community": "Community",
-      "Level": "Level",
-      "Tier": "Tier",
-      "Loadout": "Active Loadout",
-      "Vault": "Domain Vault",
-      "Gold": "Gold / Coins"
-    },
     "Tabs": {
-      "Main": "Core",
-      "Loadout": "Loadout",
-      "Vault": "Vault",
-      "Features": "Features",
-      "Inventory": "Inventory",
-      "Notes": "Notes",
-      "Biography": "Biography"
+      "Combat": "Combat",
+      "Loadout": "Domain Cards",
+      "Features": "Features & Experience",
+      "Inventory": "Inventory & Wealth",
+      "Notes": "Notes & Lore"
     }
   }
 }

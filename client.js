@@ -1,4 +1,4 @@
-import { SystemRegistry, defineSystem } from '/_loom/sdk/index.js';
+import { SystemRegistry, defineSystem, dispatchRoll } from '/_loom/sdk/index.js';
 import { DaggerheartCharacterSheet } from './sheets/character-sheet.mjs';
 import { DaggerheartAdversarySheet } from './sheets/adversary-sheet.mjs';
 import { DaggerheartItemSheet } from './sheets/item-sheet.mjs';
@@ -15,16 +15,21 @@ class DaggerheartActor extends CONFIG.Actor.documentClass {
     if (!sys) return;
 
     // Isolate all calculated/derived data inside systemData.derived
-    // to prevent the "stuck field" database persistence bug
     const agi = Number(sys.attributes?.agility || 0);
     const lvl = Number(sys.level || 1);
+    const armorScore = Number(sys.armor?.score || 0);
+
+    // Daggerheart SRD 2.0: Level scales thresholds
+    const baseMajor = Number(sys.thresholds?.baseMajor || 7);
+    const baseSevere = Number(sys.thresholds?.baseSevere || 14);
 
     sys.derived = {
       ...(sys.derived || {}),
-      evasion: 8 + agi,
-      armorScore: Number(sys.armor?.score || 0),
-      thresholdMajor: 7 + lvl,
-      thresholdSevere: 14 + lvl,
+      evasion: Number(sys.evasionBase || 8) + agi + Number(sys.evasionBonus || 0),
+      armorScore: armorScore,
+      thresholdMinorDesc: '1 HP',
+      thresholdMajor: baseMajor + lvl + Number(sys.thresholds?.majorBonus || 0),
+      thresholdSevere: baseSevere + lvl + Number(sys.thresholds?.severeBonus || 0),
     };
   }
 }
@@ -56,13 +61,15 @@ SystemRegistry.register(defineSystem({
   getDefaultData(type) {
     if (type === 'character') {
       return {
-        level: 1,
-        tier: 1,
+        pronouns: '',
+        heritage: '',
         class: '',
         subclass: '',
-        ancestry: '',
-        community: '',
-        hp: { value: 6, max: 6 },
+        level: 1,
+        tier: 1,
+        evasionBase: 8,
+        evasionBonus: 0,
+        hp: { value: 0, max: 6 },
         stress: { value: 0, max: 6 },
         hope: { value: 2, max: 6 },
         attributes: {
@@ -75,9 +82,55 @@ SystemRegistry.register(defineSystem({
         },
         armor: {
           score: 0,
-          slots: 0,
+          slots: 6,
           slotsMarked: 0,
         },
+        thresholds: {
+          baseMajor: 7,
+          baseSevere: 14,
+          majorBonus: 0,
+          severeBonus: 0,
+        },
+        proficiency: 1,
+        weapons: {
+          primary: {
+            name: '',
+            trait: 'agility',
+            range: 'Melee',
+            damage: '1d8',
+            damageType: 'physical',
+            feature: '',
+          },
+          secondary: {
+            name: '',
+            trait: 'strength',
+            range: 'Very Close',
+            damage: '1d6',
+            damageType: 'physical',
+            feature: '',
+          },
+        },
+        activeArmor: {
+          name: '',
+          baseThresholds: '7 / 14',
+          baseScore: 0,
+          feature: '',
+        },
+        hopeFeature: '',
+        classFeature: '',
+        experiences: [
+          { name: '', modifier: 0 },
+          { name: '', modifier: 0 },
+          { name: '', modifier: 0 },
+          { name: '', modifier: 0 },
+          { name: '', modifier: 0 },
+        ],
+        gold: {
+          handfuls: 0,
+          bags: 0,
+          chest: false,
+        },
+        inventoryNotes: '',
         notes: '',
       };
     }
@@ -86,7 +139,7 @@ SystemRegistry.register(defineSystem({
       return {
         tier: 1,
         difficulty: 10,
-        hp: { value: 6, max: 6 },
+        hp: { value: 0, max: 6 },
         stress: { value: 0, max: 3 },
         thresholds: {
           major: 8,
@@ -101,7 +154,6 @@ SystemRegistry.register(defineSystem({
     return {};
   },
 
-  // Client-side generic prepare hook
   prepareData(actor) {
     if (actor?.systemData) {
       actor.systemData.derived = {
