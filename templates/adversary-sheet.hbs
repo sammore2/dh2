@@ -1,0 +1,59 @@
+<form class="dh-sheet dh-adversary-sheet" autocomplete="off">
+  <header class="dh-sheet-header">
+    <div class="dh-portrait-block">
+      <img class="dh-portrait" src="{{document.avatarUrl}}" alt="{{document.name}}" data-edit="avatarUrl" />
+    </div>
+
+    <div class="dh-header-details">
+      <div class="dh-name-row">
+        <input class="dh-char-name" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.ActorType.Adversary'}}" />
+        <span class="dh-tier-badge">{{localize 'DH.Adversary.Tier'}} {{system.tier}}</span>
+        <span class="dh-dc-badge">{{localize 'DH.Adversary.Difficulty'}} {{system.difficulty}}</span>
+      </div>
+
+      <div class="dh-adversary-stats-row">
+        <div class="dh-stat-pill">
+          <label>{{localize 'DH.Resources.HP'}}</label>
+          <input name="systemData.hp.value" type="number" value="{{system.hp.value}}" /> /
+          <input name="systemData.hp.max" type="number" value="{{system.hp.max}}" />
+        </div>
+        <div class="dh-stat-pill">
+          <label>{{localize 'DH.Resources.Stress'}}</label>
+          <input name="systemData.stress.value" type="number" value="{{system.stress.value}}" /> /
+          <input name="systemData.stress.max" type="number" value="{{system.stress.max}}" />
+        </div>
+        <div class="dh-stat-pill">
+          <label>{{localize 'DH.Thresholds.Major'}}</label>
+          <input name="systemData.thresholds.major" type="number" value="{{system.thresholds.major}}" />
+        </div>
+        <div class="dh-stat-pill">
+          <label>{{localize 'DH.Thresholds.Severe'}}</label>
+          <input name="systemData.thresholds.severe" type="number" value="{{system.thresholds.severe}}" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="dh-adversary-body">
+    <div class="dh-section-block">
+      <h3>{{localize 'DH.Adversary.Motives'}}</h3>
+      <textarea name="systemData.motives" rows="3">{{system.motives}}</textarea>
+    </div>
+
+    <div class="dh-section-block">
+      <h3>{{localize 'DH.Adversary.Attacks'}}</h3>
+      <div class="dh-attacks-list">
+        {{#each attacks as |attack|}}
+          <div class="dh-attack-card">
+            <strong>{{attack.name}}</strong> ({{attack.range}}): {{attack.damage}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="dh-section-block">
+      <h3>{{localize 'DH.Adversary.FearFeatures'}}</h3>
+      <textarea name="systemData.fearFeatures" rows="4">{{system.fearFeatures}}</textarea>
+    </div>
+  </section>
+</form>

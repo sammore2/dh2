@@ -1,0 +1,64 @@
+<form class="dh-sheet dh-item-sheet" autocomplete="off">
+  <header class="dh-sheet-header">
+    <div class="dh-portrait-block">
+      <img class="dh-portrait" src="{{document.imgUrl}}" alt="{{document.name}}" data-edit="imgUrl" />
+    </div>
+
+    <div class="dh-header-details">
+      <input class="dh-item-name" name="name" type="text" value="{{document.name}}" placeholder="Nome do Item" />
+      <span class="dh-item-type-badge">{{localize (concat "DH.ItemType." document.type)}}</span>
+    </div>
+  </header>
+
+  <div class="dh-item-fields">
+    {{#if (eq document.type "weapon")}}
+      <div class="dh-form-row">
+        <label>Alcance</label>
+        <input name="systemData.range" type="text" value="{{system.range}}" placeholder="Melee, Very Close, Close, Far, Very Far" />
+      </div>
+      <div class="dh-form-row">
+        <label>Dano</label>
+        <input name="systemData.damage" type="text" value="{{system.damage}}" placeholder="ex: 1d8+2 Físico" />
+      </div>
+      <div class="dh-form-row">
+        <label>Traço Associado</label>
+        <input name="systemData.trait" type="text" value="{{system.trait}}" placeholder="agility, strength, etc." />
+      </div>
+    {{/if}}
+
+    {{#if (eq document.type "armor")}}
+      <div class="dh-form-row">
+        <label>Limiar Major</label>
+        <input name="systemData.thresholdMajor" type="number" value="{{system.thresholdMajor}}" />
+      </div>
+      <div class="dh-form-row">
+        <label>Limiar Severe</label>
+        <input name="systemData.thresholdSevere" type="number" value="{{system.thresholdSevere}}" />
+      </div>
+      <div class="dh-form-row">
+        <label>Slots de Armadura</label>
+        <input name="systemData.armorSlots" type="number" value="{{system.armorSlots}}" />
+      </div>
+    {{/if}}
+
+    {{#if (eq document.type "domainCard")}}
+      <div class="dh-form-row">
+        <label>Domínio</label>
+        <input name="systemData.domain" type="text" value="{{system.domain}}" placeholder="ex: Blade, Bone, Codex, Fear, Grace..." />
+      </div>
+      <div class="dh-form-row">
+        <label>Nível da Carta</label>
+        <input name="systemData.level" type="number" value="{{system.level}}" />
+      </div>
+      <div class="dh-form-row">
+        <label>Custo (Hope / Stress)</label>
+        <input name="systemData.cost" type="text" value="{{system.cost}}" placeholder="ex: 1 Hope" />
+      </div>
+    {{/if}}
+
+    <div class="dh-form-row">
+      <label>Descrição & Regras</label>
+      <textarea name="systemData.description" rows="5">{{system.description}}</textarea>
+    </div>
+  </div>
+</form>

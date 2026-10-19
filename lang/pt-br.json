@@ -1,0 +1,86 @@
+{
+  "DH": {
+    "Title": "Daggerheart",
+    "ActorType": {
+      "Character": "Personagem",
+      "Adversary": "Adversário",
+      "NPC": "Coadjuvante (NPC)"
+    },
+    "ItemType": {
+      "Weapon": "Arma",
+      "Armor": "Armadura",
+      "DomainCard": "Carta de Domínio",
+      "Feature": "Habilidade",
+      "Consumable": "Consumível",
+      "Equipment": "Equipamento"
+    },
+    "Traits": {
+      "Agility": "Agilidade",
+      "Strength": "Força",
+      "Finesse": "Destreza",
+      "Instinct": "Instinto",
+      "Presence": "Presença",
+      "Knowledge": "Conhecimento",
+      "AgilityShort": "AGI",
+      "StrengthShort": "FOR",
+      "FinesseShort": "DES",
+      "InstinctShort": "INS",
+      "PresenceShort": "PRE",
+      "KnowledgeShort": "CON"
+    },
+    "Resources": {
+      "HP": "Pontos de Vida",
+      "HPShort": "HP",
+      "Stress": "Estresse",
+      "Hope": "Esperança",
+      "Armor": "Armadura",
+      "ArmorSlots": "Slots de Armadura",
+      "ArmorScore": "Pontuação de Armadura",
+      "Evasion": "Evasão"
+    },
+    "Thresholds": {
+      "Title": "Limiares de Dano",
+      "Minor": "Menor (Minor)",
+      "Major": "Maior (Major)",
+      "Severe": "Severo (Severe)"
+    },
+    "Duality": {
+      "Roll": "Rolagem de Dualidade",
+      "HopeDie": "Dado de Esperança",
+      "FearDie": "Dado de Medo",
+      "CriticalSuccess": "Sucesso Crítico!",
+      "SuccessWithHope": "Sucesso com Esperança (+1 Esperança)",
+      "SuccessWithFear": "Sucesso com Medo (Mestre ganha +1 Medo)",
+      "FailureWithHope": "Falha com Esperança (+1 Esperança)",
+      "FailureWithFear": "Falha com Medo (Hard Move / Mestre ganha +1 Medo)"
+    },
+    "Adversary": {
+      "Tier": "Tier",
+      "Difficulty": "Dificuldade",
+      "Motives": "Motivos & Táticas",
+      "FearFeatures": "Habilidades de Medo",
+      "Attacks": "Ataques",
+      "Experiences": "Experiências"
+    },
+    "Character": {
+      "Class": "Classe",
+      "Subclass": "Subclasse",
+      "Ancestry": "Ancestralidade",
+      "Community": "Comunidade",
+      "Level": "Nível",
+      "Tier": "Tier",
+      "Loadout": "Loadout Ativo",
+      "Vault": "Grimório (Vault)",
+      "Gold": "Ouro / Moedas"
+    },
+    "Tabs": {
+      "Main": "Geral",
+      "Loadout": "Loadout",
+      "Vault": "Vault",
+      "Features": "Habilidades",
+      "Inventory": "Inventário",
+      "Notes": "Notas",
+      "Biography": "Biografia"
+    }
+  }
+}

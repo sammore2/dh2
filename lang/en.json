@@ -1,0 +1,86 @@
+{
+  "DH": {
+    "Title": "Daggerheart",
+    "ActorType": {
+      "Character": "Character",
+      "Adversary": "Adversary",
+      "NPC": "NPC"
+    },
+    "ItemType": {
+      "Weapon": "Weapon",
+      "Armor": "Armor",
+      "DomainCard": "Domain Card",
+      "Feature": "Feature",
+      "Consumable": "Consumable",
+      "Equipment": "Equipment"
+    },
+    "Traits": {
+      "Agility": "Agility",
+      "Strength": "Strength",
+      "Finesse": "Finesse",
+      "Instinct": "Instinct",
+      "Presence": "Presence",
+      "Knowledge": "Knowledge",
+      "AgilityShort": "AGI",
+      "StrengthShort": "STR",
+      "FinesseShort": "FIN",
+      "InstinctShort": "INS",
+      "PresenceShort": "PRE",
+      "KnowledgeShort": "KNO"
+    },
+    "Resources": {
+      "HP": "Hit Points",
+      "HPShort": "HP",
+      "Stress": "Stress",
+      "Hope": "Hope",
+      "Armor": "Armor",
+      "ArmorSlots": "Armor Slots",
+      "ArmorScore": "Armor Score",
+      "Evasion": "Evasion"
+    },
+    "Thresholds": {
+      "Title": "Damage Thresholds",
+      "Minor": "Minor",
+      "Major": "Major",
+      "Severe": "Severe"
+    },
+    "Duality": {
+      "Roll": "Duality Roll",
+      "HopeDie": "Hope Die",
+      "FearDie": "Fear Die",
+      "CriticalSuccess": "Critical Success!",
+      "SuccessWithHope": "Success with Hope (+1 Hope)",
+      "SuccessWithFear": "Success with Fear (GM gains +1 Fear)",
+      "FailureWithHope": "Failure with Hope (+1 Hope)",
+      "FailureWithFear": "Failure with Fear (Hard Move / GM Fear)"
+    },
+    "Adversary": {
+      "Tier": "Tier",
+      "Difficulty": "Difficulty",
+      "Motives": "Motives & Tactics",
+      "FearFeatures": "Fear Features",
+      "Attacks": "Attacks",
+      "Experiences": "Experiences"
+    },
+    "Character": {
+      "Class": "Class",
+      "Subclass": "Subclass",
+      "Ancestry": "Ancestry",
+      "Community": "Community",
+      "Level": "Level",
+      "Tier": "Tier",
+      "Loadout": "Active Loadout",
+      "Vault": "Domain Vault",
+      "Gold": "Gold / Coins"
+    },
+    "Tabs": {
+      "Main": "Core",
+      "Loadout": "Loadout",
+      "Vault": "Vault",
+      "Features": "Features",
+      "Inventory": "Inventory",
+      "Notes": "Notes",
+      "Biography": "Biography"
+    }
+  }
+}

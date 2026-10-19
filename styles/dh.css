@@ -1,0 +1,327 @@
+/* ==========================================================================
+   Daggerheart Ruleset Styles for LoomVTT
+   ========================================================================== */
+
+:root {
+  --dh-gold: #d4af37;
+  --dh-hope-gold: #f5c518;
+  --dh-fear-purple: #7b2cbf;
+  --dh-dark-bg: #1a1a24;
+  --dh-card-bg: #222230;
+  --dh-border-color: #3b3b4f;
+  --dh-text-light: #f0f0f5;
+  --dh-text-muted: #a0a0b5;
+}
+
+.dh-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--dh-dark-bg);
+  color: var(--dh-text-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Header */
+.dh-sheet-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--dh-card-bg);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--dh-border-color);
+}
+
+.dh-portrait-block {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--dh-gold);
+}
+
+.dh-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.dh-header-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dh-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-char-name {
+  flex: 1;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--dh-border-color);
+  color: var(--dh-text-light);
+  padding: 4px 0;
+}
+
+.dh-char-name:focus {
+  outline: none;
+  border-bottom-color: var(--dh-gold);
+}
+
+.dh-tier-badge, .dh-level-badge, .dh-dc-badge, .dh-item-type-badge {
+  background: #2d2d40;
+  border: 1px solid var(--dh-gold);
+  color: var(--dh-gold);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dh-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.dh-meta-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.dh-meta-field label {
+  font-size: 0.7rem;
+  color: var(--dh-text-muted);
+  text-transform: uppercase;
+}
+
+.dh-meta-field input {
+  background: #15151e;
+  border: 1px solid var(--dh-border-color);
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* Resources Strip */
+.dh-resources-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 120px 1.2fr;
+  gap: 10px;
+}
+
+.dh-resource-box {
+  background: var(--dh-card-bg);
+  border: 1px solid var(--dh-border-color);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dh-resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.dh-resource-header label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dh-resource-value {
+  font-size: 0.8rem;
+  color: var(--dh-text-muted);
+}
+
+.dh-dots-container {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dh-pip {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--dh-border-color);
+  cursor: pointer;
+  background: #111;
+  transition: all 0.15s ease;
+}
+
+.dh-resource-hp .dh-pip.filled {
+  background: #e63946;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 6px rgba(230, 57, 70, 0.6);
+}
+
+.dh-resource-stress .dh-pip.filled {
+  background: #9d4edd;
+  border-color: #c77dff;
+  box-shadow: 0 0 6px rgba(157, 78, 221, 0.6);
+}
+
+.dh-resource-hope .dh-pip.filled {
+  background: var(--dh-hope-gold);
+  border-color: #ffea00;
+  box-shadow: 0 0 6px rgba(245, 197, 24, 0.6);
+}
+
+.dh-resource-defenses {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dh-defense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.dh-defense-val {
+  font-weight: 700;
+  color: var(--dh-gold);
+}
+
+.dh-thresholds-box {
+  font-size: 0.75rem;
+}
+
+.dh-thresholds-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.dh-thresholds-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--dh-text-muted);
+}
+
+.dh-thresholds-row strong {
+  color: #fff;
+}
+
+/* Core Traits Bar */
+.dh-traits-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.dh-trait-card {
+  background: var(--dh-card-bg);
+  border: 1px solid var(--dh-border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dh-trait-roll-btn {
+  width: 100%;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--dh-text-light);
+  transition: background 0.15s ease;
+}
+
+.dh-trait-roll-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.dh-trait-name {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--dh-text-muted);
+}
+
+.dh-trait-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dh-gold);
+}
+
+/* Tabs & Body */
+.dh-sheet-tabs-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--dh-card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--dh-border-color);
+  overflow: hidden;
+}
+
+.dh-tabs-nav {
+  display: flex;
+  background: #181822;
+  border-bottom: 1px solid var(--dh-border-color);
+}
+
+.dh-tab-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: var(--dh-text-muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dh-tab-btn.active {
+  color: var(--dh-gold);
+  border-bottom: 2px solid var(--dh-gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.dh-tab-body {
+  padding: 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.dh-tab-pane {
+  display: none;
+}
+
+.dh-tab-pane.active {
+  display: block;
+}
+
+.dh-empty-hint {
+  color: var(--dh-text-muted);
+  font-style: italic;
+  font-size: 0.85rem;
+}

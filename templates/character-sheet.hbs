@@ -1,0 +1,158 @@
+<form class="dh-sheet dh-character-sheet" autocomplete="off">
+  {{!-- Header: Name, Pronouns, Class, Subclass, Level, Tier --}}
+  <header class="dh-sheet-header">
+    <div class="dh-portrait-block">
+      <img class="dh-portrait" src="{{document.avatarUrl}}" alt="{{document.name}}" data-edit="avatarUrl" />
+    </div>
+
+    <div class="dh-header-details">
+      <div class="dh-name-row">
+        <input class="dh-char-name" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.Character.Name'}}" />
+        <span class="dh-tier-badge">{{localize 'DH.Character.Tier'}} {{system.tier}}</span>
+        <span class="dh-level-badge">{{localize 'DH.Character.Level'}} {{system.level}}</span>
+      </div>
+
+      <div class="dh-meta-grid">
+        <div class="dh-meta-field">
+          <label>{{localize 'DH.Character.Class'}}</label>
+          <input name="systemData.class" type="text" value="{{system.class}}" />
+        </div>
+        <div class="dh-meta-field">
+          <label>{{localize 'DH.Character.Subclass'}}</label>
+          <input name="systemData.subclass" type="text" value="{{system.subclass}}" />
+        </div>
+        <div class="dh-meta-field">
+          <label>{{localize 'DH.Character.Ancestry'}}</label>
+          <input name="systemData.ancestry" type="text" value="{{system.ancestry}}" />
+        </div>
+        <div class="dh-meta-field">
+          <label>{{localize 'DH.Character.Community'}}</label>
+          <input name="systemData.community" type="text" value="{{system.community}}" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Resources Strip: HP, Stress, Hope, Armor, Evasion, Thresholds --}}
+  <section class="dh-resources-strip">
+    <div class="dh-resource-box dh-resource-hp">
+      <div class="dh-resource-header">
+        <label>{{localize 'DH.Resources.HP'}}</label>
+        <span class="dh-resource-value">{{system.hp.value}} / {{system.hp.max}}</span>
+      </div>
+      <div class="dh-dots-container" data-resource="hp">
+        {{#numLoop system.hp.max}}
+          <span class="dh-pip {{#if (lt @index ../system.hp.value)}}filled{{/if}}" data-index="{{@index}}"></span>
+        {{/numLoop}}
+      </div>
+    </div>
+
+    <div class="dh-resource-box dh-resource-stress">
+      <div class="dh-resource-header">
+        <label>{{localize 'DH.Resources.Stress'}}</label>
+        <span class="dh-resource-value">{{system.stress.value}} / {{system.stress.max}}</span>
+      </div>
+      <div class="dh-dots-container" data-resource="stress">
+        {{#numLoop system.stress.max}}
+          <span class="dh-pip {{#if (lt @index ../system.stress.value)}}filled{{/if}}" data-index="{{@index}}"></span>
+        {{/numLoop}}
+      </div>
+    </div>
+
+    <div class="dh-resource-box dh-resource-hope">
+      <div class="dh-resource-header">
+        <label>{{localize 'DH.Resources.Hope'}}</label>
+        <span class="dh-resource-value">{{system.hope.value}} / {{system.hope.max}}</span>
+      </div>
+      <div class="dh-dots-container" data-resource="hope">
+        {{#numLoop system.hope.max}}
+          <span class="dh-pip {{#if (lt @index ../system.hope.value)}}filled{{/if}}" data-index="{{@index}}"></span>
+        {{/numLoop}}
+      </div>
+    </div>
+
+    <div class="dh-resource-box dh-resource-defenses">
+      <div class="dh-defense-item">
+        <label>{{localize 'DH.Resources.Evasion'}}</label>
+        <span class="dh-defense-val">{{derived.evasion}}</span>
+      </div>
+      <div class="dh-defense-item">
+        <label>{{localize 'DH.Resources.ArmorScore'}}</label>
+        <span class="dh-defense-val">{{derived.armorScore}}</span>
+      </div>
+    </div>
+
+    <div class="dh-resource-box dh-thresholds-box">
+      <label class="dh-thresholds-title">{{localize 'DH.Thresholds.Title'}}</label>
+      <div class="dh-thresholds-row">
+        <span><strong>{{localize 'DH.Thresholds.Minor'}}:</strong> 1 HP</span>
+        <span><strong>{{localize 'DH.Thresholds.Major'}}:</strong> {{derived.thresholdMajor}}</span>
+        <span><strong>{{localize 'DH.Thresholds.Severe'}}:</strong> {{derived.thresholdSevere}}</span>
+      </div>
+    </div>
+  </section>
+
+  {{!-- Core Traits Bar: Agility, Strength, Finesse, Instinct, Presence, Knowledge --}}
+  <nav class="dh-traits-grid">
+    {{#each traits as |trait key|}}
+      <div class="dh-trait-card" data-trait="{{key}}">
+        <button type="button" class="dh-trait-roll-btn" data-action="rollTrait" data-trait="{{key}}">
+          <span class="dh-trait-name">{{localize trait.label}}</span>
+          <span class="dh-trait-value">{{numberFormat trait.value sign=true}}</span>
+        </button>
+      </div>
+    {{/each}}
+  </nav>
+
+  {{!-- Tabs Content --}}
+  <div class="dh-sheet-tabs-container">
+    <nav class="dh-tabs-nav" data-group="primary">
+      <button type="button" class="dh-tab-btn active" data-tab="loadout">{{localize 'DH.Tabs.Loadout'}}</button>
+      <button type="button" class="dh-tab-btn" data-tab="features">{{localize 'DH.Tabs.Features'}}</button>
+      <button type="button" class="dh-tab-btn" data-tab="inventory">{{localize 'DH.Tabs.Inventory'}}</button>
+      <button type="button" class="dh-tab-btn" data-tab="vault">{{localize 'DH.Tabs.Vault'}}</button>
+      <button type="button" class="dh-tab-btn" data-tab="notes">{{localize 'DH.Tabs.Notes'}}</button>
+    </nav>
+
+    <div class="dh-tab-body">
+      {{!-- Tab: Loadout --}}
+      <section class="dh-tab-pane active" data-tab="loadout">
+        <div class="dh-loadout-grid">
+          <div class="dh-section-header">
+            <h3>{{localize 'DH.Character.Loadout'}}</h3>
+          </div>
+          <p class="dh-empty-hint">Cartas de domínio e equipamentos ativos.</p>
+        </div>
+      </section>
+
+      {{!-- Tab: Features --}}
+      <section class="dh-tab-pane" data-tab="features">
+        <div class="dh-section-header">
+          <h3>{{localize 'DH.Tabs.Features'}}</h3>
+        </div>
+        <p class="dh-empty-hint">Habilidades de classe, subclasse, ancestralidade e comunidade.</p>
+      </section>
+
+      {{!-- Tab: Inventory --}}
+      <section class="dh-tab-pane" data-tab="inventory">
+        <div class="dh-section-header">
+          <h3>{{localize 'DH.Tabs.Inventory'}}</h3>
+        </div>
+        <p class="dh-empty-hint">Armas, armaduras, consumíveis e equipamentos.</p>
+      </section>
+
+      {{!-- Tab: Vault --}}
+      <section class="dh-tab-pane" data-tab="vault">
+        <div class="dh-section-header">
+          <h3>{{localize 'DH.Character.Vault'}}</h3>
+        </div>
+        <p class="dh-empty-hint">Cartas de domínio reservadas (Vault).</p>
+      </section>
+
+      {{!-- Tab: Notes --}}
+      <section class="dh-tab-pane" data-tab="notes">
+        <textarea name="systemData.notes" rows="8">{{system.notes}}</textarea>
+      </section>
+    </div>
+  </div>
+</form>

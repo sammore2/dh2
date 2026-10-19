@@ -1,32 +1,42 @@
 {
-    "engine": "loom",
-    "engineVersion": ">=0.1.0",
-    "type": "ruleset",
-    "name": "dh",
-    "title": "Daggerheart",
-    "version": "0.1.0",
-    "description": "Daggerheart Ruleset Compatible",
-    "author": "SamDev",
-    "client": "client.js",
-    "active": true,
-    "license": "DPCGL-2.0",
-    "licenseNotice": "This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.",
-    "styles": [
-        "styles/system.css"
-    ],
-    "languages": [
-        {
-            "lang": "pt-BR",
-            "name": "Português (Brasil)",
-            "path": "lang/pt-BR.json"
-        }
-    ],
-    "actorTypes": [
-        "character",
-        "npc"
-    ],
-    "itemTypes": [
-        "weapon",
-        "armor"
-    ]
+  "engine": "loom",
+  "engineVersion": ">=0.1.0",
+  "type": "ruleset",
+  "name": "dh",
+  "title": "Daggerheart",
+  "version": "0.1.0",
+  "description": "Daggerheart Ruleset Compatible with LoomVTT (SRD 2.0)",
+  "author": "SamDev",
+  "client": "client.js",
+  "active": true,
+  "license": "DPCGL-2.0",
+  "licenseNotice": "This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.",
+  "styles": [
+    "styles/dh.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-br.json"
+    }
+  ],
+  "actorTypes": [
+    "character",
+    "adversary",
+    "npc"
+  ],
+  "itemTypes": [
+    "weapon",
+    "armor",
+    "domainCard",
+    "feature",
+    "consumable",
+    "equipment"
+  ]
 }
