@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="chevBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+  </defs>
+
+  <polygon points="4,2 104,2 116,20 104,38 4,38 14,20"
+           fill="#14141f"
+           stroke="url(#chevBorder)"
+           stroke-width="1.8"
+           stroke-linejoin="round" />
+</svg>

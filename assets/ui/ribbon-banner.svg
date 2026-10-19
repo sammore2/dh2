@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 32" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#161624" />
+      <stop offset="50%" stop-color="#26263a" />
+      <stop offset="100%" stop-color="#161624" />
+    </linearGradient>
+    <linearGradient id="bannerStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#463d27" />
+      <stop offset="50%" stop-color="#e5b842" />
+      <stop offset="100%" stop-color="#463d27" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left horizontal line -->
+  <line x1="2" y1="16" x2="35" y2="16" stroke="url(#bannerStroke)" stroke-width="1.5" />
+  
+  <!-- Central Ribbon Polygon -->
+  <polygon points="35,16 45,4 275,4 285,16 275,28 45,28"
+           fill="url(#bannerBg)"
+           stroke="url(#bannerStroke)"
+           stroke-width="1.5" />
+
+  <!-- Right horizontal line -->
+  <line x1="285" y1="16" x2="318" y2="16" stroke="url(#bannerStroke)" stroke-width="1.5" />
+
+  <!-- Accent Diamonds -->
+  <polygon points="35,16 39,12 43,16 39,20" fill="#e5b842" />
+  <polygon points="285,16 281,12 277,16 281,20" fill="#e5b842" />
+</svg>

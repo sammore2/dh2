@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="armorBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2416" />
+      <stop offset="60%" stop-color="#1c1810" />
+      <stop offset="100%" stop-color="#12100a" />
+    </linearGradient>
+    <linearGradient id="goldArmorBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#854d0e" />
+    </linearGradient>
+    <filter id="shieldDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Pointed Kite Shield Silhouette -->
+  <path d="M 6 18
+           L 18 6
+           L 62 6
+           L 74 18
+           L 74 46
+           Q 70 66 40 76
+           Q 10 66 6 46
+           Z"
+        fill="url(#armorBg)"
+        stroke="url(#goldArmorBorder)"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+        filter="url(#shieldDrop)" />
+
+  <!-- Inner Trim -->
+  <path d="M 12 20
+           L 20 11
+           L 60 11
+           L 68 20
+           L 68 44
+           Q 65 62 40 70
+           Q 15 62 12 44
+           Z"
+        fill="none"
+        stroke="#5a451b"
+        stroke-width="1"
+        stroke-opacity="0.7" />
+</svg>

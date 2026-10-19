@@ -94,6 +94,27 @@
   gap: 14px;
 }
 
+.dh-brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 52px;
+  flex-shrink: 0;
+  padding: 4px;
+  background: rgba(14, 14, 22, 0.7);
+  border: 1px solid var(--dh-border-metal);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dh-brand-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(229, 184, 66, 0.35));
+}
+
 .dh-portrait-frame {
   width: 76px;
   height: 76px;
@@ -216,7 +237,7 @@
   align-items: center;
 }
 
-/* Defenses Pod: Evasion & Armor */
+/* Defenses Pod: Evasion & Armor with SVG frames */
 .dh-defenses-pod {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -233,35 +254,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 4px;
-  border-radius: 6px;
-  background: linear-gradient(180deg, #1f2030 0%, #12121e 100%);
-  border: 1px solid var(--dh-border-subtle);
+  padding: 8px 4px;
+  min-height: 58px;
+  box-sizing: border-box;
 }
 
 .dh-evasion-crest {
-  border-top: 2px solid var(--dh-armor-cyan);
+  background: url('/marketplace/rulesets/dh/assets/ui/evasion-arch.svg') no-repeat center center;
+  background-size: 100% 100%;
+  border: none;
 }
 
 .dh-armor-crest {
-  border-top: 2px solid var(--dh-gold);
+  background: url('/marketplace/rulesets/dh/assets/ui/armor-shield.svg') no-repeat center center;
+  background-size: 100% 100%;
+  border: none;
 }
 
 .dh-crest-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.62rem;
+  font-weight: 800;
+  font-family: var(--dh-font-display);
   text-transform: uppercase;
-  color: var(--dh-text-muted);
+  color: var(--dh-gold);
   letter-spacing: 0.5px;
 }
 
 .dh-crest-num {
   font-family: var(--dh-font-display);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 800;
   color: #fff;
-  line-height: 1.1;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .dh-armor-slots-box {
@@ -320,20 +345,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #20202e 0%, #151522 100%);
-  border: 1px solid var(--dh-border-metal);
-  border-top: 2px solid var(--dh-gold);
-  border-radius: 6px 6px 14px 14px;
-  padding: 6px 4px;
+  background: url('/marketplace/rulesets/dh/assets/ui/trait-shield.svg') no-repeat center center;
+  background-size: 100% 100%;
+  border: none;
+  padding: 8px 6px 14px 6px;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: all 0.25s ease;
+  min-height: 106px;
+  box-sizing: border-box;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dh-trait-shield:hover {
-  transform: translateY(-2px);
-  border-color: var(--dh-gold);
-  box-shadow: 0 6px 16px rgba(229, 184, 66, 0.25);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 6px 16px rgba(229, 184, 66, 0.35));
 }
 
 .dh-trait-header {
@@ -412,7 +437,7 @@
 /* ── Vitality & Resources Bar ────────────────────────────────────────────── */
 .dh-vitality-strip {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 290px 1fr;
   gap: 12px;
   background: rgba(10, 10, 16, 0.75);
   border: 1px solid var(--dh-border-subtle);
@@ -426,23 +451,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #14141e;
-  border: 1px solid var(--dh-border-metal);
-  border-radius: 6px;
-  padding: 6px 10px;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .dh-threshold-node {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: url('/marketplace/rulesets/dh/assets/ui/threshold-chevron.svg') no-repeat center center;
+  background-size: 100% 100%;
+  padding: 4px 10px;
+  min-width: 78px;
+  box-sizing: border-box;
 }
 
 .dh-th-name {
-  font-size: 0.62rem;
-  font-weight: 700;
+  font-size: 0.58rem;
+  font-weight: 800;
   text-transform: uppercase;
-  color: var(--dh-text-muted);
+  color: var(--dh-gold);
+  letter-spacing: 0.5px;
 }
 
 .dh-th-val {
@@ -691,9 +722,14 @@
   color: var(--dh-gold);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  border-bottom: 1px solid var(--dh-border-accent);
-  padding-bottom: 6px;
+  background: url('/marketplace/rulesets/dh/assets/ui/ribbon-banner.svg') no-repeat center center;
+  background-size: 100% 100%;
+  padding: 6px 16px;
+  min-height: 28px;
+  border-bottom: none;
+  text-shadow: 0 0 10px rgba(229, 184, 66, 0.4);
 }
 
 /* Weapon Entry */
