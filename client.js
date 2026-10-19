@@ -3,6 +3,7 @@ import { DaggerheartCharacterSheet } from './sheets/character-sheet.mjs';
 import { DaggerheartAdversarySheet } from './sheets/adversary-sheet.mjs';
 import { DaggerheartItemSheet } from './sheets/item-sheet.mjs';
 import { renderDaggerheartRollCard, registerChatCardListeners } from './cards/roll-card.mjs';
+import { initFearTracker } from './lib/fear-tracker.mjs';
 
 // ── Custom Actor Document Class ──────────────────────────────────────────────
 class DaggerheartActor extends CONFIG.Actor.documentClass {
@@ -60,6 +61,13 @@ if (wraps?.renderRollCard) {
 
 // Global click delegation for interactive chat card buttons
 registerChatCardListeners();
+
+// ── GM Fear Tracker HUD ──────────────────────────────────────────────────────
+try {
+  initFearTracker();
+} catch (err) {
+  console.warn('FearTracker init delayed:', err);
+}
 
 // ── System Registration ──────────────────────────────────────────────────────
 SystemRegistry.register(defineSystem({

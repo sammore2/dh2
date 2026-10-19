@@ -2172,3 +2172,170 @@
 .dh-domain-chat-card .dh-card-crest {
   color: var(--dh-gold);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   10. GM FEAR TRACKER HUD (SRD 2.0)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+#dh-gm-fear-tracker {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 10000;
+  font-family: var(--dh-font-sans);
+  user-select: none;
+}
+
+.dh-fear-mini-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2b1145 0%, #150624 100%);
+  border: 1.5px solid #a855f7;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 0 12px rgba(168, 85, 247, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dh-fear-mini-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 18px rgba(168, 85, 247, 0.8);
+}
+
+.dh-fear-mini-icon {
+  font-size: 1.1rem;
+}
+
+.dh-fear-mini-val {
+  font-family: var(--dh-font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f3e8ff;
+}
+
+.dh-fear-tracker-card {
+  width: 290px;
+  background: linear-gradient(160deg, #1f112e 0%, #0d0615 100%);
+  border: 1.5px solid #a855f7;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(168, 85, 247, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dh-fear-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+  padding-bottom: 6px;
+}
+
+.dh-fear-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--dh-font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #e9d5ff;
+}
+
+.dh-fear-counter {
+  font-size: 0.8rem;
+  color: #c084fc;
+}
+
+.dh-fear-btn-close {
+  background: transparent;
+  border: none;
+  color: #a855f7;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dh-fear-btn-close:hover {
+  color: #fff;
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.dh-fear-tokens-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  padding: 6px;
+  background: rgba(10, 5, 18, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.dh-fear-token-pip {
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(30, 15, 45, 0.8);
+  border: 1.5px solid rgba(168, 85, 247, 0.3);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dh-fear-token-pip:hover {
+  border-color: #c084fc;
+  transform: scale(1.1);
+}
+
+.dh-fear-token-pip.active {
+  background: radial-gradient(circle at 40% 40%, #c084fc 0%, #7c3aed 100%);
+  border-color: #e9d5ff;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
+}
+
+.dh-fear-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.dh-fear-ctrl-btn {
+  flex: 1;
+  background: #1e102f;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #e9d5ff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.dh-fear-ctrl-btn:hover {
+  background: #2e1747;
+  border-color: #a855f7;
+  color: #fff;
+}
+
+.dh-fear-ctrl-btn.danger {
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.dh-fear-ctrl-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+
+/* Chat Card for Fear Spent */
+.dh-fear-spend-card {
+  border-color: #9333ea;
+  background: linear-gradient(160deg, #240d38 0%, #0d0416 100%);
+}
+
+.dh-fear-spend-card .dh-card-crest {
+  color: #c084fc;
+}
