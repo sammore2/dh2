@@ -1,0 +1,47 @@
+MIT LICENSE (FOR CODE IMPLEMENTATION)
+================================================================================
+Copyright (c) 2026 SamDev & Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+GAME CONTENT LICENSE: DARRINGTON PRESS COMMUNITY GAMING LICENSE (DPCGL) v2.0
+Effective Date: August 26, 2026
+================================================================================
+
+This product includes materials from the Daggerheart System Reference Document 2.0,
+© Critical Role, LLC. under the terms of the Darrington Press Community Gaming
+(DPCGL) License. More information can be found at https://www.daggerheart.com.
+There are no previous modifications by others.
+
+Trademark Notice:
+Darrington Press™ and the Darrington Press authorized work logo are trademarks
+of Critical Role, LLC and used with permission.
+Daggerheart™ is a trademark of Critical Role, LLC.
+
+================================================================================
+PERMISSIONS & SCOPE SUMMARY
+================================================================================
+- Code Implementation: The source code (JavaScript, CSS, HTML templates, data
+  schemas, and logic) of this LoomVTT ruleset is released under the MIT License.
+- Game Rules & Public Content: Game text, mechanics, attributes, formulas,
+  adversary stat structures, domain card definitions, and SRD terms are licensed
+  under the DPCGL 2.0.
+- Proprietary Assets: Official artwork, copyrighted trade dress, and private
+  Critical Role lore remain the exclusive property of Critical Role, LLC.
