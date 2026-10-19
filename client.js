@@ -1,7 +1,8 @@
-import { SystemRegistry, defineSystem, dispatchRoll } from '/_loom/sdk/index.js';
+import { SystemRegistry, defineSystem, dispatchRoll, getWraps } from '/_loom/sdk/index.js';
 import { DaggerheartCharacterSheet } from './sheets/character-sheet.mjs';
 import { DaggerheartAdversarySheet } from './sheets/adversary-sheet.mjs';
 import { DaggerheartItemSheet } from './sheets/item-sheet.mjs';
+import { renderDaggerheartRollCard, registerChatCardListeners } from './cards/roll-card.mjs';
 
 // ── Custom Actor Document Class ──────────────────────────────────────────────
 class DaggerheartActor extends CONFIG.Actor.documentClass {
@@ -48,6 +49,17 @@ if (sheets) {
   sheets.catalog('item', 'consumable', DaggerheartItemSheet);
   sheets.catalog('item', 'equipment', DaggerheartItemSheet);
 }
+
+// ── Intercept Roll Cards (Duality Dice & Daggerheart Theme) ──────────────────
+const wraps = getWraps();
+if (wraps?.renderRollCard) {
+  wraps.renderRollCard.wrap((original, roll, esc) => {
+    return renderDaggerheartRollCard(roll, esc, original);
+  });
+}
+
+// Global click delegation for interactive chat card buttons
+registerChatCardListeners();
 
 // ── System Registration ──────────────────────────────────────────────────────
 SystemRegistry.register(defineSystem({

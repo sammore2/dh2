@@ -97,7 +97,10 @@
       "SuccessWithHope": "Success with Hope (+1 Hope)",
       "SuccessWithFear": "Success with Fear (GM gains +1 Fear)",
       "FailureWithHope": "Failure with Hope (+1 Hope)",
-      "FailureWithFear": "Failure with Fear (Hard Move / GM Fear)"
+      "FailureWithFear": "Failure with Fear (Hard Move / GM Fear)",
+      "ClaimHope": "+1 Hope",
+      "ClearStress": "Clear 1 Stress",
+      "RollDamage": "Roll Damage"
     },
     "Adversary": {
       "Tier": "Tier",

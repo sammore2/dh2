@@ -1227,3 +1227,407 @@
 .dh-empty-card-slot i {
   font-size: 1.5rem;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   7. CHAT ROLL CARDS & DUALITY DICE ARENA
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.dh-roll-card {
+  background: linear-gradient(160deg, #181828 0%, #0c0c14 100%);
+  border: 1.5px solid var(--dh-border-metal);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 6px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  font-family: var(--dh-font-sans);
+  color: var(--dh-text-main);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card Header */
+.dh-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--dh-border-accent);
+  padding-bottom: 8px;
+}
+
+.dh-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-card-crest {
+  font-size: 1.15rem;
+  color: var(--dh-gold);
+  filter: drop-shadow(0 0 6px var(--dh-gold-glow));
+}
+
+.dh-card-title {
+  font-family: var(--dh-font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--dh-gold);
+  letter-spacing: 0.5px;
+}
+
+.dh-card-dc {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(229, 184, 66, 0.12);
+  border: 1px solid var(--dh-gold-dim);
+  color: var(--dh-gold);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Duality Arena (Hope vs Fear Dice) */
+.dh-duality-arena {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 10px;
+  align-items: center;
+  background: rgba(10, 10, 16, 0.6);
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 8px;
+  padding: 12px 10px;
+}
+
+.dh-die-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.dh-die-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dh-die-shape {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dh-die-value {
+  font-family: var(--dh-font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Hope Die (Radiant Solar Gold) */
+.dh-die-hope .dh-die-label {
+  color: #fbbf24;
+}
+
+.dh-die-hope .dh-die-shape {
+  background: radial-gradient(circle at 35% 35%, #452a0a 0%, #1c1204 85%);
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  box-shadow: inset 0 0 10px rgba(245, 158, 11, 0.3), 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+.dh-die-hope .dh-die-value {
+  color: #fffbeb;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.8), 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.dh-die-hope.dh-dominant .dh-die-shape {
+  border-color: #f59e0b;
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.7), inset 0 0 14px rgba(245, 158, 11, 0.5);
+}
+
+/* Fear Die (Eldritch Void Purple) */
+.dh-die-fear .dh-die-label {
+  color: #c084fc;
+}
+
+.dh-die-fear .dh-die-shape {
+  background: radial-gradient(circle at 35% 35%, #3b1154 0%, #150620 85%);
+  border: 2px solid rgba(168, 85, 247, 0.5);
+  box-shadow: inset 0 0 10px rgba(168, 85, 247, 0.3), 0 0 8px rgba(168, 85, 247, 0.2);
+}
+
+.dh-die-fear .dh-die-value {
+  color: #faf5ff;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.dh-die-fear.dh-dominant .dh-die-shape {
+  border-color: #a855f7;
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.7), inset 0 0 14px rgba(168, 85, 247, 0.5);
+}
+
+/* Duality Center Nexus (Total & Mod) */
+.dh-duality-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dh-total-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dh-total-label {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--dh-text-faint);
+  font-weight: 700;
+}
+
+.dh-total-value {
+  font-family: var(--dh-font-display);
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: var(--dh-text-main);
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+.dh-modifier-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: var(--dh-bg-surface);
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 10px;
+  color: var(--dh-text-muted);
+}
+
+/* Outcome Banners */
+.dh-outcome-banner {
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.dh-outcome-title {
+  font-family: var(--dh-font-display);
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.dh-outcome-desc {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--dh-text-muted);
+}
+
+/* Outcome Color Themes */
+.dh-outcome-banner.dh-critical {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(236, 72, 153, 0.2) 50%, rgba(139, 92, 246, 0.25) 100%);
+  border: 1.5px solid #fbbf24;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.4);
+}
+
+.dh-outcome-banner.dh-critical .dh-outcome-title {
+  color: #fffbeb;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.9);
+}
+
+.dh-outcome-banner.dh-success-hope {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%);
+  border: 1.5px solid #10b981;
+}
+
+.dh-outcome-banner.dh-success-hope .dh-outcome-title {
+  color: #34d399;
+}
+
+.dh-outcome-banner.dh-success-fear {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(147, 51, 234, 0.2) 100%);
+  border: 1.5px solid #f59e0b;
+}
+
+.dh-outcome-banner.dh-success-fear .dh-outcome-title {
+  color: #fbbf24;
+}
+
+.dh-outcome-banner.dh-failure-hope {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(245, 158, 11, 0.12) 100%);
+  border: 1.5px solid #3b82f6;
+}
+
+.dh-outcome-banner.dh-failure-hope .dh-outcome-title {
+  color: #60a5fa;
+}
+
+.dh-outcome-banner.dh-failure-fear {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(147, 51, 234, 0.2) 100%);
+  border: 1.5px solid #ef4444;
+}
+
+.dh-outcome-banner.dh-failure-fear .dh-outcome-title {
+  color: #f87171;
+}
+
+.dh-outcome-banner.dh-hope-dominant {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1.5px solid #f59e0b;
+}
+
+.dh-outcome-banner.dh-hope-dominant .dh-outcome-title {
+  color: #fbbf24;
+}
+
+.dh-outcome-banner.dh-fear-dominant {
+  background: rgba(147, 51, 234, 0.15);
+  border: 1.5px solid #9333ea;
+}
+
+.dh-outcome-banner.dh-fear-dominant .dh-outcome-title {
+  color: #c084fc;
+}
+
+/* Card Interactive Action Buttons */
+.dh-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dh-card-btn {
+  font-family: var(--dh-font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dh-card-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+.dh-card-btn:active {
+  transform: translateY(0);
+}
+
+.dh-btn-hope {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  border-color: #f59e0b;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+}
+
+.dh-btn-stress {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  border-color: #a855f7;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.35);
+}
+
+.dh-btn-damage {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  border-color: #f87171;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+}
+
+/* Damage Roll Card Layout */
+.dh-damage-card .dh-card-crest {
+  color: var(--dh-hp-crimson);
+  filter: drop-shadow(0 0 6px var(--dh-hp-glow));
+}
+
+.dh-damage-type-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+
+.dh-damage-type-badge.physical {
+  background: rgba(155, 161, 181, 0.15);
+  border: 1px solid var(--dh-text-muted);
+  color: var(--dh-text-main);
+}
+
+.dh-damage-type-badge.magic {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid var(--dh-armor-cyan);
+  color: var(--dh-armor-cyan);
+}
+
+.dh-damage-total-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(10, 10, 16, 0.6);
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 8px;
+}
+
+.dh-damage-total-number {
+  font-family: var(--dh-font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 16px rgba(239, 68, 68, 0.5);
+}
+
+.dh-damage-formula {
+  font-size: 0.8rem;
+  color: var(--dh-text-muted);
+  margin-top: 4px;
+}
+
+.dh-threshold-reference {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--dh-text-faint);
+  background: rgba(20, 20, 30, 0.5);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.dh-ref-item {
+  font-weight: 600;
+}
+
+.dh-ref-sep {
+  opacity: 0.4;
+}

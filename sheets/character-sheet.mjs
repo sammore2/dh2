@@ -99,9 +99,13 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
         const weapon = this.document.systemData?.weapons?.[slot];
         const traitKey = weapon?.trait || 'agility';
         const traitVal = Number(this.document.systemData?.attributes?.[traitKey] || 0);
-        const weaponName = weapon?.name || (slot === 'primary' ? 'Arma Primária' : 'Arma Secundária');
+        const weaponName = weapon?.name || (slot === 'primary' ? 'Primary Weapon' : 'Secondary Weapon');
 
-        await this._rollDuality(traitKey, traitVal, weaponName);
+        await this._rollDuality(traitKey, traitVal, {
+          name: weaponName,
+          damage: weapon?.damage || '1d8',
+          damageType: weapon?.damageType || 'physical',
+        });
       });
     });
 
@@ -112,17 +116,17 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
         const slot = btn.dataset.slot;
         const weapon = this.document.systemData?.weapons?.[slot];
         const dmgFormula = weapon?.damage || '1d8';
-        const weaponName = weapon?.name || (slot === 'primary' ? 'Arma Primária' : 'Arma Secundária');
-        const dmgType = weapon?.damageType || 'físico';
+        const weaponName = weapon?.name || (slot === 'primary' ? 'Primary Weapon' : 'Secondary Weapon');
+        const dmgType = weapon?.damageType || 'physical';
 
         await dispatchRoll({
           formula: dmgFormula,
           actorId: this.document.id,
           meta: {
             system: 'Daggerheart',
-            action: 'Dano',
+            rollType: 'damage',
             weapon: weaponName,
-            type: dmgType,
+            damageType: dmgType,
           },
         });
       });
@@ -218,7 +222,7 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
   }
 
   // ── Helper: Duality Dice Roll Resolution ───────────────────────────────────
-  async _rollDuality(traitKey, traitVal, weaponName = null) {
+  async _rollDuality(traitKey, traitVal, weapon = null) {
     const modStr = traitVal >= 0 ? `+${traitVal}` : `${traitVal}`;
     const formula = `2d12${modStr}`;
 
@@ -228,8 +232,14 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
       modifier: traitVal,
     };
 
-    if (weaponName) {
-      meta.weapon = weaponName;
+    if (weapon) {
+      if (typeof weapon === 'object' && weapon !== null) {
+        meta.weapon = weapon.name;
+        if (weapon.damage) meta.weaponDamage = weapon.damage;
+        if (weapon.damageType) meta.damageType = weapon.damageType;
+      } else {
+        meta.weapon = String(weapon);
+      }
     }
 
     await dispatchRoll({

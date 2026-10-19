@@ -97,7 +97,10 @@
       "SuccessWithHope": "Sucesso com Esperança (+1 Esperança)",
       "SuccessWithFear": "Sucesso com Medo (Mestre ganha +1 Medo)",
       "FailureWithHope": "Falha com Esperança (+1 Esperança)",
-      "FailureWithFear": "Falha com Medo (Hard Move / Mestre ganha +1 Medo)"
+      "FailureWithFear": "Falha com Medo (Hard Move / Mestre ganha +1 Medo)",
+      "ClaimHope": "+1 Esperança",
+      "ClearStress": "Limpar 1 Estresse",
+      "RollDamage": "Rolar Dano"
     },
     "Adversary": {
       "Tier": "Tier",
