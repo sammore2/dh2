@@ -5,7 +5,8 @@
  */
 
 import { extractDualityFromRoll } from '../lib/duality.mjs';
-import { dispatchRoll, showToast } from '/_loom/sdk/index.js';
+import { resolveDamage, applyDamageToActor } from '../lib/damage.mjs';
+import { dispatchRoll, showToast, showSelectDialog } from '/_loom/sdk/index.js';
 
 /**
  * Escapes HTML attributes safely.
@@ -174,6 +175,13 @@ function renderDamageRollCard(roll, esc) {
     <span class="dh-ref-sep">•</span>
     <span class="dh-ref-item">Severe: 3 HP</span>
   </div>
+
+  <!-- Apply Damage Button -->
+  <div class="dh-card-actions">
+    <button type="button" class="dh-card-btn dh-btn-damage" data-action="dh-apply-damage" data-damage="${total}">
+      🎯 ${localize('DH.Combat.ApplyDamage', 'Aplicar Dano ao Alvo')}
+    </button>
+  </div>
 </div>
   `.trim();
 }
@@ -272,6 +280,89 @@ export function registerChatCardListeners() {
             damageType: dmgType,
           },
         });
+      }
+    } else if (action === 'dh-apply-damage') {
+      const damage = Number(target.dataset.damage) || 0;
+
+      // 1. Identify target actor: Controlled actors -> User targets -> Dialog fallback
+      let targetActor = null;
+      const controlled = window.Loom?.canvas?.getControlledActors?.() || [];
+      if (controlled.length > 0) {
+        targetActor = controlled[0];
+      } else if (window.Loom?.user?.targets && window.Loom.user.targets.size > 0) {
+        const targetToken = Array.from(window.Loom.user.targets)[0];
+        targetActor = targetToken?.actor || window.Loom?.game?.actors?.get?.(targetToken?.actorId);
+      }
+
+      // Fallback: If no target selected, select from world actors
+      if (!targetActor) {
+        const actorsMap = window.Loom?.game?.actors || [];
+        const actorOptions = [];
+        if (actorsMap.forEach) {
+          actorsMap.forEach((a) => {
+            actorOptions.push({ value: a.id, label: a.name || 'Sem Nome' });
+          });
+        }
+        if (actorOptions.length > 0 && typeof showSelectDialog === 'function') {
+          const selectedId = await showSelectDialog('Selecionar Alvo', 'Quem receberá este dano?', actorOptions);
+          if (selectedId) {
+            targetActor = window.Loom?.game?.actors?.get?.(selectedId);
+          }
+        }
+      }
+
+      if (!targetActor) {
+        notify('Nenhum alvo selecionado. Mire ou selecione um token no mapa!', 'warning');
+        return;
+      }
+
+      // 2. Resolve thresholds
+      const sys = targetActor.systemData || {};
+      const derived = sys.derived || {};
+      const major = Number(derived.thresholdMajor || sys.thresholds?.major || sys.thresholds?.baseMajor || 7);
+      const severe = Number(derived.thresholdSevere || sys.thresholds?.severe || sys.thresholds?.baseSevere || 14);
+      const availableArmorSlots = Math.max(0, Number(sys.armor?.slots || 6) - Number(sys.armor?.slotsMarked || 0));
+
+      const baseResolution = resolveDamage(damage, { major, severe }, 0);
+
+      // 3. Armor mitigation prompt if target has available armor slots and base severity > 0
+      let slotsToSpend = 0;
+      if (availableArmorSlots > 0 && baseResolution.baseHpToMark > 0 && typeof showSelectDialog === 'function') {
+        const options = [
+          { value: '0', label: `Não gastar armadura (${baseResolution.baseHpToMark} HP marcados)` }
+        ];
+        if (availableArmorSlots >= 1 && baseResolution.baseHpToMark >= 1) {
+          options.push({ value: '1', label: `Gastar 1 Slot de Armadura (${Math.max(0, baseResolution.baseHpToMark - 1)} HP)` });
+        }
+        if (availableArmorSlots >= 2 && baseResolution.baseHpToMark >= 2) {
+          options.push({ value: '2', label: `Gastar 2 Slots de Armadura (${Math.max(0, baseResolution.baseHpToMark - 2)} HP)` });
+        }
+        if (availableArmorSlots >= 3 && baseResolution.baseHpToMark >= 3) {
+          options.push({ value: '3', label: `Gastar 3 Slots de Armadura (${Math.max(0, baseResolution.baseHpToMark - 3)} HP)` });
+        }
+
+        const choice = await showSelectDialog(
+          `Mitigação de Armadura — ${targetActor.name}`,
+          `Dano recebido: ${damage} (${baseResolution.baseSeverity}). Limiares: Major ${major} / Severe ${severe}. Escolha quantos slots marcar:`,
+          options
+        );
+        slotsToSpend = choice !== null && choice !== undefined ? Number(choice) : 0;
+      }
+
+      // 4. Apply damage to actor
+      const finalResolution = resolveDamage(damage, { major, severe }, slotsToSpend);
+      const result = await applyDamageToActor(targetActor, finalResolution);
+
+      const msg = `${targetActor.name} sofreu ${damage} de dano [${finalResolution.baseSeverity}]: ` +
+        `${result.hpMarked} HP marcado(s)` +
+        (slotsToSpend > 0 ? ` (${slotsToSpend} slot(s) de armadura gasto(s))` : '') +
+        `! [HP: ${result.currentHp}/${result.maxHp}]`;
+
+      notify(msg, 'info');
+
+      // Floating text on canvas if available
+      if (window.Loom?.canvas?.showFloatingText) {
+        window.Loom.canvas.showFloatingText(targetActor, `-${result.hpMarked} HP`, '#ef4444');
       }
     }
   });

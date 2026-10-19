@@ -75,7 +75,8 @@
       "BaseThresholds": "Base Thresholds",
       "BaseScore": "Base Score",
       "RollAttack": "Roll Attack",
-      "RollDamage": "Roll Damage"
+      "RollDamage": "Roll Damage",
+      "ApplyDamage": "Apply Damage to Target"
     },
     "Features": {
       "HopeFeature": "Hope Feature",

@@ -75,7 +75,8 @@
       "BaseThresholds": "Limiares Base",
       "BaseScore": "Pontuação Base",
       "RollAttack": "Rolar Ataque",
-      "RollDamage": "Rolar Dano"
+      "RollDamage": "Rolar Dano",
+      "ApplyDamage": "Aplicar Dano ao Alvo"
     },
     "Features": {
       "HopeFeature": "Habilidade de Esperança",
