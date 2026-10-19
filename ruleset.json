@@ -38,5 +38,10 @@
     "feature",
     "consumable",
     "equipment"
+  ],
+  "compendiums": [
+    "packs/weapons.sqlite",
+    "packs/armors.sqlite",
+    "packs/domain-cards.sqlite"
   ]
 }
