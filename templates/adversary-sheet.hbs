@@ -1,59 +1,183 @@
 <form class="dh-sheet dh-adversary-sheet" autocomplete="off">
-  <header class="dh-sheet-header">
-    <div class="dh-portrait-block">
-      <img class="dh-portrait" src="{{document.avatarUrl}}" alt="{{document.name}}" data-edit="avatarUrl" />
-    </div>
-
-    <div class="dh-header-details">
-      <div class="dh-name-row">
-        <input class="dh-char-name" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.ActorType.Adversary'}}" />
-        <span class="dh-tier-badge">{{localize 'DH.Adversary.Tier'}} {{system.tier}}</span>
-        <span class="dh-dc-badge">{{localize 'DH.Adversary.Difficulty'}} {{system.difficulty}}</span>
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       ADVERSARY HEADER (Identity, Tier, Difficulty, Role)
+       ══════════════════════════════════════════════════════════════════════════ -->
+  <header class="dh-fixed-top dh-adversary-top">
+    <div class="dh-header-row">
+      <div class="dh-brand-badge dh-adversary-crest">
+        <span class="dh-crest-icon">☠</span>
       </div>
 
-      <div class="dh-adversary-stats-row">
-        <div class="dh-stat-pill">
-          <label>{{localize 'DH.Resources.HP'}}</label>
-          <input name="systemData.hp.value" type="number" value="{{system.hp.value}}" /> /
-          <input name="systemData.hp.max" type="number" value="{{system.hp.max}}" />
+      <div class="dh-name-group">
+        <label class="dh-field-label">{{localize 'DH.Header.Name'}}</label>
+        <input class="dh-name-input" name="name" type="text" value="{{document.name}}" placeholder="{{localize 'DH.ActorType.Adversary'}}" />
+      </div>
+
+      <div class="dh-tag-pill dh-adversary-dc-box">
+        <label class="dh-pill-label">{{localize 'DH.Adversary.Difficulty'}}</label>
+        <div class="dh-dc-input-wrap">
+          <span class="dh-dc-prefix">DC</span>
+          <input class="dh-pill-input dh-dc-val" name="systemData.difficulty" type="number" value="{{system.difficulty}}" min="1" max="30" />
         </div>
-        <div class="dh-stat-pill">
-          <label>{{localize 'DH.Resources.Stress'}}</label>
-          <input name="systemData.stress.value" type="number" value="{{system.stress.value}}" /> /
-          <input name="systemData.stress.max" type="number" value="{{system.stress.max}}" />
+      </div>
+
+      <div class="dh-tag-pill">
+        <label class="dh-pill-label">{{localize 'DH.Adversary.Tier'}}</label>
+        <select class="dh-pill-select" name="systemData.tier">
+          <option value="0" {{#if (eq system.tier 0)}}selected{{/if}}>Tier 0</option>
+          <option value="1" {{#if (eq system.tier 1)}}selected{{/if}}>Tier 1</option>
+          <option value="2" {{#if (eq system.tier 2)}}selected{{/if}}>Tier 2</option>
+          <option value="3" {{#if (eq system.tier 3)}}selected{{/if}}>Tier 3</option>
+          <option value="4" {{#if (eq system.tier 4)}}selected{{/if}}>Tier 4</option>
+        </select>
+      </div>
+
+      <div class="dh-tag-pill">
+        <label class="dh-pill-label">Role</label>
+        <input class="dh-pill-input" name="systemData.role" type="text" value="{{system.role}}" placeholder="Standard, Solo, Horde..." />
+      </div>
+    </div>
+
+    <!-- Defense & Vitality Bar -->
+    <div class="dh-adversary-vitality-bar">
+      <!-- HP Tracker -->
+      <div class="dh-adv-resource-box dh-adv-hp">
+        <div class="dh-adv-res-header">
+          <span class="dh-adv-res-title">♥ {{localize 'DH.Resources.HP'}}</span>
+          <div class="dh-adv-res-inputs">
+            <input name="systemData.hp.value" type="number" value="{{system.hp.value}}" min="0" max="{{system.hp.max}}" /> /
+            <input name="systemData.hp.max" type="number" value="{{system.hp.max}}" min="1" />
+          </div>
         </div>
-        <div class="dh-stat-pill">
-          <label>{{localize 'DH.Thresholds.Major'}}</label>
-          <input name="systemData.thresholds.major" type="number" value="{{system.thresholds.major}}" />
+        <div class="dh-dots-row" data-resource="hp">
+          {{#each (times system.hp.max) as |i|}}
+            <span class="dh-dot {{#if (lt i ../system.hp.value)}}active{{/if}}" data-index="{{i}}"></span>
+          {{/each}}
         </div>
-        <div class="dh-stat-pill">
-          <label>{{localize 'DH.Thresholds.Severe'}}</label>
-          <input name="systemData.thresholds.severe" type="number" value="{{system.thresholds.severe}}" />
+      </div>
+
+      <!-- Stress Tracker -->
+      <div class="dh-adv-resource-box dh-adv-stress">
+        <div class="dh-adv-res-header">
+          <span class="dh-adv-res-title">⚡ {{localize 'DH.Resources.Stress'}}</span>
+          <div class="dh-adv-res-inputs">
+            <input name="systemData.stress.value" type="number" value="{{system.stress.value}}" min="0" max="{{system.stress.max}}" /> /
+            <input name="systemData.stress.max" type="number" value="{{system.stress.max}}" min="0" />
+          </div>
+        </div>
+        <div class="dh-dots-row" data-resource="stress">
+          {{#each (times system.stress.max) as |i|}}
+            <span class="dh-dot {{#if (lt i ../system.stress.value)}}active{{/if}}" data-index="{{i}}"></span>
+          {{/each}}
+        </div>
+      </div>
+
+      <!-- Damage Thresholds Reference -->
+      <div class="dh-adv-thresholds-box">
+        <span class="dh-adv-thresh-title">🛡 {{localize 'DH.Thresholds.Title'}}</span>
+        <div class="dh-adv-thresh-row">
+          <div class="dh-thresh-cell">
+            <span class="dh-thresh-name">{{localize 'DH.Thresholds.Minor'}}</span>
+            <span class="dh-thresh-badge">&lt; {{system.thresholds.major}} (1 HP)</span>
+          </div>
+          <div class="dh-thresh-cell">
+            <span class="dh-thresh-name">{{localize 'DH.Thresholds.Major'}} (2 HP)</span>
+            <input class="dh-thresh-input" name="systemData.thresholds.major" type="number" value="{{system.thresholds.major}}" />
+          </div>
+          <div class="dh-thresh-cell">
+            <span class="dh-thresh-name">{{localize 'DH.Thresholds.Severe'}} (3 HP)</span>
+            <input class="dh-thresh-input" name="systemData.thresholds.severe" type="number" value="{{system.thresholds.severe}}" />
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <section class="dh-adversary-body">
-    <div class="dh-section-block">
-      <h3>{{localize 'DH.Adversary.Motives'}}</h3>
-      <textarea name="systemData.motives" rows="3">{{system.motives}}</textarea>
-    </div>
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       ADVERSARY CONTENT BODY (Attacks, Fear Features, Motives)
+       ══════════════════════════════════════════════════════════════════════════ -->
+  <main class="dh-body-scroll dh-adversary-body">
+    <!-- Attacks Section -->
+    <section class="dh-adv-card-section">
+      <div class="dh-panel-header">
+        <h3>⚔ {{localize 'DH.Adversary.Attacks'}}</h3>
+        <button type="button" class="dh-btn-add-action" data-action="addAttack">+ Adicionar Ataque</button>
+      </div>
 
-    <div class="dh-section-block">
-      <h3>{{localize 'DH.Adversary.Attacks'}}</h3>
-      <div class="dh-attacks-list">
-        {{#each attacks as |attack|}}
-          <div class="dh-attack-card">
-            <strong>{{attack.name}}</strong> ({{attack.range}}): {{attack.damage}}
+      <div class="dh-adv-attacks-list">
+        {{#each system.attacks as |attack idx|}}
+          <div class="dh-adv-attack-card" data-index="{{@index}}">
+            <div class="dh-attack-card-top">
+              <input class="dh-attack-name-input" name="systemData.attacks.{{@index}}.name" type="text" value="{{attack.name}}" placeholder="Nome do Ataque" />
+              
+              <select class="dh-attack-range-select" name="systemData.attacks.{{@index}}.range">
+                <option value="Melee" {{#if (eq attack.range 'Melee')}}selected{{/if}}>Corpo a Corpo (Melee)</option>
+                <option value="Very Close" {{#if (eq attack.range 'Very Close')}}selected{{/if}}>Muito Perto</option>
+                <option value="Close" {{#if (eq attack.range 'Close')}}selected{{/if}}>Perto (Close)</option>
+                <option value="Far" {{#if (eq attack.range 'Far')}}selected{{/if}}>Longe (Far)</option>
+                <option value="Very Far" {{#if (eq attack.range 'Very Far')}}selected{{/if}}>Muito Longe</option>
+              </select>
+
+              <div class="dh-attack-damage-wrap">
+                <input class="dh-attack-damage-input" name="systemData.attacks.{{@index}}.damage" type="text" value="{{attack.damage}}" placeholder="ex: 1d10+3" />
+                <select class="dh-attack-type-select" name="systemData.attacks.{{@index}}.damageType">
+                  <option value="physical" {{#if (eq attack.damageType 'physical')}}selected{{/if}}>Físico</option>
+                  <option value="magic" {{#if (eq attack.damageType 'magic')}}selected{{/if}}>Mágico</option>
+                </select>
+              </div>
+
+              <div class="dh-attack-btns">
+                <button type="button" class="dh-btn-roll-dmg" data-action="rollAdversaryDamage" data-index="{{@index}}" title="Rolar Dano do Ataque">
+                  💥 Rolar
+                </button>
+                <button type="button" class="dh-btn-delete" data-action="deleteAttack" data-index="{{@index}}" title="Remover">✕</button>
+              </div>
+            </div>
+
+            <input class="dh-attack-feature-input" name="systemData.attacks.{{@index}}.feature" type="text" value="{{attack.feature}}" placeholder="Efeito adicional do ataque..." />
           </div>
         {{/each}}
       </div>
-    </div>
+    </section>
 
-    <div class="dh-section-block">
-      <h3>{{localize 'DH.Adversary.FearFeatures'}}</h3>
-      <textarea name="systemData.fearFeatures" rows="4">{{system.fearFeatures}}</textarea>
-    </div>
-  </section>
+    <!-- Fear Features Section -->
+    <section class="dh-adv-card-section">
+      <div class="dh-panel-header">
+        <h3>🔮 {{localize 'DH.Adversary.FearFeatures'}}</h3>
+        <button type="button" class="dh-btn-add-action" data-action="addFearFeature">+ Adicionar Habilidade</button>
+      </div>
+
+      <div class="dh-adv-features-list">
+        {{#each system.fearFeatures as |feat|}}
+          <div class="dh-adv-fear-card" data-index="{{@index}}">
+            <div class="dh-fear-card-top">
+              <input class="dh-fear-name-input" name="systemData.fearFeatures.{{@index}}.name" type="text" value="{{feat.name}}" placeholder="Nome da Habilidade de Medo" />
+              
+              <div class="dh-fear-cost-wrap">
+                <label>Custo em Medo:</label>
+                <input class="dh-fear-cost-input" name="systemData.fearFeatures.{{@index}}.cost" type="number" value="{{feat.cost}}" min="1" max="12" />
+              </div>
+
+              <div class="dh-fear-btns">
+                <button type="button" class="dh-btn-broadcast-feature" data-action="broadcastFearFeature" data-index="{{@index}}" title="Ativar e Enviar ao Chat">
+                  🔮 Ativar
+                </button>
+                <button type="button" class="dh-btn-delete" data-action="deleteFearFeature" data-index="{{@index}}" title="Remover">✕</button>
+              </div>
+            </div>
+
+            <textarea class="dh-fear-desc-input" name="systemData.fearFeatures.{{@index}}.description" rows="2" placeholder="Descrição do efeito da habilidade de Medo...">{{feat.description}}</textarea>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <!-- Motives & Tactics -->
+    <section class="dh-adv-card-section">
+      <div class="dh-panel-header">
+        <h3>📜 {{localize 'DH.Adversary.Motives'}}</h3>
+      </div>
+      <textarea class="dh-adv-motives-textarea" name="systemData.motives" rows="3" placeholder="Instintos, táticas de combate e impulsos do adversário...">{{system.motives}}</textarea>
+    </section>
+  </main>
 </form>

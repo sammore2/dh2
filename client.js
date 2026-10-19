@@ -151,6 +151,7 @@ SystemRegistry.register(defineSystem({
       return {
         tier: 1,
         difficulty: 10,
+        role: 'Standard',
         hp: { value: 0, max: 6 },
         stress: { value: 0, max: 3 },
         thresholds: {
@@ -158,8 +159,15 @@ SystemRegistry.register(defineSystem({
           severe: 15,
         },
         motives: '',
-        attacks: [],
-        fearFeatures: '',
+        attacks: [
+          { name: 'Attack 1', range: 'Melee', damage: '1d8+2', damageType: 'physical', feature: '' }
+        ],
+        fearFeatures: [
+          { name: 'Special Ability', cost: 1, description: '' }
+        ],
+        experiences: [
+          { name: '', modifier: 0 }
+        ],
       };
     }
 

@@ -1631,3 +1631,385 @@
 .dh-ref-sep {
   opacity: 0.4;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   8. ADVERSARY SHEET STYLES (SRD 2.0)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.dh-adversary-sheet {
+  background: radial-gradient(circle at 50% 0%, #1e1319 0%, var(--dh-bg-deep) 75%);
+}
+
+.dh-adversary-crest {
+  background: radial-gradient(circle at 50% 50%, #4a0d24 0%, #1f050e 100%);
+  border-color: #f43f5e;
+}
+
+.dh-adversary-crest .dh-crest-icon {
+  color: #f43f5e;
+  font-size: 1.25rem;
+  filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.6));
+}
+
+.dh-adversary-dc-box {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: var(--dh-gold);
+}
+
+.dh-dc-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dh-dc-prefix {
+  font-family: var(--dh-font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--dh-gold);
+}
+
+.dh-dc-val {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  width: 44px;
+  text-align: center;
+}
+
+/* Vitality & Defense Bar */
+.dh-adversary-vitality-bar {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.6fr;
+  gap: 12px;
+  background: rgba(14, 14, 22, 0.6);
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.dh-adv-resource-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dh-adv-res-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dh-adv-res-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.dh-adv-hp .dh-adv-res-title {
+  color: #f87171;
+}
+
+.dh-adv-stress .dh-adv-res-title {
+  color: #c084fc;
+}
+
+.dh-adv-res-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--dh-text-faint);
+}
+
+.dh-adv-res-inputs input {
+  width: 38px;
+  text-align: center;
+  background: #141420;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dh-text-main);
+}
+
+/* Thresholds Box */
+.dh-adv-thresholds-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 1px solid var(--dh-border-metal);
+  padding-left: 12px;
+}
+
+.dh-adv-thresh-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--dh-gold);
+  letter-spacing: 0.5px;
+}
+
+.dh-adv-thresh-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dh-thresh-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.dh-thresh-name {
+  font-size: 0.65rem;
+  color: var(--dh-text-muted);
+}
+
+.dh-thresh-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.dh-thresh-input {
+  width: 44px;
+  text-align: center;
+  background: #141420;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 4px;
+  padding: 3px 4px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Adversary Body Scroll */
+.dh-adversary-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+.dh-adv-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dh-btn-add-action {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(229, 184, 66, 0.1);
+  border: 1px solid var(--dh-gold-dim);
+  color: var(--dh-gold);
+  padding: 3px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dh-btn-add-action:hover {
+  background: rgba(229, 184, 66, 0.2);
+  border-color: var(--dh-gold);
+  color: #fff;
+}
+
+/* Adversary Attack Cards */
+.dh-adv-attacks-list,
+.dh-adv-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dh-adv-attack-card,
+.dh-adv-fear-card {
+  background: #151522;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.dh-adv-attack-card:hover,
+.dh-adv-fear-card:hover {
+  border-color: var(--dh-border-metal);
+}
+
+.dh-attack-card-top,
+.dh-fear-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-attack-name-input,
+.dh-fear-name-input {
+  flex: 1.5;
+  background: #0f0f18;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dh-attack-range-select,
+.dh-attack-type-select {
+  background: #0f0f18;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  color: var(--dh-text-muted);
+}
+
+.dh-attack-damage-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dh-attack-damage-input {
+  width: 72px;
+  background: #0f0f18;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f87171;
+  text-align: center;
+}
+
+.dh-attack-feature-input,
+.dh-fear-desc-input {
+  width: 100%;
+  background: #0d0d16;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  color: var(--dh-text-muted);
+  box-sizing: border-box;
+}
+
+.dh-fear-cost-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #c084fc;
+}
+
+.dh-fear-cost-input {
+  width: 36px;
+  text-align: center;
+  background: #0f0f18;
+  border: 1px solid #7c3aed;
+  border-radius: 6px;
+  padding: 4px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.dh-attack-btns,
+.dh-fear-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-btn-roll-dmg {
+  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+  border: 1px solid #ef4444;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dh-btn-roll-dmg:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+}
+
+.dh-btn-broadcast-feature {
+  background: linear-gradient(135deg, #7c3aed 0%, #581c87 100%);
+  border: 1px solid #a855f7;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dh-btn-broadcast-feature:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+}
+
+.dh-btn-delete {
+  background: transparent;
+  border: 1px solid var(--dh-border-subtle);
+  color: var(--dh-text-faint);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dh-btn-delete:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.dh-adv-motives-textarea {
+  background: #12121c;
+  border: 1px solid var(--dh-border-subtle);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 0.85rem;
+  color: var(--dh-text-main);
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Chat Card for Fear Features */
+.dh-fear-feature-card {
+  border-color: #7c3aed;
+  background: linear-gradient(160deg, #1f112e 0%, #0d0716 100%);
+}
+
+.dh-fear-feature-card .dh-card-crest {
+  color: #c084fc;
+}
+
+.dh-fear-feature-card .dh-card-dc {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #a855f7;
+  color: #e9d5ff;
+}
