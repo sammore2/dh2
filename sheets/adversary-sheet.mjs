@@ -1,17 +1,26 @@
 import { LoomActorSheet, LoomHandlebarsMixin, dispatchRoll, showToast } from '/_loom/sdk/index.js';
+import { saveActor } from '../lib/save-actor.mjs';
+import { wireFieldSave } from '../lib/field-save.mjs';
 
 export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorSheet) {
-  static DEFAULT_OPTIONS = {
-    id: 'adversary-sheet',
-    classes: ['daggerheart', 'sheet', 'actor', 'adversary'],
-    template: '/marketplace/rulesets/dh/templates/adversary-sheet.hbs',
-    width: 680,
-    height: 780,
-    submitOnChange: true
-  };
+  // Size goes in `position` (the mixin ignores loose width/height); the template goes in PARTS
+  static DEFAULT_OPTIONS = { position: { width: 680, height: 780 } };
+  static PARTS = { main: { template: '/marketplace/rulesets/dh/templates/adversary-sheet.hbs' } };
 
-  async getData(options) {
-    const context = await super.getData(options);
+  constructor(props) {
+    super({
+      ...props,
+      // Must match the key windowManager.open uses (`actor-sheet-${actorId}`)
+      id: props.id || `actor-sheet-${props.actorId}`,
+      documentId: props.actorId,
+      title: props.title || 'Adversário',
+      showFooter: false,
+      classes: ['daggerheart', 'sheet', 'actor', 'adversary'],
+    });
+  }
+
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
     const doc = this.document;
     const sys = doc.systemData || {};
 
@@ -23,10 +32,22 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     return context;
   }
 
+  // Saves through the API, then reloads: the WebSocket echo can be late or never reach whoever saved.
+  async _save(patch) {
+    await saveActor(this.document, patch);
+    await this._reloadDocument();
+  }
+
   _onRender(context, options) {
-    super._onRender(context, options);
+    // The Loom base sheet does not always define _onRender
+    super._onRender?.(context, options);
     const html = this.element;
     if (!html) return;
+
+    // Plain form fields are saved here: the base sheet does not save them
+    wireFieldSave(this, (name, value) => {
+      if (name === 'name' || name.startsWith('systemData.')) this._save({ [name]: value });
+    });
 
     // ── Interactive HP & Stress Dots ─────────────────────────────────────────
     const dotsRows = html.querySelectorAll('.dh-dots-row');
@@ -37,7 +58,7 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
       dots.forEach((dot) => {
         dot.addEventListener('click', async (e) => {
           e.preventDefault();
-          if (!this.isEditable) return;
+          if (this.isEditable === false) return;
           const index = parseInt(dot.dataset.index, 10);
 
           let path = '';
@@ -53,7 +74,7 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
 
           if (path) {
             const newVal = (index + 1 === currentVal) ? index : index + 1;
-            await this.document.update({ [path]: newVal });
+            await this._save({ [path]: newVal });
           }
         });
       });
@@ -129,7 +150,7 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     if (addAttackBtn) {
       addAttackBtn.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!this.isEditable) return;
+        if (this.isEditable === false) return;
         const currentAttacks = [...(this.document.systemData?.attacks || [])];
         currentAttacks.push({
           name: `Ataque ${currentAttacks.length + 1}`,
@@ -138,7 +159,7 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
           damageType: 'physical',
           feature: '',
         });
-        await this.document.update({ 'systemData.attacks': currentAttacks });
+        await this._save({ 'systemData.attacks': currentAttacks });
       });
     }
 
@@ -146,11 +167,11 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     deleteAttackBtns.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!this.isEditable) return;
+        if (this.isEditable === false) return;
         const idx = parseInt(btn.dataset.index, 10);
         const currentAttacks = [...(this.document.systemData?.attacks || [])];
         currentAttacks.splice(idx, 1);
-        await this.document.update({ 'systemData.attacks': currentAttacks });
+        await this._save({ 'systemData.attacks': currentAttacks });
       });
     });
 
@@ -159,14 +180,14 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     if (addFearBtn) {
       addFearBtn.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!this.isEditable) return;
+        if (this.isEditable === false) return;
         const currentFeats = [...(this.document.systemData?.fearFeatures || [])];
         currentFeats.push({
           name: `Habilidade de Medo ${currentFeats.length + 1}`,
           cost: 1,
           description: '',
         });
-        await this.document.update({ 'systemData.fearFeatures': currentFeats });
+        await this._save({ 'systemData.fearFeatures': currentFeats });
       });
     }
 
@@ -174,11 +195,11 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     deleteFearBtns.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!this.isEditable) return;
+        if (this.isEditable === false) return;
         const idx = parseInt(btn.dataset.index, 10);
         const currentFeats = [...(this.document.systemData?.fearFeatures || [])];
         currentFeats.splice(idx, 1);
-        await this.document.update({ 'systemData.fearFeatures': currentFeats });
+        await this._save({ 'systemData.fearFeatures': currentFeats });
       });
     });
   }

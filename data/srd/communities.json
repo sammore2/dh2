@@ -1,0 +1,134 @@
+[
+  {
+    "id": "463f52c5-018a-4efb-9ff4-cfc8f0cc5457",
+    "name": "Duneborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Duneborne Heritage",
+        "text": "Característica cultural da comunidade Duneborne."
+      },
+      "description": "Comunidade Duneborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "7f49a11c-bb2c-47e6-bc58-cee740cdb27c",
+    "name": "Frostborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Frostborne Heritage",
+        "text": "Característica cultural da comunidade Frostborne."
+      },
+      "description": "Comunidade Frostborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "0f55a875-5330-4c8d-8fd1-a5ac99318013",
+    "name": "Highborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Highborne Heritage",
+        "text": "Característica cultural da comunidade Highborne."
+      },
+      "description": "Comunidade Highborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "24af7ba9-c513-4c67-9411-a5886dc42639",
+    "name": "Loreborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Loreborne Heritage",
+        "text": "Característica cultural da comunidade Loreborne."
+      },
+      "description": "Comunidade Loreborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "2e6472fb-93e4-4b69-a9f0-5189cda063d9",
+    "name": "Orderborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Orderborne Heritage",
+        "text": "Característica cultural da comunidade Orderborne."
+      },
+      "description": "Comunidade Orderborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "7d5fecc0-913e-4021-8173-d73cf231b0fc",
+    "name": "Ridgeborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Ridgeborne Heritage",
+        "text": "Característica cultural da comunidade Ridgeborne."
+      },
+      "description": "Comunidade Ridgeborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "6a83471e-a4d2-423b-b01e-162b3c9aaf7e",
+    "name": "Seaborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Seaborne Heritage",
+        "text": "Característica cultural da comunidade Seaborne."
+      },
+      "description": "Comunidade Seaborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "fb4631ca-d2a1-488e-b73b-56b3bc3e6b63",
+    "name": "Slyborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Slyborne Heritage",
+        "text": "Característica cultural da comunidade Slyborne."
+      },
+      "description": "Comunidade Slyborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "e6a62399-8d2d-4f4b-a9ba-53dfbe07eaa7",
+    "name": "Underborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Underborne Heritage",
+        "text": "Característica cultural da comunidade Underborne."
+      },
+      "description": "Comunidade Underborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "db0ff511-88e4-45a4-852d-66600053c276",
+    "name": "Wanderborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Wanderborne Heritage",
+        "text": "Característica cultural da comunidade Wanderborne."
+      },
+      "description": "Comunidade Wanderborne do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "1d2d854e-ad53-4d21-bc1a-bfad8029c682",
+    "name": "Wildborne",
+    "type": "community",
+    "data": {
+      "feature": {
+        "name": "Wildborne Heritage",
+        "text": "Característica cultural da comunidade Wildborne."
+      },
+      "description": "Comunidade Wildborne do Daggerheart SRD 2.0."
+    }
+  }
+]

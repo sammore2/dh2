@@ -1,0 +1,3126 @@
+[
+  {
+    "id": "61e8f029-c7e7-4bc0-a271-c54271a8fe27",
+    "name": "Broadsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls"
+    }
+  },
+  {
+    "id": "8e7677ba-b72d-4a26-ac7a-ff1850741475",
+    "name": "Katana",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "a871e04e-2193-4bf5-9c0f-34e43f0fbed5",
+    "name": "Longsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "88ad69f1-1114-4223-90a9-3d62a942a99b",
+    "name": "Battleaxe",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "13df413b-9dfe-4572-9c43-ef87d87c5d33",
+    "name": "Brass Knuckles",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "dbf19955-5354-4791-8d0e-1f47bb4358d9",
+    "name": "Greatsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Massive",
+        "text": "−1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Massive: −1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "1f18f85c-d515-48ee-ad0c-c9708826723c",
+    "name": "Mace",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "419633b4-15dc-440e-800b-5b3280cc77d7",
+    "name": "Warhammer",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Heavy",
+        "text": "−1 to Evasion"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Heavy: −1 to Evasion"
+    }
+  },
+  {
+    "id": "1404181a-e747-4a4b-80ed-f512141d5697",
+    "name": "Dagger",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "b0f773fe-95c8-46be-8b1f-095cc4e32748",
+    "name": "Quarterstaff",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "71f2984d-a7c3-46f4-9608-5631efaa955b",
+    "name": "Cutlass",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "a0a7d6fd-c53b-41ea-9a5d-e64e253fc498",
+    "name": "Rapier",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "96329ca5-629c-4479-a1a7-5b12e594d052",
+    "name": "Scimitar",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Twisted Dagger"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Twisted Dagger"
+    }
+  },
+  {
+    "id": "14f63305-9825-48f6-a56e-2d4f1b3facb0",
+    "name": "Halberd",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 2,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Cumbersome",
+        "text": "−1 to Finesse"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Cumbersome: −1 to Finesse"
+    }
+  },
+  {
+    "id": "10503b4b-fc63-48ae-b3f4-36f6fd1a201a",
+    "name": "Spear",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "a511c8ef-2080-43e6-bba0-18422e235d29",
+    "name": "Whipsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Finesse, Melee, d10."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Finesse, Melee, d10."
+    }
+  },
+  {
+    "id": "db309fbe-597f-4981-a9c7-46b7ced092bf",
+    "name": "Rope Dart",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Close",
+      "dice": 6,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "c504f0a9-ae24-4269-b622-a512c7c7a80a",
+    "name": "Shortbow",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Far",
+      "dice": 6,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "fc2c2901-a163-4843-b781-4d7875bfbb32",
+    "name": "Crossbow",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Far",
+      "dice": 6,
+      "flat": 1,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "e6e9e352-6d99-4c71-8a3d-67ec9405e87c",
+    "name": "Longbow",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Far",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Cumbersome",
+        "text": "−1 to Finesse"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Cumbersome: −1 to Finesse"
+    }
+  },
+  {
+    "id": "7e4d24e2-662e-45db-a91d-60ddfd52b08a",
+    "name": "Brightsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "a236a5ff-8f11-4c4d-b8eb-b10c1d458d56",
+    "name": "Hallowed Axe",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "a669622a-47d9-4fe9-b753-6d913480bed5",
+    "name": "Glowing Rings",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 2,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "5ac06ad1-661e-44e7-a8f7-a9174d2e2ab9",
+    "name": "Hand Runes",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— 56 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— 56 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "3d5add62-7c2b-4431-90f7-4031b2ab80d6",
+    "name": "Casting Dagger",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Close",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Instinct, Melee, d8."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Instinct, Melee, d8."
+    }
+  },
+  {
+    "id": "ad23171b-eb3d-4ba1-848a-99a56e473cea",
+    "name": "Shortstaff",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Close",
+      "dice": 8,
+      "flat": 1,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "5c6da3e1-d7db-46e4-ae4b-fd784dbc9ba0",
+    "name": "Dualstaff",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Far",
+      "dice": 6,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "f619894c-85f7-4453-bc70-d999f98da39a",
+    "name": "Scepter",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Far",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Presence, Melee, d8."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Presence, Melee, d8."
+    }
+  },
+  {
+    "id": "3385160e-a21c-4891-88c0-a8178095e14a",
+    "name": "Runelock Pistol",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 6,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Reloading",
+        "text": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reloading: After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+    }
+  },
+  {
+    "id": "4bfebf46-570e-4e74-96a3-ace1948f06b8",
+    "name": "Wand",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 6,
+      "flat": 1,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "27022df8-3207-403f-a26d-b92362644edf",
+    "name": "Arcane Rifle",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Far",
+      "dice": 10,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Aimed",
+        "text": "Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Aimed: Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+    }
+  },
+  {
+    "id": "478f9f1d-d607-4808-af41-5ca9b04e6a3c",
+    "name": "Greatstaff",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Powerful",
+        "text": "On a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "906a03b0-0dde-434f-8776-2f0b0f05ab6d",
+    "name": "Improved Mace",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Improved Warhammer"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Improved Warhammer"
+    }
+  },
+  {
+    "id": "c93502ef-687a-4dee-810d-e41805d19370",
+    "name": "Improved Spear",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": "— Improved Whipsword"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Improved Whipsword"
+    }
+  },
+  {
+    "id": "a4faeecb-6002-4da7-97a7-40f4aec713d3",
+    "name": "Gilded Falchion",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Powerful",
+        "text": "On a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "b1a7d5ea-dda4-4c5c-81e4-be1b94c60d49",
+    "name": "Knuckle Blades",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Brutal",
+        "text": "When you roll the maximum value on a damage die, roll an additional damage die."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Brutal: When you roll the maximum value on a damage die, roll an additional damage die."
+    }
+  },
+  {
+    "id": "38b6beb9-6024-481f-9d34-1ff645d73d2b",
+    "name": "War Pick",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Deadly",
+        "text": "When you deal Severe damage, the target must mark an additional HP."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Deadly: When you deal Severe damage, the target must mark an additional HP."
+    }
+  },
+  {
+    "id": "92707e36-b9b3-4106-88f9-ebd4f225d4e1",
+    "name": "Cane Sword",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Retractable",
+        "text": "The blade can be hidden in the cane to avoid detection. Urok Broadsword"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Retractable: The blade can be hidden in the cane to avoid detection. Urok Broadsword"
+    }
+  },
+  {
+    "id": "e0c35e11-8400-4e89-890b-02d7d4fbaca5",
+    "name": "Bladed Fan",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Parry",
+        "text": "When you are attacked, roll this weapon’s damage dice. If any of the attacker’s damage dice rolled the same value as your dice, the matching results are discarded from the attacker’s damage dice before the damage you take is totaled. Cyrurgien’s Scalpel"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Parry: When you are attacked, roll this weapon’s damage dice. If any of the attacker’s damage dice rolled the same value as your dice, the matching results are discarded from the attacker’s damage dice before the damage you take is totaled. Cyrurgien’s Scalpel"
+    }
+  },
+  {
+    "id": "2bfe436a-d4b6-4ce1-affd-439240a42144",
+    "name": "Bladed Whip",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "88e91f07-32f3-4369-9f03-1d077a5a3e4c",
+    "name": "Javelins",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 6,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Stockpiled",
+        "text": "You can throw this weapon at a target within Far range by making an attack roll using Agility without having to retrieve it, as you always have another one on hand. Steelforged Halberd"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Stockpiled: You can throw this weapon at a target within Far range by making an attack roll using Agility without having to retrieve it, as you always have another one on hand. Steelforged Halberd"
+    }
+  },
+  {
+    "id": "cd3cbbfc-b747-4456-9554-b8d93584b233",
+    "name": "War Scythe",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls"
+    }
+  },
+  {
+    "id": "24029064-afff-4fbf-ac38-2ef89feaf5e8",
+    "name": "Lance",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Cumbersome",
+        "text": "−1 to Finesse"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Cumbersome: −1 to Finesse"
+    }
+  },
+  {
+    "id": "6a20ec1e-4e03-4b2e-aed7-e6b195861b95",
+    "name": "Blunderbuss",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Close",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Reloading",
+        "text": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reloading: After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+    }
+  },
+  {
+    "id": "7cb86f56-2ffb-447c-b9ed-570d6123d6c2",
+    "name": "Greatbow",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Far",
+      "dice": 6,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Powerful",
+        "text": "On a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "37ae1994-5742-4e2c-828b-e7bcd4afa4ce",
+    "name": "Finehair Bow",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls 58 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls 58 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "cf68527c-af4d-4eef-9bf9-ce225ffb8bbd",
+    "name": "Improved Wand",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Improved Arcane Rifle"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Improved Arcane Rifle"
+    }
+  },
+  {
+    "id": "171d43d2-bdbc-421b-9a08-b99ebad00b77",
+    "name": "Ego Blade",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Pompous",
+        "text": "You must have a Presence of 0 or lower to use this weapon."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Pompous: You must have a Presence of 0 or lower to use this weapon."
+    }
+  },
+  {
+    "id": "0d0a0512-0e52-46fd-9d14-ffc0bae958b5",
+    "name": "Casting Sword",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Knowledge, Far, d6+3. Enchanted Shillelagh"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Knowledge, Far, d6+3. Enchanted Shillelagh"
+    }
+  },
+  {
+    "id": "93344e34-f507-471b-a76b-e9e2224cd2b7",
+    "name": "Hammer of Exota",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Eruptive",
+        "text": "On a successful attack against a target within Melee range, all other adversaries within Very Close range must succeed on a reaction roll (14) or take half damage. Spellbound Bangles"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Eruptive: On a successful attack against a target within Melee range, all other adversaries within Very Close range must succeed on a reaction roll (14) or take half damage. Spellbound Bangles"
+    }
+  },
+  {
+    "id": "7e1c49b0-bcfc-41ff-8a1d-43117f37ab1d",
+    "name": "Fury Gem",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Close",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Burning",
+        "text": "When you roll the maximum result on a damage die, the target must mark a Stress."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Burning: When you roll the maximum result on a damage die, the target must mark a Stress."
+    }
+  },
+  {
+    "id": "1b18b40f-e648-4924-a22c-71145724c6bc",
+    "name": "Enchanted Lute",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Close",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Invigorating",
+        "text": "On a successful attack, roll a d4. On a result of 4, clear a Stress. Splintershaft Bow"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Invigorating: On a successful attack, roll a d4. On a result of 4, clear a Stress. Splintershaft Bow"
+    }
+  },
+  {
+    "id": "9550582a-09ec-40f2-9080-90e68e46ba0e",
+    "name": "Yutari Bloodbow",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Far",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Brutal",
+        "text": "When you roll the maximum value on a damage die, roll an additional damage die."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Brutal: When you roll the maximum value on a damage die, roll an additional damage die."
+    }
+  },
+  {
+    "id": "83cf1445-a570-4839-a69e-a051e2045192",
+    "name": "Elder Bow",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Far",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Powerful",
+        "text": "On a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "4fcd2da0-63ab-4d74-8d2b-3cdefbf37b07",
+    "name": "Scepter of Elias",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Far",
+      "dice": 6,
+      "flat": 3,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Invigorating",
+        "text": "On a successful attack, roll a d4. On a result of 4, clear a Stress. Wand of Enthrallment"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Invigorating: On a successful attack, roll a d4. On a result of 4, clear a Stress. Wand of Enthrallment"
+    }
+  },
+  {
+    "id": "8b75a055-2d0a-44bd-b30d-166bef84baa8",
+    "name": "Keeper's Staff",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls"
+    }
+  },
+  {
+    "id": "fe0a5413-8f2e-4abb-80d2-3a218be4171b",
+    "name": "Flickerfly Blade",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Sharpwing",
+        "text": "Gain a bonus to your damage rolls equal to your Agility."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Sharpwing: Gain a bonus to your damage rolls equal to your Agility."
+    }
+  },
+  {
+    "id": "e5a32b0d-85be-48e3-a64c-44ef6795dd31",
+    "name": "Blitz Hammer",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Accelerator",
+        "text": "Once per scene, mark a Stress to move to Far range then make an attack. Gain a +1 bonus to your Proficiency on this attack."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Accelerator: Once per scene, mark a Stress to move to Far range then make an attack. Gain a +1 bonus to your Proficiency on this attack."
+    }
+  },
+  {
+    "id": "8053ab15-805d-48fd-9df4-0aface4493c7",
+    "name": "Bravesword",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Brave",
+        "text": "−1 to Evasion; +3 to Severe damage threshold Hammer of Wrath"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Brave: −1 to Evasion; +3 to Severe damage threshold Hammer of Wrath"
+    }
+  },
+  {
+    "id": "8fafa1bb-05f9-493a-84c2-ebaa8eb5ac1d",
+    "name": "Labrys Axe",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Protective",
+        "text": "+1 to Armor Score"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Protective: +1 to Armor Score"
+    }
+  },
+  {
+    "id": "21c2ceaf-2b76-4218-8494-4be78d3a9121",
+    "name": "Platinum Estoc",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Piercing",
+        "text": "Damage dealt with this weapon treats the target’s Major threshold as having a −2 penalty. Meridian Cutlass"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Piercing: Damage dealt with this weapon treats the target’s Major threshold as having a −2 penalty. Meridian Cutlass"
+    }
+  },
+  {
+    "id": "094c28ed-9375-4367-90e4-1cb1452932a1",
+    "name": "Double Flail",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 8,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Powerful",
+        "text": "On a successful attack, roll an additional damage die and discard the lowest result."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "aab6e21b-174e-4682-8a93-7bbfc77564c5",
+    "name": "Soldier’s Pike",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Braced",
+        "text": "When an adversary within this weapon’s range deals damage to you, you can mark 2 Stress to force them to mark a Hit Point. Chained Scythe"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Braced: When an adversary within this weapon’s range deals damage to you, you can mark 2 Stress to force them to mark a Hit Point. Chained Scythe"
+    }
+  },
+  {
+    "id": "1ae8d743-14d0-43a9-b72a-eed6489c4758",
+    "name": "Singing Sword",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Bolstering",
+        "text": "When you critically succeed on an attack, all PCs within Close range gain a Hope."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Bolstering: When you critically succeed on an attack, all PCs within Close range gain a Hope."
+    }
+  },
+  {
+    "id": "d87bcd4a-3d82-4d82-a270-345081866ae1",
+    "name": "Talon Blades",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Close",
+      "dice": 10,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Brutal",
+        "text": "When you roll the maximum value on a damage die, roll an additional damage die."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Brutal: When you roll the maximum value on a damage die, roll an additional damage die."
+    }
+  },
+  {
+    "id": "a31bc43d-3c6d-4898-8458-b170140cce95",
+    "name": "Bladed Star",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Close",
+      "dice": 8,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Rebounding",
+        "text": "When you throw this weapon, it returns to your hand. On a failed attack, you can reroll your attack with disadvantage. Black Powder Revolver"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Rebounding: When you throw this weapon, it returns to your hand. On a failed attack, you can reroll your attack with disadvantage. Black Powder Revolver"
+    }
+  },
+  {
+    "id": "7ba1d13f-ea2a-44f5-8c39-f492bb098a3c",
+    "name": "Spiked Bow",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 7,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Agility, Melee, d10+5. 61 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Agility, Melee, d10+5. 61 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "0f1e17c8-d6d3-439a-8018-cd0d21866b16",
+    "name": "Rocket Maul",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 7,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Concussive",
+        "text": "On a successful attack, you can spend a Hope to knock the target back to Far range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Concussive: On a successful attack, you can spend a Hope to knock the target back to Far range."
+    }
+  },
+  {
+    "id": "b7a72f85-93a5-40fb-8911-47ac501b1d40",
+    "name": "Crystal Spear",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Piercing",
+        "text": "Damage dealt with this weapon treats the target’s Major threshold as having a −2 penalty."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Piercing: Damage dealt with this weapon treats the target’s Major threshold as having a −2 penalty."
+    }
+  },
+  {
+    "id": "08381ae1-cc98-4100-a5a8-777a93ca9559",
+    "name": "Arc Wand",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Close",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Bouncing",
+        "text": "Mark any number of Stress to target that many additional creatures in range of the attack."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Bouncing: Mark any number of Stress to target that many additional creatures in range of the attack."
+    }
+  },
+  {
+    "id": "697f1385-0408-420e-9ec7-19e5af1a6aaa",
+    "name": "Rime Scepter",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Close",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Freezing",
+        "text": "When an attack from this weapon causes a target to mark 2 or more HP, they become temporarily Restrained. 62 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Freezing: When an attack from this weapon causes a target to mark 2 or more HP, they become temporarily Restrained. 62 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "276046eb-1fe1-45f1-9e65-bbc6c2a2e7d5",
+    "name": "Gunblade",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Far",
+      "dice": 6,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Agility, Melee, d8+6 phy."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Agility, Melee, d8+6 phy."
+    }
+  },
+  {
+    "id": "a652bb6e-d9f3-4ab9-9acd-a562e1fdbaae",
+    "name": "Staff of Augma",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Far",
+      "dice": 6,
+      "flat": 7,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Catalytic",
+        "text": "On a successful attack, you can mark a Stress to give an ally within Close range a +3 bonus to their next attack roll."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Catalytic: On a successful attack, you can mark a Stress to give an ally within Close range a +3 bonus to their next attack roll."
+    }
+  },
+  {
+    "id": "6655cb75-d475-4260-9a7b-84af6f4a3476",
+    "name": "Legendary Katana",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range. Legendary Longsword"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range. Legendary Longsword"
+    }
+  },
+  {
+    "id": "9597cd84-cbca-4b8d-9271-83cdbd3692b9",
+    "name": "Legendary Battleaxe",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Brass Knuckles"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Brass Knuckles"
+    }
+  },
+  {
+    "id": "3340994d-6ec2-4ca9-b9ae-fe88dbf0479f",
+    "name": "Legendary Mace",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Warhammer"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Warhammer"
+    }
+  },
+  {
+    "id": "6ba2fa18-b40a-4277-9896-7689141e12b0",
+    "name": "Legendary Dagger",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Quarterstaff"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Quarterstaff"
+    }
+  },
+  {
+    "id": "0c5a9379-27fa-4838-9b77-a362d9eebd95",
+    "name": "Legendary Cutlass",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "a30d7ada-df75-4617-af96-c7f1c19ee899",
+    "name": "Legendary Rapier",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "e85f651a-545f-489a-9c55-4cd216da2f04",
+    "name": "Legendary Scimitar",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Twisted Dagger"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Twisted Dagger"
+    }
+  },
+  {
+    "id": "bef8116b-0af8-42f7-9ba5-c18e7a3cf15a",
+    "name": "Legendary Halberd",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Cumbersome",
+        "text": "−1 to Finesse"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Cumbersome: −1 to Finesse"
+    }
+  },
+  {
+    "id": "a5b2083f-19d8-4616-a4ca-22b7f05f7a68",
+    "name": "Legendary Spear",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Whipsword"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Whipsword"
+    }
+  },
+  {
+    "id": "809397bd-c497-4506-87fe-05d40b3726ae",
+    "name": "Legendary Rope Dart",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Close",
+      "dice": 6,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "e7da1071-36a6-4f0c-8b86-695438a60c26",
+    "name": "Legendary Shortbow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Far",
+      "dice": 6,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "3832a68c-ac6e-47be-a820-6edab54ee682",
+    "name": "Legendary Crossbow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Far",
+      "dice": 6,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": ""
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": ""
+    }
+  },
+  {
+    "id": "2a5498da-5135-4f80-98d1-d8e69abebe3f",
+    "name": "Legendary Longbow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Far",
+      "dice": 8,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Cumbersome",
+        "text": "−1 to Finesse"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Cumbersome: −1 to Finesse"
+    }
+  },
+  {
+    "id": "9f2440db-75dc-4bf5-a548-22bbf70c3bd9",
+    "name": "Dual-Ended Sword",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "33f9f3ae-f247-4d45-a533-689ec25054a9",
+    "name": "Impact Gauntlet",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Concussive",
+        "text": "On a successful attack, you can spend a Hope to knock the target back to Far range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Concussive: On a successful attack, you can spend a Hope to knock the target back to Far range."
+    }
+  },
+  {
+    "id": "fdc36228-274b-4504-8072-8e08e184282d",
+    "name": "Sledge Axe",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 13,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Destructive",
+        "text": "−1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress. 63 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Destructive: −1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress. 63 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "4e04c734-c075-4ff0-9789-95be110a4934",
+    "name": "Curved Dagger",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Serrated",
+        "text": "When you roll a 1 on a damage die, it deals 8 damage instead."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Serrated: When you roll a 1 on a damage die, it deals 8 damage instead."
+    }
+  },
+  {
+    "id": "7207241b-ec5a-4b66-8414-c0a7ce391a90",
+    "name": "Severed Dragon Claw",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Destructive",
+        "text": "−1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Destructive: −1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress."
+    }
+  },
+  {
+    "id": "edae2f73-f2e4-4cd6-a1a5-6e219046aec7",
+    "name": "Infinite Staff",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Extending",
+        "text": "You can increase the range of this weapon up to Very Far. You gain a −1 penalty to attack rolls for each step you increase the range by (such as Melee to Very Close, Very Close to Close, or Close to Far)."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Extending: You can increase the range of this weapon up to Very Far. You gain a −1 penalty to attack rolls for each step you increase the range by (such as Melee to Very Close, Very Close to Close, or Close to Far)."
+    }
+  },
+  {
+    "id": "efb26189-eba9-478b-af09-947a143b339f",
+    "name": "Bec de Corbin",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Very Close",
+      "dice": 10,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Devastating",
+        "text": "Before you make an attack roll, you can mark a Stress to use a d20 as your damage die."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Devastating: Before you make an attack roll, you can mark a Stress to use a d20 as your damage die."
+    }
+  },
+  {
+    "id": "22246c92-22c7-4c8c-b791-39bc9387e44a",
+    "name": "Extended Polearm",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Long",
+        "text": "This weapon’s attack targets all adversaries in a line within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Long: This weapon’s attack targets all adversaries in a line within range."
+    }
+  },
+  {
+    "id": "7805ae8f-c09d-4ee5-97b9-eaca5639466d",
+    "name": "Swinging Ropeblade",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Close",
+      "dice": 8,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Grappling",
+        "text": "On a successful attack, you can spend a Hope to Restrain the target or pull them into Melee range with you. Black Powder Serpentine"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Grappling: On a successful attack, you can spend a Hope to Restrain the target or pull them into Melee range with you. Black Powder Serpentine"
+    }
+  },
+  {
+    "id": "0fed25c6-2c87-415f-b2e2-72328e2ab5a4",
+    "name": "Ricochet Axes",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Far",
+      "dice": 6,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Bouncing",
+        "text": "Mark 1 or more Stress to hit that many targets in range of the attack."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Bouncing: Mark 1 or more Stress to hit that many targets in range of the attack."
+    }
+  },
+  {
+    "id": "d8439d65-4407-4e5b-a161-cd3d4ef64c7e",
+    "name": "Aantari Bow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Far",
+      "dice": 6,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls"
+    }
+  },
+  {
+    "id": "c10db751-41dd-454b-bae1-10e8af0e8a79",
+    "name": "Clockwork Crossbow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Far",
+      "dice": 6,
+      "flat": 11,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range."
+    }
+  },
+  {
+    "id": "89be06e8-8808-4bf3-815b-01503c6a58e5",
+    "name": "Arquebus",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Reloading",
+        "text": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reloading: After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+    }
+  },
+  {
+    "id": "1becf78c-2828-440d-b4ca-79ca0ff4c63f",
+    "name": "Hand Cannon",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Reloading",
+        "text": "After you make an attack, roll a d6. On a 1, you must mark a Stress to reload this weapon before you can fire it again."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reloading: After you make an attack, roll a d6. On a 1, you must mark a Stress to reload this weapon before you can fire it again."
+    }
+  },
+  {
+    "id": "4c7207cb-71ac-4787-b1b1-f050f2d40c07",
+    "name": "Legendary Wand",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 6,
+      "flat": 10,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "",
+        "text": "— Legendary Arcane Rifle"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "— Legendary Arcane Rifle"
+    }
+  },
+  {
+    "id": "fc1ba826-80d1-466c-a4df-a5ec4fb4f54c",
+    "name": "Starmetal Blade",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Serrated",
+        "text": "When you roll a 1 on a damage die, it deals 8 damage instead. Sword of Light & Flame"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Serrated: When you roll a 1 on a damage die, it deals 8 damage instead. Sword of Light & Flame"
+    }
+  },
+  {
+    "id": "a8faff11-c41e-4fff-9dda-4e8da98b12eb",
+    "name": "Adder’s Fang",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 9,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Venomous",
+        "text": "When you deal Major or greater damage with this weapon, the target becomes temporarily Vulnerable."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Venomous: When you deal Major or greater damage with this weapon, the target becomes temporarily Vulnerable."
+    }
+  },
+  {
+    "id": "f9154220-d902-48aa-842d-e513fc54abe8",
+    "name": "Demon’s Edge",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 10,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Disturbing",
+        "text": "When you defeat a creature with this weapon, all adversaries within Close range must mark a Stress. Siphoning Gauntlets"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Disturbing: When you defeat a creature with this weapon, all adversaries within Close range must mark a Stress. Siphoning Gauntlets"
+    }
+  },
+  {
+    "id": "61af9f27-4ac3-4dbf-a1d6-fca3260d0edc",
+    "name": "Midas Scythe",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Melee",
+      "dice": 10,
+      "flat": 9,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Greedy",
+        "text": "Spend a handful of gold to gain a +1 bonus to your Proficiency on a damage roll. Storm God’s Greataxe"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Greedy: Spend a handful of gold to gain a +1 bonus to your Proficiency on a damage roll. Storm God’s Greataxe"
+    }
+  },
+  {
+    "id": "e0e01244-51c6-4463-8a18-e05f4d32d86b",
+    "name": "Bloodstaff",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Far",
+      "dice": 20,
+      "flat": 7,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Painful",
+        "text": "Each time you make a successful attack, you must mark a Stress."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Painful: Each time you make a successful attack, you must mark a Stress."
+    }
+  },
+  {
+    "id": "1696c491-667b-44ae-93b4-21f26e887265",
+    "name": "Thistlebow",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "instinct",
+      "range": "Far",
+      "dice": 6,
+      "flat": 13,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Reliable",
+        "text": "+1 to attack rolls 65 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reliable: +1 to attack rolls 65 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "4b4243e1-47aa-4bdd-a640-b8c3a85861e9",
+    "name": "Gravity Arbalest",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Magnetic",
+        "text": "When you make an attack with this weapon, you can spend a Hope to force all adversaries within Very Close range of the target to make a Reaction Roll (16). Creatures who fail must mark a Stress and are pulled into Melee range of the target."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Magnetic: When you make an attack with this weapon, you can spend a Hope to force all adversaries within Very Close range of the target to make a Reaction Roll (16). Creatures who fail must mark a Stress and are pulled into Melee range of the target."
+    }
+  },
+  {
+    "id": "fd4dc520-cfd9-4c39-a490-8e329f29866c",
+    "name": "Wand of Essek",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Far",
+      "dice": 8,
+      "flat": 13,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Timebending",
+        "text": "You can choose the target of your attack after making your attack roll."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Timebending: You can choose the target of your attack after making your attack roll."
+    }
+  },
+  {
+    "id": "a1aa3881-bf65-4a38-9449-7307a84b9a12",
+    "name": "Magus Revolver",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "finesse",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 13,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Reloading",
+        "text": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Reloading: After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+    }
+  },
+  {
+    "id": "74d8047a-d810-41de-9b1f-9d961b1c3528",
+    "name": "Fusion Gloves",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "primary",
+      "trait": "knowledge",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 9,
+      "damageType": "mag",
+      "burden": "two",
+      "feature": {
+        "name": "Bonded",
+        "text": "Gain a bonus to your damage rolls equal to your level."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Bonded: Gain a bonus to your damage rolls equal to your level."
+    }
+  },
+  {
+    "id": "f91ae286-cf83-4eb5-abf1-7e28b8397df2",
+    "name": "Hatchet",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Follow-Up",
+        "text": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Follow-Up: On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+    }
+  },
+  {
+    "id": "b8f4a278-110a-4016-bed7-4cf1cbb23f11",
+    "name": "Shortsword",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Paired",
+        "text": "+2 to primary weapon damage to targets within Melee range Offhand Brass Knuckles"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Paired: +2 to primary weapon damage to targets within Melee range Offhand Brass Knuckles"
+    }
+  },
+  {
+    "id": "e6467654-0921-48d4-ac5c-8452d7bce6fd",
+    "name": "Round Shield",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Protective",
+        "text": "+1 to Armor Score"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Protective: +1 to Armor Score"
+    }
+  },
+  {
+    "id": "2d50c4fd-6bcf-4364-8dde-65fafe248b69",
+    "name": "Tower Shield",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Barrier",
+        "text": "+2 to Armor Score; −1 to Evasion"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Barrier: +2 to Armor Score; −1 to Evasion"
+    }
+  },
+  {
+    "id": "1c0ed383-42b0-4b85-b838-718896fff815",
+    "name": "Small Dagger",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Paired",
+        "text": "+2 to primary weapon damage to targets within Melee range Throwing Knives"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Paired: +2 to primary weapon damage to targets within Melee range Throwing Knives"
+    }
+  },
+  {
+    "id": "fecce186-8fa6-4184-babf-c5d019286640",
+    "name": "Fighting Cloak",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Padded",
+        "text": "+2 to damage thresholds"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Padded: +2 to damage thresholds"
+    }
+  },
+  {
+    "id": "1bd0e092-16a4-424c-b258-2b07604c1ac0",
+    "name": "Rune Shield",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "knowledge",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Protective",
+        "text": "+1 to Armor Score"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Protective: +1 to Armor Score"
+    }
+  },
+  {
+    "id": "a318904f-f97a-4975-a44e-1a99c234bea6",
+    "name": "Focus Runes",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "instinct",
+      "range": "Very Close",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Focused",
+        "text": "+1 to primary weapon damage to targets within Very Close range"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Focused: +1 to primary weapon damage to targets within Very Close range"
+    }
+  },
+  {
+    "id": "151eaac7-72f5-4be9-84c8-9079104daef2",
+    "name": "Whip",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "presence",
+      "range": "Very Close",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Startling",
+        "text": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Startling: Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+    }
+  },
+  {
+    "id": "ccfb96ad-297e-42af-a5ef-75d0f9b97893",
+    "name": "Grappler",
+    "type": "weapon",
+    "data": {
+      "tier": 1,
+      "category": "secondary",
+      "trait": "finesse",
+      "range": "Close",
+      "dice": 6,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Hooked",
+        "text": "On a successful attack, you can pull the target into Melee range. Hand Crossbow"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Hooked: On a successful attack, you can pull the target into Melee range. Hand Crossbow"
+    }
+  },
+  {
+    "id": "654be1e3-3d7e-492d-984f-defa57aec0f2",
+    "name": "Spiked Shield",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 6,
+      "flat": 2,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Double Duty",
+        "text": "+1 to Armor Score; +1 to primary weapon damage within Melee range Parrying Dagger"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Double Duty: +1 to Armor Score; +1 to primary weapon damage within Melee range Parrying Dagger"
+    }
+  },
+  {
+    "id": "69caa303-6a9e-4c65-a3a9-ae62e7e0c5e7",
+    "name": "Razor Wire",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "secondary",
+      "trait": "finesse",
+      "range": "Very Close",
+      "dice": 6,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Entangling",
+        "text": "On a successful attack with your primary weapon against a target within Very Close range, you can spend a Hope to make the target temporarily Vulnerable."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Entangling: On a successful attack with your primary weapon against a target within Very Close range, you can spend a Hope to make the target temporarily Vulnerable."
+    }
+  },
+  {
+    "id": "62a6a625-2d32-4d2f-bbdc-5a98e0897dae",
+    "name": "Returning Axe",
+    "type": "weapon",
+    "data": {
+      "tier": 2,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Close",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Returning",
+        "text": "When this weapon is thrown within its range, it appears in your hand immediately after the attack. 67 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Returning: When this weapon is thrown within its range, it appears in your hand immediately after the attack. 67 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "ff7e469e-c71b-4655-944d-068ba4988584",
+    "name": "Buckler",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Deflecting",
+        "text": "When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your available Armor Score against the attack. Tinker’s Hammer"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Deflecting: When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your available Armor Score against the attack. Tinker’s Hammer"
+    }
+  },
+  {
+    "id": "f1360dbf-f510-4e18-a3d8-2de8dcba43d6",
+    "name": "Vorpal Shard",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "secondary",
+      "trait": "knowledge",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 0,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Targeted",
+        "text": "When you fail a weapon attack, you can spend a Hope to succeed on your next weapon attack."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Targeted: When you fail a weapon attack, you can spend a Hope to succeed on your next weapon attack."
+    }
+  },
+  {
+    "id": "08f90645-0521-4391-82c6-19f21d1f1ccd",
+    "name": "Soul Chain",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "secondary",
+      "trait": "presence",
+      "range": "Very Close",
+      "dice": 6,
+      "flat": 5,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Draining",
+        "text": "On a successful attack, you can spend a Hope to force the target to mark a Stress. If they do, you clear a Stress. Powered Gauntlet"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Draining: On a successful attack, you can spend a Hope to force the target to mark a Stress. If they do, you clear a Stress. Powered Gauntlet"
+    }
+  },
+  {
+    "id": "479f1c6c-6c84-4f2b-b783-768f13aaface",
+    "name": "War Dart",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Far",
+      "dice": 6,
+      "flat": 5,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Agility, Melee, d8+5."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Agility, Melee, d8+5."
+    }
+  },
+  {
+    "id": "9b4355f3-5be6-46b4-9009-5e1de9183c70",
+    "name": "Hand Sling",
+    "type": "weapon",
+    "data": {
+      "tier": 3,
+      "category": "secondary",
+      "trait": "finesse",
+      "range": "Very Far",
+      "dice": 6,
+      "flat": 4,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Versatile",
+        "text": "This weapon can also be used with these statistics—Finesse, Close, d8+4. 68 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Versatile: This weapon can also be used with these statistics—Finesse, Close, d8+4. 68 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "610863c8-8dda-48b2-8d13-2a43d681c48b",
+    "name": "Braveshield",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Sheltering",
+        "text": "When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage. Knuckle Claws"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Sheltering: When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage. Knuckle Claws"
+    }
+  },
+  {
+    "id": "24a12f26-2709-4bae-809f-c223da807ba0",
+    "name": "Void Needle",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "finesse",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Inverted",
+        "text": "When you roll a weapon attack with Fear, you gain a Hope."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Inverted: When you roll a weapon attack with Fear, you gain a Hope."
+    }
+  },
+  {
+    "id": "8f8ab422-664d-4a25-888a-499288cff9ea",
+    "name": "Echo Blade",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "presence",
+      "range": "Melee",
+      "dice": 4,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Doubled Up",
+        "text": "When you succeed on an attack with your primary weapon, you can deal damage to another target within Melee range."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Doubled Up: When you succeed on an attack with your primary weapon, you can deal damage to another target within Melee range."
+    }
+  },
+  {
+    "id": "8ac9281b-c810-4a22-8af2-7af24dc2dcba",
+    "name": "Möbius Orb",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "knowledge",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "mag",
+      "burden": "one",
+      "feature": {
+        "name": "Recursive",
+        "text": "When you roll the maximum value on a damage die, roll an additional damage die and add the result to the total damage. This feature can trigger repeatedly."
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Recursive: When you roll the maximum value on a damage die, roll an additional damage die and add the result to the total damage. This feature can trigger repeatedly."
+    }
+  },
+  {
+    "id": "3d372ed7-03f5-4e93-b6cc-ee790e84b443",
+    "name": "Primer Shard",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "instinct",
+      "range": "Very Close",
+      "dice": 4,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Locked On",
+        "text": "On a successful attack, your next attack against the same target with your primary weapon automatically succeeds. Blackblood Tendril"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Locked On: On a successful attack, your next attack against the same target with your primary weapon automatically succeeds. Blackblood Tendril"
+    }
+  },
+  {
+    "id": "482dd29f-5855-49a9-bf4b-d64bdfb58d37",
+    "name": "1",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 0,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range. Improved Light-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range. Improved Light-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "26ebb9a7-81b6-4b89-b4c3-bc0be2b4f475",
+    "name": "2",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range. Advanced Light-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range. Advanced Light-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "f881c198-62e8-4599-b6b9-bea981ed93c2",
+    "name": "3",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range. Legendary Light-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range. Legendary Light-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "d97063d9-8d4a-48cb-9bbe-39a644ed1d45",
+    "name": "4",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "agility",
+      "range": "Melee",
+      "dice": 8,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "one",
+      "feature": {
+        "name": "Quick",
+        "text": "When you make an attack, you can mark a Stress to target another creature within range. 70 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Quick: When you make an attack, you can mark a Stress to target another creature within range. 70 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "6e6acee3-d979-4768-9139-4ecb58151afa",
+    "name": "1",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 3,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Heavy",
+        "text": "−1 to Evasion Improved Heavy-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Heavy: −1 to Evasion Improved Heavy-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "90bdcfbc-11d9-48e0-a73f-523c9f2a1c06",
+    "name": "2",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 6,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Heavy",
+        "text": "−1 to Evasion Advanced Heavy-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Heavy: −1 to Evasion Advanced Heavy-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "cf6e3876-4a51-4055-bed1-01f6a82f8296",
+    "name": "3",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 9,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Heavy",
+        "text": "−1 to Evasion Legendary Heavy-Frame Wheelchair"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Heavy: −1 to Evasion Legendary Heavy-Frame Wheelchair"
+    }
+  },
+  {
+    "id": "ad59417c-2ff3-4c69-8e9b-282355dadfd9",
+    "name": "4",
+    "type": "weapon",
+    "data": {
+      "tier": 4,
+      "category": "secondary",
+      "trait": "strength",
+      "range": "Melee",
+      "dice": 12,
+      "flat": 12,
+      "damageType": "phy",
+      "burden": "two",
+      "feature": {
+        "name": "Heavy",
+        "text": "−1 to Evasion Arcane Frame Models These wheelchairs have frames that are attuned to your character and their magic, allowing them to channel their spells through the chair. Unlike other primary magic weapons, the arcane-frame model doesn’t specify a trait to use when making an attack with it. Instead, you use the Spellcast trait indicated by your subclass. NameTierTraitRangeDamageBurdenFeature Arcane-Frame Wheelchair 1SpellcastFard6 magOne-HandedReliable: +1 to attack rolls Improved Arcane-Frame Wheelchair 2SpellcastFard6+3 magOne-HandedReliable: +1 to attack rolls Advanced Arcane-Frame Wheelchair 3SpellcastFard6+6 magOne-HandedReliable: +1 to attack rolls Legendary Arcane-Frame Wheelchair 4SpellcastFard6+9 magOne-HandedReliable: +1 to attack rolls 71 Daggerheart SRD"
+      },
+      "equipped": false,
+      "slot": "inventory",
+      "description": "Heavy: −1 to Evasion Arcane Frame Models These wheelchairs have frames that are attuned to your character and their magic, allowing them to channel their spells through the chair. Unlike other primary magic weapons, the arcane-frame model doesn’t specify a trait to use when making an attack with it. Instead, you use the Spellcast trait indicated by your subclass. NameTierTraitRangeDamageBurdenFeature Arcane-Frame Wheelchair 1SpellcastFard6 magOne-HandedReliable: +1 to attack rolls Improved Arcane-Frame Wheelchair 2SpellcastFard6+3 magOne-HandedReliable: +1 to attack rolls Advanced Arcane-Frame Wheelchair 3SpellcastFard6+6 magOne-HandedReliable: +1 to attack rolls Legendary Arcane-Frame Wheelchair 4SpellcastFard6+9 magOne-HandedReliable: +1 to attack rolls 71 Daggerheart SRD"
+    }
+  }
+]

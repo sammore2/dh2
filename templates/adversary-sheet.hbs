@@ -50,9 +50,9 @@
           </div>
         </div>
         <div class="dh-dots-row" data-resource="hp">
-          {{#each (times system.hp.max) as |i|}}
-            <span class="dh-dot {{#if (lt i ../system.hp.value)}}active{{/if}}" data-index="{{i}}"></span>
-          {{/each}}
+          {{#numLoop system.hp.max start=0}}
+            <span class="dh-dot {{#if (lt this ../system.hp.value)}}active{{/if}}" data-index="{{this}}"></span>
+          {{/numLoop}}
         </div>
       </div>
 
@@ -66,9 +66,9 @@
           </div>
         </div>
         <div class="dh-dots-row" data-resource="stress">
-          {{#each (times system.stress.max) as |i|}}
-            <span class="dh-dot {{#if (lt i ../system.stress.value)}}active{{/if}}" data-index="{{i}}"></span>
-          {{/each}}
+          {{#numLoop system.stress.max start=0}}
+            <span class="dh-dot {{#if (lt this ../system.stress.value)}}active{{/if}}" data-index="{{this}}"></span>
+          {{/numLoop}}
         </div>
       </div>
 

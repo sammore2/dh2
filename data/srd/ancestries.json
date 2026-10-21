@@ -1,0 +1,325 @@
+[
+  {
+    "id": "bb4b2ab7-557e-44c6-b341-8644803bdd25",
+    "name": "Clank",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Clank Trait 1",
+          "text": "Primeira característica ancestral de Clank (característica superior)."
+        },
+        {
+          "name": "Clank Trait 2",
+          "text": "Segunda característica ancestral de Clank (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Clank do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "08a782b4-99d9-4528-8792-783b93f9bb6f",
+    "name": "Daemon",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Daemon Trait 1",
+          "text": "Primeira característica ancestral de Daemon (característica superior)."
+        },
+        {
+          "name": "Daemon Trait 2",
+          "text": "Segunda característica ancestral de Daemon (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Daemon do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "8f5d69b7-e7c2-4c79-8d71-091a297c3019",
+    "name": "Drakona",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Drakona Trait 1",
+          "text": "Primeira característica ancestral de Drakona (característica superior)."
+        },
+        {
+          "name": "Drakona Trait 2",
+          "text": "Segunda característica ancestral de Drakona (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Drakona do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "036ac305-0739-46d1-b7c4-0778346ed137",
+    "name": "Dwarf",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Dwarf Trait 1",
+          "text": "Primeira característica ancestral de Dwarf (característica superior)."
+        },
+        {
+          "name": "Dwarf Trait 2",
+          "text": "Segunda característica ancestral de Dwarf (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Dwarf do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "c36bca10-e234-4a50-8cdc-a0c4f492966f",
+    "name": "Elf",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Elf Trait 1",
+          "text": "Primeira característica ancestral de Elf (característica superior)."
+        },
+        {
+          "name": "Elf Trait 2",
+          "text": "Segunda característica ancestral de Elf (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Elf do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "3e0bb52f-0a9d-4402-8ce3-a88d6b9f43ee",
+    "name": "Faun",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Faun Trait 1",
+          "text": "Primeira característica ancestral de Faun (característica superior)."
+        },
+        {
+          "name": "Faun Trait 2",
+          "text": "Segunda característica ancestral de Faun (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Faun do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "f059a529-d2bd-4366-a420-014764a2a037",
+    "name": "Firbolg",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Firbolg Trait 1",
+          "text": "Primeira característica ancestral de Firbolg (característica superior)."
+        },
+        {
+          "name": "Firbolg Trait 2",
+          "text": "Segunda característica ancestral de Firbolg (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Firbolg do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "836a2d92-f69f-486c-af0f-48d520b96f03",
+    "name": "Fungril",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Fungril Trait 1",
+          "text": "Primeira característica ancestral de Fungril (característica superior)."
+        },
+        {
+          "name": "Fungril Trait 2",
+          "text": "Segunda característica ancestral de Fungril (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Fungril do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "8fd7bcc2-2a39-4388-8409-ff22cd7dd4f7",
+    "name": "Galapa",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Galapa Trait 1",
+          "text": "Primeira característica ancestral de Galapa (característica superior)."
+        },
+        {
+          "name": "Galapa Trait 2",
+          "text": "Segunda característica ancestral de Galapa (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Galapa do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "b80bdb22-9e27-4f60-b576-e69d20967146",
+    "name": "Giant",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Giant Trait 1",
+          "text": "Primeira característica ancestral de Giant (característica superior)."
+        },
+        {
+          "name": "Giant Trait 2",
+          "text": "Segunda característica ancestral de Giant (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Giant do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "9e071299-87d4-4cda-84ef-76aca699ccb3",
+    "name": "Goblin",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Goblin Trait 1",
+          "text": "Primeira característica ancestral de Goblin (característica superior)."
+        },
+        {
+          "name": "Goblin Trait 2",
+          "text": "Segunda característica ancestral de Goblin (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Goblin do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "13919593-80ce-44e6-94cb-93e996c47fab",
+    "name": "Halfling",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Halfling Trait 1",
+          "text": "Primeira característica ancestral de Halfling (característica superior)."
+        },
+        {
+          "name": "Halfling Trait 2",
+          "text": "Segunda característica ancestral de Halfling (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Halfling do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "bd31f403-b858-4322-9e91-31dccdcee207",
+    "name": "Human",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Human Trait 1",
+          "text": "Primeira característica ancestral de Human (característica superior)."
+        },
+        {
+          "name": "Human Trait 2",
+          "text": "Segunda característica ancestral de Human (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Human do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "40c788f9-99c5-4a11-b20e-d0266b696017",
+    "name": "Katari",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Katari Trait 1",
+          "text": "Primeira característica ancestral de Katari (característica superior)."
+        },
+        {
+          "name": "Katari Trait 2",
+          "text": "Segunda característica ancestral de Katari (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Katari do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "6f3270f5-1c20-4a46-b4ae-3a2af09d1ef1",
+    "name": "Orc",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Orc Trait 1",
+          "text": "Primeira característica ancestral de Orc (característica superior)."
+        },
+        {
+          "name": "Orc Trait 2",
+          "text": "Segunda característica ancestral de Orc (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Orc do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "dd05ffc8-e18b-4004-a184-8930a368df61",
+    "name": "Ribbet",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Ribbet Trait 1",
+          "text": "Primeira característica ancestral de Ribbet (característica superior)."
+        },
+        {
+          "name": "Ribbet Trait 2",
+          "text": "Segunda característica ancestral de Ribbet (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Ribbet do Daggerheart SRD 2.0."
+    }
+  },
+  {
+    "id": "668a522a-98c7-4d0d-8b0e-b4e0dfa5f1de",
+    "name": "Simian",
+    "type": "ancestry",
+    "data": {
+      "features": [
+        {
+          "name": "Simian Trait 1",
+          "text": "Primeira característica ancestral de Simian (característica superior)."
+        },
+        {
+          "name": "Simian Trait 2",
+          "text": "Segunda característica ancestral de Simian (característica inferior)."
+        }
+      ],
+      "use": "both",
+      "description": "Ancestralidade Simian do Daggerheart SRD 2.0."
+    }
+  }
+]

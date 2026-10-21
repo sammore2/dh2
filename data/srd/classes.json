@@ -1,0 +1,431 @@
+[
+  {
+    "id": "9124af9c-665d-4b67-9b7a-b30652d372d4",
+    "name": "Assassin",
+    "type": "class",
+    "data": {
+      "evasion": 12,
+      "hp": 5,
+      "domains": [
+        "Blade",
+        "Midnight"
+      ],
+      "classItems": [
+        "A list of names with several crossed off",
+        "A rusted blade marked with a mysterious crest"
+      ],
+      "hopeFeature": {
+        "name": "Master of Shadows",
+        "cost": 3,
+        "text": "Spend 3 Hope to automatically succeed on a stealth or ambush action."
+      },
+      "features": [
+        {
+          "name": "Assassin Feature",
+          "text": "Habilidade inerente da classe Assassin."
+        }
+      ],
+      "subclasses": [
+        "Shadow",
+        "Poisoner"
+      ],
+      "description": "Classe Assassin (SRD 2.0). Domínios: Blade, Midnight."
+    }
+  },
+  {
+    "id": "ee035bda-b8fe-490a-a7d6-01734dd02c85",
+    "name": "Bard",
+    "type": "class",
+    "data": {
+      "evasion": 10,
+      "hp": 5,
+      "domains": [
+        "Grace",
+        "Codex"
+      ],
+      "classItems": [
+        "A romance novel",
+        "A letter you’ve never opened"
+      ],
+      "hopeFeature": {
+        "name": "Make a Scene",
+        "cost": 3,
+        "text": "Spend 3 Hope to distract all enemies in Close range."
+      },
+      "features": [
+        {
+          "name": "Bard Feature",
+          "text": "Habilidade inerente da classe Bard."
+        }
+      ],
+      "subclasses": [
+        "Troubadour",
+        "Wordsmith"
+      ],
+      "description": "Classe Bard (SRD 2.0). Domínios: Grace, Codex."
+    }
+  },
+  {
+    "id": "53394dd1-09bb-437e-ab08-5d5334f9e36c",
+    "name": "Brawler",
+    "type": "class",
+    "data": {
+      "evasion": 10,
+      "hp": 6,
+      "domains": [
+        "Valor",
+        "Bone"
+      ],
+      "classItems": [
+        "Hand wraps from a mentor",
+        "A book detailing your secret hobby"
+      ],
+      "hopeFeature": {
+        "name": "Unstoppable Force",
+        "cost": 3,
+        "text": "Spend 3 Hope to ignore all damage from one attack."
+      },
+      "features": [
+        {
+          "name": "Brawler Feature",
+          "text": "Habilidade inerente da classe Brawler."
+        }
+      ],
+      "subclasses": [
+        "Bruiser",
+        "Gladiator"
+      ],
+      "description": "Classe Brawler (SRD 2.0). Domínios: Valor, Bone."
+    }
+  },
+  {
+    "id": "0b2f433a-d3b2-480a-bbae-54e6191e4614",
+    "name": "Druid",
+    "type": "class",
+    "data": {
+      "evasion": 10,
+      "hp": 6,
+      "domains": [
+        "Sage",
+        "Arcana"
+      ],
+      "classItems": [
+        "A pouch of strange stones and bones",
+        "An odd pendant"
+      ],
+      "hopeFeature": {
+        "name": "Nature’s Embrace",
+        "cost": 3,
+        "text": "Spend 3 Hope to clear 2 Stress or heal an ally for 2 HP."
+      },
+      "features": [
+        {
+          "name": "Druid Feature",
+          "text": "Habilidade inerente da classe Druid."
+        }
+      ],
+      "subclasses": [
+        "Warden of Renewal",
+        "Warden of the Elements"
+      ],
+      "description": "Classe Druid (SRD 2.0). Domínios: Sage, Arcana."
+    }
+  },
+  {
+    "id": "87e07355-72f8-4fec-b119-39a19af070fb",
+    "name": "Guardian",
+    "type": "class",
+    "data": {
+      "evasion": 9,
+      "hp": 7,
+      "domains": [
+        "Valor",
+        "Blade"
+      ],
+      "classItems": [
+        "A mentor’s totem",
+        "A secret key"
+      ],
+      "hopeFeature": {
+        "name": "Shield of Faith",
+        "cost": 3,
+        "text": "Spend 3 Hope to protect an ally in Close range from all incoming damage."
+      },
+      "features": [
+        {
+          "name": "Guardian Feature",
+          "text": "Habilidade inerente da classe Guardian."
+        }
+      ],
+      "subclasses": [
+        "Stalwart",
+        "Vengeance"
+      ],
+      "description": "Classe Guardian (SRD 2.0). Domínios: Valor, Blade."
+    }
+  },
+  {
+    "id": "27a2237d-d430-4da3-9e4a-01220c27c020",
+    "name": "Ranger",
+    "type": "class",
+    "data": {
+      "evasion": 12,
+      "hp": 6,
+      "domains": [
+        "Bone",
+        "Sage"
+      ],
+      "classItems": [
+        "A trophy from your first hunt",
+        "A broken compass"
+      ],
+      "hopeFeature": {
+        "name": "Deadly Accuracy",
+        "cost": 3,
+        "text": "Spend 3 Hope to turn a failure into a success with Hope on an attack roll."
+      },
+      "features": [
+        {
+          "name": "Ranger Feature",
+          "text": "Habilidade inerente da classe Ranger."
+        }
+      ],
+      "subclasses": [
+        "Beastbound",
+        "Wayfinder"
+      ],
+      "description": "Classe Ranger (SRD 2.0). Domínios: Bone, Sage."
+    }
+  },
+  {
+    "id": "465fd3a4-ce2c-4ff7-8f02-66ff6e1d5c4a",
+    "name": "Rogue",
+    "type": "class",
+    "data": {
+      "evasion": 12,
+      "hp": 6,
+      "domains": [
+        "Midnight",
+        "Grace"
+      ],
+      "classItems": [
+        "A set of forgery tools",
+        "A grappling hook"
+      ],
+      "hopeFeature": {
+        "name": "Slippery",
+        "cost": 3,
+        "text": "Spend 3 Hope to vanish from sight until your next action."
+      },
+      "features": [
+        {
+          "name": "Rogue Feature",
+          "text": "Habilidade inerente da classe Rogue."
+        }
+      ],
+      "subclasses": [
+        "Nightwalker",
+        "Syndicate"
+      ],
+      "description": "Classe Rogue (SRD 2.0). Domínios: Midnight, Grace."
+    }
+  },
+  {
+    "id": "7c1f71b2-441e-4a54-9a21-0e41a1f0ce54",
+    "name": "Seraph",
+    "type": "class",
+    "data": {
+      "evasion": 9,
+      "hp": 7,
+      "domains": [
+        "Splendor",
+        "Valor"
+      ],
+      "classItems": [
+        "A bundle of offerings",
+        "A sigil of your god"
+      ],
+      "hopeFeature": {
+        "name": "Divine Intervention",
+        "cost": 3,
+        "text": "Spend 3 Hope to clear 1 HP on up to 3 allies in Close range."
+      },
+      "features": [
+        {
+          "name": "Seraph Feature",
+          "text": "Habilidade inerente da classe Seraph."
+        }
+      ],
+      "subclasses": [
+        "Divine Wielder",
+        "Winged Sentinel"
+      ],
+      "description": "Classe Seraph (SRD 2.0). Domínios: Splendor, Valor."
+    }
+  },
+  {
+    "id": "e0a297b1-8c62-4921-b33e-d6d04b4d8ae3",
+    "name": "Sorcerer",
+    "type": "class",
+    "data": {
+      "evasion": 10,
+      "hp": 6,
+      "domains": [
+        "Arcana",
+        "Midnight"
+      ],
+      "classItems": [
+        "A whispering orb",
+        "A family heirloom"
+      ],
+      "hopeFeature": {
+        "name": "Arcane Surge",
+        "cost": 3,
+        "text": "Spend 3 Hope to double the damage of your next spell."
+      },
+      "features": [
+        {
+          "name": "Sorcerer Feature",
+          "text": "Habilidade inerente da classe Sorcerer."
+        }
+      ],
+      "subclasses": [
+        "Elemental Origin",
+        "Primal Origin"
+      ],
+      "description": "Classe Sorcerer (SRD 2.0). Domínios: Arcana, Midnight."
+    }
+  },
+  {
+    "id": "b1af26c9-71b5-4212-957a-efe74697c1f0",
+    "name": "Warlock",
+    "type": "class",
+    "data": {
+      "evasion": 11,
+      "hp": 5,
+      "domains": [
+        "Dread",
+        "Grace"
+      ],
+      "classItems": [
+        "A patron carving",
+        "A ring that refuses to come off"
+      ],
+      "hopeFeature": {
+        "name": "Dark Bargain",
+        "cost": 3,
+        "text": "Spend 3 Hope to force an enemy to roll with Disadvantage."
+      },
+      "features": [
+        {
+          "name": "Warlock Feature",
+          "text": "Habilidade inerente da classe Warlock."
+        }
+      ],
+      "subclasses": [
+        "Pact of the Blade",
+        "Pact of the Chain"
+      ],
+      "description": "Classe Warlock (SRD 2.0). Domínios: Dread, Grace."
+    }
+  },
+  {
+    "id": "5d8c79c1-7b90-4ff9-bd50-5d6e91bbb815",
+    "name": "Warrior",
+    "type": "class",
+    "data": {
+      "evasion": 11,
+      "hp": 6,
+      "domains": [
+        "Blade",
+        "Bone"
+      ],
+      "classItems": [
+        "A sketch of a loved one",
+        "A whetstone"
+      ],
+      "hopeFeature": {
+        "name": "Battle Cry",
+        "cost": 3,
+        "text": "Spend 3 Hope to grant all allies +2 to their next action."
+      },
+      "features": [
+        {
+          "name": "Warrior Feature",
+          "text": "Habilidade inerente da classe Warrior."
+        }
+      ],
+      "subclasses": [
+        "Call of the Brave",
+        "Call of the Slayer"
+      ],
+      "description": "Classe Warrior (SRD 2.0). Domínios: Blade, Bone."
+    }
+  },
+  {
+    "id": "54f63335-339f-465e-9d65-1786a6d1e55b",
+    "name": "Witch",
+    "type": "class",
+    "data": {
+      "evasion": 10,
+      "hp": 6,
+      "domains": [
+        "Sage",
+        "Dread"
+      ],
+      "classItems": [
+        "A tiny harmless creature",
+        "A scrying stone"
+      ],
+      "hopeFeature": {
+        "name": "Hex",
+        "cost": 3,
+        "text": "Spend 3 Hope to bestow vulnerability upon a target."
+      },
+      "features": [
+        {
+          "name": "Witch Feature",
+          "text": "Habilidade inerente da classe Witch."
+        }
+      ],
+      "subclasses": [
+        "Coven of Curses",
+        "Coven of Shadows"
+      ],
+      "description": "Classe Witch (SRD 2.0). Domínios: Sage, Dread."
+    }
+  },
+  {
+    "id": "b2a8bd36-9534-4f41-9caf-0d69b80218a4",
+    "name": "Wizard",
+    "type": "class",
+    "data": {
+      "evasion": 11,
+      "hp": 5,
+      "domains": [
+        "Codex",
+        "Splendor"
+      ],
+      "classItems": [
+        "A book you are translating",
+        "A harmless miniature elemental"
+      ],
+      "hopeFeature": {
+        "name": "Brilliant Insight",
+        "cost": 3,
+        "text": "Spend 3 Hope to add +3 to any knowledge or spellcast roll."
+      },
+      "features": [
+        {
+          "name": "Wizard Feature",
+          "text": "Habilidade inerente da classe Wizard."
+        }
+      ],
+      "subclasses": [
+        "School of Knowledge",
+        "School of War"
+      ],
+      "description": "Classe Wizard (SRD 2.0). Domínios: Codex, Splendor."
+    }
+  }
+]

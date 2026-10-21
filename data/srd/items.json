@@ -1,0 +1,893 @@
+[
+  {
+    "id": "fd5a6efa-8b63-48f9-95d8-0ae3c50855cf",
+    "name": "Stride Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Agility Roll."
+    }
+  },
+  {
+    "id": "e23864d9-9ebe-49b1-a99e-34eb27ff06eb",
+    "name": "Bolster Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Strength Roll."
+    }
+  },
+  {
+    "id": "fa4b9a49-44d6-44c6-aca1-50ba09bd0a28",
+    "name": "Control Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Finesse Roll."
+    }
+  },
+  {
+    "id": "22ccc1a8-0a33-4540-aa15-51618ccbf3e6",
+    "name": "Attune Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Instinct Roll."
+    }
+  },
+  {
+    "id": "ba66d821-c4c8-4917-935e-478eb339adcb",
+    "name": "Charm Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Presence Roll."
+    }
+  },
+  {
+    "id": "999024cc-e7a6-4c31-b93a-ee284105f37e",
+    "name": "Enlighten Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your next Knowledge Roll."
+    }
+  },
+  {
+    "id": "b0272917-3c17-4b16-aa26-71140817e78e",
+    "name": "Varik Leaves",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can eat these paired leaves to immediately gain 2 Hope."
+    }
+  },
+  {
+    "id": "32cb6803-b0e3-4704-ba16-2613ee6a1d32",
+    "name": "Vial of Moondrip",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "When you drink the contents of this vial, you can see in total darkness until your next rest."
+    }
+  },
+  {
+    "id": "53456e74-9a6a-4eef-921d-4814e5e45c8b",
+    "name": "Morphing Clay",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can spend a Hope to use this clay, altering your face enough to make you unrecognizable until your next rest."
+    }
+  },
+  {
+    "id": "fa5b68f6-ba4e-49d0-ab14-99989129a0aa",
+    "name": "Health Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "Clear 1d4+1 HP."
+    }
+  },
+  {
+    "id": "dc98cb27-f2b7-43d4-ab92-8ccb52bd7120",
+    "name": "Stamina Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "Clear 1d4+1 Stress."
+    }
+  },
+  {
+    "id": "25ddc04a-79db-4af4-a94d-02f1a89ac01c",
+    "name": "Armor Stitcher",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this stitcher to spend any number of Hope and clear that many Armor Slots."
+    }
+  },
+  {
+    "id": "b4987f36-10c3-4ee6-9bee-4bb96baf8a20",
+    "name": "Gill Salve",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can apply this salve to your neck to breathe underwater for a number of minutes equal to your level."
+    }
+  },
+  {
+    "id": "e35e65ad-89c2-40ce-8a22-8417c61b2cbf",
+    "name": "Redthorn Saliva",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can apply this saliva to a weapon that deals physical damage to add a d12 to your next damage roll with that weapon."
+    }
+  },
+  {
+    "id": "9bc2b79b-8998-4d96-a948-482e2726197b",
+    "name": "Channelstone",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this stone to take a spell or grimoire from your vault, use it once, and return it to your vault."
+    }
+  },
+  {
+    "id": "1e26ec28-b8c5-471a-9688-d5735e86f0dd",
+    "name": "Mythic Dust",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can apply this dust to a weapon that deals magic damage to add a d12 to your next damage roll with that weapon."
+    }
+  },
+  {
+    "id": "8d76bf41-d56f-436d-9b8c-fe1a6e487af5",
+    "name": "Acidpaste",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "This paste eats away walls and other surfaces in bright flashes."
+    }
+  },
+  {
+    "id": "fc435f86-90c8-4815-82d2-91a1d479d572",
+    "name": "Hopehold Flare",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "When you use this flare, allies within Close range roll a d6 when they spend a Hope. On a result of 6, they gain the effect of that Hope without spending it. The flare lasts until the end of the scene."
+    }
+  },
+  {
+    "id": "6472142d-9207-4b7b-81f5-53f86489b80c",
+    "name": "Featherbone",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this bone to control your falling speed for a number of minutes equal to your level."
+    }
+  },
+  {
+    "id": "84547db6-a7a3-4cdb-b127-47141979b9f3",
+    "name": "Dripfang Poison",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "A creature who consumes this poison takes 8d10 direct magic damage."
+    }
+  },
+  {
+    "id": "10ac51c4-4101-40f0-a1cf-62ae64e6f898",
+    "name": "Ogre Musk",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this musk to prevent anyone from tracking you by mundane or magical means until your next rest."
+    }
+  },
+  {
+    "id": "25a80eff-885c-4437-975f-f977593a3a63",
+    "name": "Wingsprout",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You gain magic wings that allow you to fly for a number of minutes equal to your level."
+    }
+  },
+  {
+    "id": "ed8fd619-4009-49c9-b899-af31fa582e3a",
+    "name": "Sleeping Sap",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this potion to fall asleep for a full night’s rest. You clear all Stress upon waking."
+    }
+  },
+  {
+    "id": "4a345aab-bc25-45f1-b6e6-b28526366fa6",
+    "name": "Feast of Xuria",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can eat this meal to clear all HP and Stress and gain 1d4 Hope."
+    }
+  },
+  {
+    "id": "0615fb21-e8e8-4aec-982b-5fed88ccead7",
+    "name": "Bonding Honey",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "This honey can be used to glue two objects together permanently."
+    }
+  },
+  {
+    "id": "815c4ee9-5edc-4f8a-8fbb-88322e83fb38",
+    "name": "Shrinking Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this potion to halve your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Agility and a −1 penalty to your Proficiency."
+    }
+  },
+  {
+    "id": "4b36765c-f19a-43de-bd81-ba8bc89f8b27",
+    "name": "Growing Potion",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this potion to double your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Strength and a +1 bonus to your Proficiency."
+    }
+  },
+  {
+    "id": "2e4d6afe-2ce5-441b-ba5b-85c310ffe054",
+    "name": "Sweet Moss",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can consume this moss during a rest to clear 1d10 HP or 1d10 Stress."
+    }
+  },
+  {
+    "id": "14c77b27-b0dc-4345-b114-f7c0991f23ca",
+    "name": "Blinding Orb",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can activate this orb to create a flash of bright light. All targets within Close range become Vulnerable until they mark HP."
+    }
+  },
+  {
+    "id": "544cadc8-794c-4961-9f7f-43d025dc1c24",
+    "name": "Stardrop",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this stardrop to summon a hailstorm of comets that deals 8d20 physical damage to all targets within Very Far range. 81 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "9da94e9d-114b-483e-98cf-279f73e397b6",
+    "name": "Pipeweed",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "When you choose the Clear Stress downtime move during a short rest, you can smoke this non-intoxicating leaf to clear an additional Stress. Any other PCs who chose the Clear Stress downtime move also gain this benefit."
+    }
+  },
+  {
+    "id": "c18cb8f3-bf2f-4d4d-9928-f693e92e37ea",
+    "name": "Red Ooze Oil",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Ignites the target. While Ignited, the target takes 1d4 magic damage when they take the spotlight."
+    }
+  },
+  {
+    "id": "c628da3b-44e9-4ff3-ac9c-22ab7fdefd60",
+    "name": "Instant Camp",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can unfold this small mechanical box into a camping tent large enough to safely house six people. The tent collapses at the end of your next long rest."
+    }
+  },
+  {
+    "id": "6f82d3c4-58cc-4d5f-b71c-f829f2acd9e8",
+    "name": "Snapthorn Seed",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can throw this seed at a point you can see. It explodes into a tangle of binding vines that temporarily Restrains all creatures within Close range of that point."
+    }
+  },
+  {
+    "id": "ffacd344-ff10-44a9-8f8a-93bfd1d52506",
+    "name": "Sprite Bottle",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "When you mark your last Hit Point, this bottle shatters to release the Sprite inside. The Sprite clears all your Hit Points before fading from the Mortal Realm."
+    }
+  },
+  {
+    "id": "c4d63323-f17c-4bf4-96e0-4ccefbe0a74f",
+    "name": "Gravity Bomb",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can throw this peach-sized mechanical orb at a point within Far range. It implodes and pulls all creatures and objects within Close range of that point into Melee range with it."
+    }
+  },
+  {
+    "id": "8c31ca84-fd48-4c4b-a502-6400628b215b",
+    "name": "Gossip Flower",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can plant this seed in soil. It instantly grows into a small flower that records everything it hears for up to one week. When plucked, the flower recites what it recorded in real time, then withers."
+    }
+  },
+  {
+    "id": "ba87c641-3873-4f7e-88b7-5c30e8cd4481",
+    "name": "Green Ooze Oil",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Corrodes the target. While Corroded, the target gains a −2 penalty to their damage thresholds."
+    }
+  },
+  {
+    "id": "9385a35a-67c2-446d-93c3-6b57361c2361",
+    "name": "Sunlight Orb",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can shatter this orb to make the area within Very Far range appear as though it’s sunlit daytime for the next 24 hours."
+    }
+  },
+  {
+    "id": "630faf31-8308-4ed1-bf84-84d0a77ae790",
+    "name": "Moonlight Orb",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can shatter this orb to make the area within Very Far range appear as though it’s moonlit nighttime for the next 24 hours."
+    }
+  },
+  {
+    "id": "a7e4e8cb-ceb6-40b5-8706-f17b1a381d39",
+    "name": "Midas Flask",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can pour this small flask of alchemical liquid over a mundane item to instantly transmute it into a handful of gold."
+    }
+  },
+  {
+    "id": "38f50d59-90cb-49c3-8790-995f57506f47",
+    "name": "Staff of Reversal",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can break this staff against the ground to reverse one magical transformation or effect within Far range."
+    }
+  },
+  {
+    "id": "ad00557b-ee3e-453d-8569-a31878996e9b",
+    "name": "Emberite Shard",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Ablaze. While Ablaze, a creature must roll a d4 whenever they make an action roll. On a result of 1, they mark a Hit Point. On a result of 4, they clear the Ablaze condition."
+    }
+  },
+  {
+    "id": "90e18676-6799-4443-b310-cec6514d7d6f",
+    "name": "Arcticite Shard",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Restrained by ice."
+    }
+  },
+  {
+    "id": "74cd634f-284c-48c5-b147-e2ad13c5e236",
+    "name": "Fulgurite Shard",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and mark 1d4 Stress as lightning crackles through the area."
+    }
+  },
+  {
+    "id": "74466ab9-ad6e-4cbb-a502-ce5d49647d2e",
+    "name": "Phial of Deep Ink",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this bottle of ink to transform into a cephalopod of roughly your size for the next hour. You gain rubbery skin, soft bones, the ability to breathe underwater, and new limbs until you have eight total."
+    }
+  },
+  {
+    "id": "e706c171-1e96-4ff6-b7c7-12390d8fb7e7",
+    "name": "Formoid Serum",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this potion to become a swarm of 16 million ants until the end of the scene. You keep and have access to all equipment, loot, and features."
+    }
+  },
+  {
+    "id": "09cb1470-c15d-41f3-be14-46dbb3743636",
+    "name": "Steelskin Salve",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can apply this salve to your skin to gain a bonus to your damage thresholds equal to your tier until the end of the scene."
+    }
+  },
+  {
+    "id": "fb9db2a9-9a4c-4dc7-a2e0-8d108898328a",
+    "name": "Snakeskin Spirit",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this potion to slough off your outer layer of skin and heal a scar. 83 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "daa4601a-2ab7-47b6-8923-02c4c0c0c7ff",
+    "name": "Drakemantle",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can use this enchanted ancient dragon hide to gain draconic characteristics until the end of the scene, when the hide falls aways in tatters. Until then, you can fly and gain a +5 bonus to your damage thresholds and a +1 bonus to your Proficiency."
+    }
+  },
+  {
+    "id": "e5fa2d16-701a-41b0-a2a9-f31930384053",
+    "name": "Lionheart Tonic",
+    "type": "consumable",
+    "data": {
+      "quantity": 1,
+      "description": "You can drink this tonic to gain a +1 bonus to your Proficiency until you roll with Fear."
+    }
+  },
+  {
+    "id": "7e9228e5-f5df-49b9-b141-0202dba5c67d",
+    "name": "Piper Whistle",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This handcrafted whistle has a distinctive sound. When you blow this whistle, its piercing tone can be heard within a 1-mile radius."
+    }
+  },
+  {
+    "id": "ec3aa382-044d-4859-8d7e-173eeafe7f01",
+    "name": "Charging Quiver",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you succeed on an attack with an arrow stored in this quiver, gain a bonus to the damage roll equal to your current tier."
+    }
+  },
+  {
+    "id": "5e6fa046-b9fd-4b6e-bbdc-5e7694c1f7ec",
+    "name": "Speaking Orbs",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This pair of orbs allows any creatures holding them to communicate with each other across any distance."
+    }
+  },
+  {
+    "id": "52c71d2d-8586-440e-b2c7-64b609108d5d",
+    "name": "Manacles",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This pair of locking cuffs comes with a key."
+    }
+  },
+  {
+    "id": "7d070c5a-c8de-4019-85b3-57ec0f9c9df6",
+    "name": "Arcane Cloak",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "A creature with a Spellcast trait wearing this cloak can adjust its color, texture, and size at will."
+    }
+  },
+  {
+    "id": "9df6db8d-a81e-48ef-afc3-9c1ce82b8cca",
+    "name": "Woven Net",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can make a Finesse Roll using this net to trap a small creature. A trapped target can break free with a successful Attack Roll (16)."
+    }
+  },
+  {
+    "id": "3862d6eb-8cd2-4a9a-88e1-aba8be905dff",
+    "name": "Fire Jar",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can pour out the strange liquid contents of this jar to instantly produce fire. The contents regenerate when you take a long rest."
+    }
+  },
+  {
+    "id": "e3ffc7c0-e40d-4977-b293-221c2065d64c",
+    "name": "Suspended Rod",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This flat rod is inscribed with runes. When you activate the rod, it is immediately suspended in place. Until the rod is deactivated, it can’t move, doesn’t abide by the rules of gravity, and remains in place."
+    }
+  },
+  {
+    "id": "312ca315-58af-4f7f-879e-545a5c49c4ef",
+    "name": "Empty Chest",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This magical chest appears empty. When you speak a specific trigger word or action and open the chest, you can see the items stored within it."
+    }
+  },
+  {
+    "id": "cda3bfbd-2bc8-491d-b898-09cdfee57331",
+    "name": "Companion Case",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This case can fit a small animal companion. While the companion is inside, the animal and case are immune to all damage and harmful effects."
+    }
+  },
+  {
+    "id": "2e91f2a5-e09d-4b0b-88ef-b5a83872ac29",
+    "name": "Valorstone",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this stone to armor that doesn’t already have a feature. The armor gains the following feature. Resilient: Before you mark your last Armor Slot, roll a d6. On a result of 6, reduce the severity by one threshold without marking an Armor Slot."
+    }
+  },
+  {
+    "id": "924a114c-7c48-423e-af7f-d6dc376cf486",
+    "name": "Skeleton Key",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you use this key to open a locked door, you gain advantage on the Finesse Roll."
+    }
+  },
+  {
+    "id": "280ca41e-acab-467c-8e3e-63f8b65df23d",
+    "name": "Corrector Sprite",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This tiny sprite sits in the curve of your ear canal and whispers helpful advice during combat. Once per short rest, you can gain advantage on an attack roll."
+    }
+  },
+  {
+    "id": "05cacd71-acf9-40c5-a95b-bd566dfd3335",
+    "name": "Gecko Gloves",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can climb up vertical surfaces and across ceilings."
+    }
+  },
+  {
+    "id": "6805bfb4-9382-425b-8a9b-17c2ae9cb2fa",
+    "name": "Lorekeeper",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can store the name and details of up to three hostile creatures inside this book. You gain a +1 bonus to action rolls against those creatures."
+    }
+  },
+  {
+    "id": "d25746ac-fca4-467b-a58f-25fb06179ece",
+    "name": "Bloodstone",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this stone to a weapon that doesn’t already have a feature. The weapon gains the following feature. Brutal: When you roll the maximum value on a damage die, roll an additional damage die."
+    }
+  },
+  {
+    "id": "a534023d-c908-409c-95c3-ef509f07007c",
+    "name": "Greatstone",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this stone to a weapon that doesn’t already have a feature. The weapon gains the following feature. Powerful: On a successful attack, roll an additional damage die and discard the lowest result."
+    }
+  },
+  {
+    "id": "e82a34fe-a00e-4c9f-9aa7-1707ba0876c4",
+    "name": "Ring of Silence",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "Spend a Hope to activate this ring. Your footsteps are silent until your next rest."
+    }
+  },
+  {
+    "id": "d2da981d-8370-45aa-bfd8-0e54c5143814",
+    "name": "Calming Pendant",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you would mark your last Stress, roll a d6. On a result of 5 or higher, don’t mark it."
+    }
+  },
+  {
+    "id": "55f9ae4b-9a74-43ca-9af8-8880859e77d7",
+    "name": "Dual Flask",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This flask can hold two different liquids. You can swap between them by flipping a small switch on the flask’s side."
+    }
+  },
+  {
+    "id": "20e1e863-88cf-4a77-9f8f-9f85cf8acbcd",
+    "name": "Bag of Ficklesand",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can convince this small bag of sand to be much heavier or lighter with a successful Presence Roll (10). Additionally, on a successful Finesse Roll (10), you can blow a bit of sand into a target’s face to make them temporarily Vulnerable."
+    }
+  },
+  {
+    "id": "ace20e3f-dd9e-45bf-9c15-1f93ae4cfcfe",
+    "name": "Airblade Charm",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this charm to a weapon with a Melee range. Three times per rest, you can activate the charm and attack a target within Close range."
+    }
+  },
+  {
+    "id": "8dc5544d-30ee-4375-8f94-60f52b76351f",
+    "name": "Portal Seed",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can plant this seed in the ground to grow a portal in that spot. The portal is ready to use in 24 hours. You can use this portal to travel to any other location where you planted a portal seed. A portal can be destroyed by dealing any amount of magic damage to it."
+    }
+  },
+  {
+    "id": "a6db3632-6b9f-4526-a38e-92744952b5de",
+    "name": "Infinite Bag",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you store items in this bag, they are kept in a pocket dimension that never runs out of space. You can retrieve an item at any time."
+    }
+  },
+  {
+    "id": "f9ba5fc5-f095-4e2f-a83e-716c7db0877b",
+    "name": "Stride Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Agility. You can only carry one relic."
+    }
+  },
+  {
+    "id": "f76a8d30-2e2b-45f9-b7dc-3d2ea89b6dd9",
+    "name": "Bolster Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Strength. You can only carry one relic."
+    }
+  },
+  {
+    "id": "4413f272-d429-4673-9aa9-2ed61167a24a",
+    "name": "Control Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Finesse. You can only carry one relic."
+    }
+  },
+  {
+    "id": "9efe656f-9d01-4100-ba7b-30c6f6cea85d",
+    "name": "Attune Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Instinct. You can only carry one relic. 76 Daggerheart SRD"
+    }
+  },
+  {
+    "id": "a3278e07-55c2-4625-948d-4090c7977019",
+    "name": "Charm Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Presence. You can only carry one relic."
+    }
+  },
+  {
+    "id": "02ab6da7-cf69-4671-8d62-b4d76ca20603",
+    "name": "Enlighten Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to your Knowledge. You can only carry one relic."
+    }
+  },
+  {
+    "id": "c8eae32b-1802-4c74-afc9-85ef24babfc9",
+    "name": "Honing Relic",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You gain a +1 bonus to an Experience of your choice. You can only carry one relic."
+    }
+  },
+  {
+    "id": "500609f3-33b4-4051-99f3-3952c8aa268f",
+    "name": "Clay Companion",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you sculpt this ball of clay into a clay animal companion, it behaves as that animal. For example, a clay spider can spin clay webs, while a clay bird can fly. The clay companion retains memory and identity across different shapes, but they can adopt new mannerisms with each form."
+    }
+  },
+  {
+    "id": "1c2914d3-3dfa-451b-9450-218a75a31c9c",
+    "name": "Gem of Alacrity",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Agility when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "da53aa4d-e229-4a0b-b0f3-276f8fcc8b56",
+    "name": "Gem of Might",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Strength when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "c94290e7-5d69-49d8-afee-7188c693f1af",
+    "name": "Gem of Precision",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Finesse when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "3bfffc61-a494-4d80-9c22-6ac9549e5959",
+    "name": "Gem of Insight",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Instinct when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "e5b94d64-4198-4a42-9768-b5b96fe15864",
+    "name": "Gem of Audacity",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Presence when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "b3ec0468-a155-4843-a785-1a4e4f4433fb",
+    "name": "Gem of Sagacity",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can attach this gem to a weapon, allowing you to use your Knowledge when making an attack with that weapon."
+    }
+  },
+  {
+    "id": "2bd84d1b-5f1a-47af-89bd-8fc3ebc0c018",
+    "name": "Windup Toy",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This small mechanical device is shaped like a strixwolf pup and can be programmed to perform simple tricks."
+    }
+  },
+  {
+    "id": "fe687cbf-d883-4fbb-a2b1-f426fe3ca9b3",
+    "name": "Loaded Dice",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can choose what result this set of weighted dice rolls with a successful Finesse Roll (14). If you roll with Fear, anyone watching knows the dice are loaded."
+    }
+  },
+  {
+    "id": "10e965df-2476-4159-b951-da92aaf61f1d",
+    "name": "Hollowbark Horn",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "You can blow this horn to summon a small woodland creature to perform a simple task."
+    }
+  },
+  {
+    "id": "72915b9a-c716-49bd-9117-27627d2e5ef7",
+    "name": "Returning Ring",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you throw your primary weapon while wearing this ring, the weapon appears in your hand immediately after the attack."
+    }
+  },
+  {
+    "id": "2e39b87a-625b-431f-8bdb-6fb193e52afb",
+    "name": "Iron Veil",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This chain-link head covering renders the wearer invisible to fey creatures."
+    }
+  },
+  {
+    "id": "970de56c-d228-4617-b6b4-7f40b3ffabc4",
+    "name": "Ghoulskin Gloves",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you attack with a physical weapon while wearing these gloves, the damage is considered both physical and magic."
+    }
+  },
+  {
+    "id": "cc111ad3-8aae-4462-b0fd-33ab5b5c5d27",
+    "name": "Gloves of Alacrity",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "When you would mark a Stress to reload a weapon, you don’t mark it."
+    }
+  },
+  {
+    "id": "b7dc8306-944a-44d3-bed6-41e551937b11",
+    "name": "Force Disc",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This shimmering two-dimensional disc of magical force has a 4-foot diameter and is magically tethered to a pebble. The disc always floats 3 feet north of, and at the same elevation as, the pebble. The pebble has a mass equal to one-hundredth of the total mass carried by the disc."
+    }
+  },
+  {
+    "id": "3ddf39c0-14a6-40f5-9a23-a81865e816f3",
+    "name": "Molepaw Mittens",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "Spend a Hope to swim through earth as if it were water for the next 10 minutes."
+    }
+  },
+  {
+    "id": "b855f4e7-c131-4e3b-986c-b88a5e7f2a1b",
+    "name": "Portal Frames",
+    "type": "equipment",
+    "data": {
+      "quantity": 1,
+      "description": "This pair of small ornate frames, one red and one blue, are connected. Anything that passes into one exits from the other."
+    }
+  }
+]

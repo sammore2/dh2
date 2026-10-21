@@ -10,6 +10,10 @@
       "Weapon": "Arma",
       "Armor": "Armadura",
       "DomainCard": "Carta de Domínio",
+      "Class": "Classe",
+      "Subclass": "Subclasse",
+      "Ancestry": "Ancestralidade",
+      "Community": "Comunidade",
       "Feature": "Habilidade",
       "Consumable": "Consumível",
       "Equipment": "Equipamento"
@@ -17,8 +21,8 @@
     "Header": {
       "Name": "Nome do Personagem",
       "Pronouns": "Pronomes",
-      "Heritage": "Herança (Ancestralidade & Comunidade)",
-      "ClassSubclass": "Classe & Subclasse",
+      "Heritage": "Herança",
+      "ClassSubclass": "Classe",
       "Level": "Nível"
     },
     "Traits": {

@@ -1,12 +1,5 @@
-/**
- * @fileoverview Daggerheart SRD 2.0 — Custom Roll Card Renderer
- * Intercepts Loom's renderRollCard to provide rich, thematic chat cards
- * featuring Duality Dice (Hope & Fear), Critical Outcomes, and Interactive Actions.
- */
-
-import { extractDualityFromRoll } from '../lib/duality.mjs';
 import { resolveDamage, applyDamageToActor } from '../lib/damage.mjs';
-import { dispatchRoll, showToast, showSelectDialog } from '/_loom/sdk/index.js';
+import { api, dispatchRoll, showToast, showSelectDialog } from '/_loom/sdk/index.js';
 
 /**
  * Escapes HTML attributes safely.
@@ -15,159 +8,152 @@ import { dispatchRoll, showToast, showSelectDialog } from '/_loom/sdk/index.js';
  */
 function safeAttr(str) {
   if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 /**
- * Localizes a key if Loom i18n is available, otherwise returns fallback.
- * @param {string} key
- * @param {string} [fallback]
- * @returns {string}
+ * Helper to localize strings or fallback.
  */
 function localize(key, fallback = '') {
-  if (typeof window !== 'undefined' && window.Loom?.i18n?.localize) {
-    const text = window.Loom.i18n.localize(key);
-    if (text && text !== key) return text;
-  }
-  return fallback || key;
+  return window.Loom?.i18n?.localize ? window.Loom.i18n.localize(key) : (fallback || key);
 }
 
 /**
- * Renders a Daggerheart Duality Roll chat card.
- * @param {Object} roll - The Loom roll object
- * @param {Function} esc - The engine text escaper
- * @param {Function} original - The base renderer fallback
- * @returns {string} HTML string
+ * Intercepts default roll card rendering to present rich Daggerheart Duality Dice details,
+ * or weapon damage cards with inline Apply Damage actions.
  */
 export function renderDaggerheartRollCard(roll, esc, original) {
   const meta = roll?.meta || {};
-  const isDh = meta.system === 'Daggerheart' || meta.system === 'dh';
-
-  if (!isDh) {
+  if (meta.system !== 'Daggerheart') {
     return original(roll, esc);
   }
 
-  // Handle Weapon Damage Rolls
+  // Handle Weapon Damage Cards
   if (meta.rollType === 'damage') {
-    return renderDamageRollCard(roll, esc);
+    return renderWeaponDamageCard(roll, meta);
   }
 
-  // Handle Duality Action Rolls
-  const duality = extractDualityFromRoll(roll);
-  if (!duality) {
+  const isDuality = roll.meta?.isDuality;
+  if (!isDuality) {
     return original(roll, esc);
   }
 
-  const title = meta.weapon 
-    ? `${safeAttr(meta.weapon)} — ${safeAttr(meta.trait || 'Attack')}`
-    : `${safeAttr(meta.trait || 'Duality')} Check`;
+  const { hope, fear, isCrit, isSuccessWithHope, isSuccessWithFear, isFailureWithHope, isFailureWithFear, dc } = roll.meta;
+  const trait = meta.trait || '';
+  const modifier = Number(meta.modifier || 0);
+  const modStr = modifier !== 0 ? (modifier > 0 ? `+${modifier}` : `${modifier}`) : '';
+  const total = Number(roll.total ?? (hope + fear + modifier));
 
-  const actorId = safeAttr(meta.actorId || roll.actorId || '');
-  const outcomeText = getOutcomeDescription(duality.outcome);
+  // Visual cues
+  const cardBorderClass = isCrit
+    ? 'dh-card-crit'
+    : isSuccessWithHope
+    ? 'dh-card-hope-success'
+    : isSuccessWithFear
+    ? 'dh-card-fear-success'
+    : isFailureWithHope
+    ? 'dh-card-hope-failure'
+    : 'dh-card-fear-failure';
+
+  const badgeClass = isCrit
+    ? 'dh-badge-crit'
+    : (isSuccessWithHope || isFailureWithHope)
+    ? 'dh-badge-hope'
+    : 'dh-badge-fear';
+
+  const outcomeTitle = isCrit
+    ? localize('DH.Duality.CriticalSuccess', 'Critical Success!')
+    : isSuccessWithHope
+    ? localize('DH.Duality.SuccessHope', 'Success with Hope')
+    : isSuccessWithFear
+    ? localize('DH.Duality.SuccessFear', 'Success with Fear')
+    : isFailureWithHope
+    ? localize('DH.Duality.FailureHope', 'Failure with Hope')
+    : localize('DH.Duality.FailureFear', 'Failure with Fear');
+
+  const outcomeDesc = getOutcomeDescription({ isCrit, isSuccessWithHope, isSuccessWithFear, isFailureWithHope, isFailureWithFear });
+
+  const actorId = safeAttr(roll.actorId || '');
 
   return `
-<div class="dh-roll-card dh-duality-card" data-actor-id="${actorId}">
-  <!-- Card Header -->
+<div class="dh-roll-card ${cardBorderClass}" data-actor-id="${actorId}">
+  <!-- Header: Trait & Target DC -->
   <div class="dh-card-header">
     <div class="dh-card-title-group">
-      <span class="dh-card-crest">⚔</span>
-      <span class="dh-card-title">${title}</span>
+      <span class="dh-card-crest">⚔️</span>
+      <span class="dh-card-title">${trait} ${localize('DH.Roll.Check', 'Check')}</span>
     </div>
-    ${meta.difficulty ? `<span class="dh-card-dc">DC ${safeAttr(meta.difficulty)}</span>` : ''}
+    ${dc ? `<span class="dh-card-dc">DC ${dc}</span>` : ''}
   </div>
 
-  <!-- Duality Dice Arena -->
-  <div class="dh-duality-arena">
-    <!-- Hope Die -->
-    <div class="dh-die-container dh-die-hope ${duality.hope >= duality.fear ? 'dh-dominant' : ''}">
-      <span class="dh-die-label">${localize('DH.Duality.HopeDie', 'HOPE')}</span>
-      <div class="dh-die-shape">
-        <span class="dh-die-value">${duality.hope}</span>
-      </div>
+  <!-- Dice Breakdown: Hope (White/Gold) vs Fear (Dark/Purple) -->
+  <div class="dh-dice-container">
+    <div class="dh-die-slot dh-hope-slot ${hope > fear ? 'is-winner' : ''}">
+      <span class="dh-die-label">${localize('DH.Duality.Hope', 'Hope')}</span>
+      <span class="dh-die-val">${hope}</span>
     </div>
-
-    <!-- Center VS / Modifiers -->
-    <div class="dh-duality-center">
-      <div class="dh-total-display">
-        <span class="dh-total-label">TOTAL</span>
-        <span class="dh-total-value">${duality.total}</span>
-      </div>
-      <div class="dh-modifier-tag">
-        ${duality.traitMod >= 0 ? `+${duality.traitMod}` : duality.traitMod} ${safeAttr(meta.trait || '')}
-      </div>
+    <span class="dh-dice-vs">+</span>
+    <div class="dh-die-slot dh-fear-slot ${fear > hope ? 'is-winner' : ''}">
+      <span class="dh-die-label">${localize('DH.Duality.Fear', 'Fear')}</span>
+      <span class="dh-die-val">${fear}</span>
     </div>
-
-    <!-- Fear Die -->
-    <div class="dh-die-container dh-die-fear ${duality.fear > duality.hope ? 'dh-dominant' : ''}">
-      <span class="dh-die-label">${localize('DH.Duality.FearDie', 'FEAR')}</span>
-      <div class="dh-die-shape">
-        <span class="dh-die-value">${duality.fear}</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Outcome Banner -->
-  <div class="dh-outcome-banner ${duality.badgeClass}">
-    <div class="dh-outcome-title">
-      ${duality.isCritical ? '✦ ' : ''}${localize(duality.labelKey, duality.outcome)}${duality.isCritical ? ' ✦' : ''}
-    </div>
-    <div class="dh-outcome-desc">${outcomeText}</div>
-  </div>
-
-  <!-- Interactive Action Buttons -->
-  <div class="dh-card-actions">
-    ${duality.hopeGain > 0 ? `
-      <button type="button" class="dh-card-btn dh-btn-hope" data-action="dh-claim-hope" data-actor-id="${actorId}">
-        ${localize('DH.Duality.ClaimHope', `+${duality.hopeGain} Hope`)}
-      </button>
+    ${modifier !== 0 ? `
+      <span class="dh-dice-vs">${modifier > 0 ? '+' : '-'}</span>
+      <div class="dh-modifier-tag">${Math.abs(modifier)}</div>
     ` : ''}
+  </div>
 
-    ${duality.stressClear > 0 ? `
-      <button type="button" class="dh-card-btn dh-btn-stress" data-action="dh-clear-stress" data-actor-id="${actorId}">
-        ${localize('DH.Duality.ClearStress', 'Clear 1 Stress')}
-      </button>
-    ` : ''}
+  <!-- Outcome Banner & Total -->
+  <div class="dh-outcome-banner">
+    <div class="dh-outcome-badge ${badgeClass}">${outcomeTitle}</div>
+    <div class="dh-roll-total">
+      <span class="dh-total-num">${total}</span>
+      <span class="dh-total-formula">(${hope} + ${fear}${modStr})</span>
+    </div>
+  </div>
 
-    ${meta.weaponDamage ? `
+  <!-- Narrative Outcome Description -->
+  <div class="dh-outcome-desc">${outcomeDesc}</div>
+
+  <!-- Optional Weapon Damage Action Button -->
+  ${meta.weaponDamage ? `
+    <div class="dh-card-actions">
       <button type="button" class="dh-card-btn dh-btn-damage" data-action="dh-roll-damage" data-formula="${safeAttr(meta.weaponDamage)}" data-type="${safeAttr(meta.damageType || 'physical')}" data-actor-id="${actorId}">
         ${localize('DH.Duality.RollDamage', 'Roll Damage')} (${safeAttr(meta.weaponDamage)})
       </button>
-    ` : ''}
-  </div>
+    </div>
+  ` : ''}
 </div>
   `.trim();
 }
 
 /**
- * Renders weapon damage rolls.
+ * Renders a specialized damage card with threshold info and apply button.
  */
-function renderDamageRollCard(roll, esc) {
-  const meta = roll?.meta || {};
-  const total = roll.total ?? 0;
+function renderWeaponDamageCard(roll, meta) {
+  const total = Number(roll.total ?? 0);
+  const weapon = safeAttr(meta.weapon || 'Arma');
   const dmgType = safeAttr(meta.damageType || 'physical');
-  const actorId = safeAttr(meta.actorId || roll.actorId || '');
-  const weapon = safeAttr(meta.weapon || 'Weapon');
+  const actorId = safeAttr(roll.actorId || '');
 
   return `
 <div class="dh-roll-card dh-damage-card" data-actor-id="${actorId}">
   <div class="dh-card-header">
     <div class="dh-card-title-group">
       <span class="dh-card-crest">💥</span>
-      <span class="dh-card-title">${weapon} Damage</span>
+      <span class="dh-card-title">${weapon} — ${localize('DH.Combat.Damage', 'Dano')}</span>
     </div>
-    <span class="dh-damage-type-badge ${dmgType}">${dmgType.toUpperCase()}</span>
+    <span class="dh-modifier-tag">${dmgType.toUpperCase()}</span>
   </div>
 
-  <div class="dh-damage-total-box">
-    <span class="dh-damage-total-number">${total}</span>
-    <span class="dh-damage-formula">${safeAttr(roll.formula || '')}</span>
+  <div class="dh-outcome-banner" style="margin: 12px 0;">
+    <div class="dh-roll-total">
+      <span class="dh-total-num">${total}</span>
+      <span class="dh-total-formula">${roll.formula || ''}</span>
+    </div>
   </div>
 
+  <!-- Quick Damage Severity Reference (SRD 2.0) -->
   <div class="dh-threshold-reference">
     <span class="dh-ref-item">Minor: 1 HP</span>
     <span class="dh-ref-sep">•</span>
@@ -179,7 +165,7 @@ function renderDamageRollCard(roll, esc) {
   <!-- Apply Damage Button -->
   <div class="dh-card-actions">
     <button type="button" class="dh-card-btn dh-btn-damage" data-action="dh-apply-damage" data-damage="${total}">
-      🎯 ${localize('DH.Combat.ApplyDamage', 'Aplicar Dano ao Alvo')}
+      ⚡ ${localize('DH.Combat.ApplyDamage', 'Aplicar Dano ao Alvo')}
     </button>
   </div>
 </div>
@@ -188,99 +174,52 @@ function renderDamageRollCard(roll, esc) {
 
 /**
  * Returns user-facing outcome text according to SRD 2.0.
- * @param {string} outcome
- * @returns {string}
  */
-function getOutcomeDescription(outcome) {
-  switch (outcome) {
-    case 'CRITICAL':
-      return 'Doubles rolled! Automatic Critical Success. Take +1 Hope or clear 1 Stress!';
-    case 'SUCCESS_WITH_HOPE':
-      return 'The action succeeds, and you gain 1 Hope!';
-    case 'SUCCESS_WITH_FEAR':
-      return 'The action succeeds, but the GM gains 1 Fear (or introduces a complication).';
-    case 'FAILURE_WITH_HOPE':
-      return 'The action fails, but you gain 1 Hope for your effort.';
-    case 'FAILURE_WITH_FEAR':
-      return 'The action fails and the GM makes a hard move and gains 1 Fear.';
-    case 'HOPE_DOMINANT':
-      return 'Hope Die is dominant (+1 Hope).';
-    case 'FEAR_DOMINANT':
-      return 'Fear Die is dominant (GM gains 1 Fear).';
-    default:
-      return '';
+function getOutcomeDescription(flags) {
+  if (flags.isCrit) {
+    return localize('DH.Duality.CritDesc', 'Sucesso Crítico! A ação foi brilhantemente bem-sucedida. O jogador limpa 1 Estresse ou ganha 1 Esperança adicional.');
   }
+  if (flags.isSuccessWithHope) {
+    return localize('DH.Duality.SuccessHopeDesc', 'Sucesso! Você supera o desafio e ganha 1 Esperança.');
+  }
+  if (flags.isSuccessWithFear) {
+    return localize('DH.Duality.SuccessFearDesc', 'Sucesso com Consequência! A ação foi bem-sucedida, mas o Mestre ganha 1 Medo ou introduz uma complicação.');
+  }
+  if (flags.isFailureWithHope) {
+    return localize('DH.Duality.FailureHopeDesc', 'Falha com Esperança. A ação falha ou encontra um revés, mas você ganha 1 Esperança.');
+  }
+  if (flags.isFailureWithFear) {
+    return localize('DH.Duality.FailureFearDesc', 'Falha com Medo! A ação falha gravemente e o Mestre ganha 1 Medo.');
+  }
+  return '';
 }
 
 /**
- * Initializes global click handlers for chat card interactive buttons.
+ * Global chat delegation for interactive buttons in roll cards.
  */
 export function registerChatCardListeners() {
-  if (typeof document === 'undefined') return;
-
-  document.addEventListener('click', async (e) => {
-    const target = e.target.closest('[data-action^="dh-"]');
+  document.addEventListener('click', async (event) => {
+    const target = event.target.closest('[data-action]');
     if (!target) return;
 
     const action = target.dataset.action;
-    const actorId = target.dataset.actorId;
 
-    if (!actorId) return;
-
-    // Fetch Actor from Loom game state
-    const actor = window.Loom?.game?.actors?.get
-      ? window.Loom.game.actors.get(actorId)
-      : (window.Loom?.actors?.get ? window.Loom.actors.get(actorId) : null);
-
-    const notify = (msg, type = 'info') => {
-      if (typeof showToast === 'function') {
-        showToast(msg, type);
-      } else if (window.Loom?.showToast) {
-        window.Loom.showToast(msg, type);
-      }
-    };
-
-    if (action === 'dh-claim-hope') {
-      if (!actor) {
-        notify('Ator não encontrado.', 'error');
-        return;
-      }
-      const currentHope = Number(actor.systemData?.hope?.value || 0);
-      const maxHope = Number(actor.systemData?.hope?.max || 6);
-      if (currentHope < maxHope) {
-        await actor.update({ 'systemData.hope.value': currentHope + 1 });
-        notify('+1 Esperança adicionada à ficha!', 'success');
-      } else {
-        notify('Esperança já está no máximo!', 'warning');
-      }
-    } else if (action === 'dh-clear-stress') {
-      if (!actor) {
-        notify('Ator não encontrado.', 'error');
-        return;
-      }
-      const currentStress = Number(actor.systemData?.stress?.value || 0);
-      if (currentStress > 0) {
-        await actor.update({ 'systemData.stress.value': currentStress - 1 });
-        notify('1 Estresse aliviado!', 'success');
-      } else {
-        notify('Personagem não possui Estresse marcado!', 'info');
-      }
-    } else if (action === 'dh-roll-damage') {
+    // Roll damage formula from chat card
+    if (action === 'dh-roll-damage') {
       const formula = target.dataset.formula;
       const dmgType = target.dataset.type || 'physical';
-      const doRoll = typeof dispatchRoll === 'function' ? dispatchRoll : window.Loom?.dispatchRoll;
+      const actorId = target.dataset.actorId;
+      if (!formula) return;
 
-      if (formula && doRoll) {
-        await doRoll({
-          formula,
-          actorId,
-          meta: {
-            system: 'Daggerheart',
-            rollType: 'damage',
-            damageType: dmgType,
-          },
-        });
-      }
+      await dispatchRoll({
+        formula,
+        actorId,
+        meta: {
+          system: 'Daggerheart',
+          rollType: 'damage',
+          damageType: dmgType,
+        },
+      });
     } else if (action === 'dh-apply-damage') {
       const damage = Number(target.dataset.damage) || 0;
 
@@ -294,51 +233,42 @@ export function registerChatCardListeners() {
         targetActor = targetToken?.actor || window.Loom?.game?.actors?.get?.(targetToken?.actorId);
       }
 
-      // Fallback: If no target selected, select from world actors
-      if (!targetActor) {
-        const actorsMap = window.Loom?.game?.actors || [];
-        const actorOptions = [];
-        if (actorsMap.forEach) {
-          actorsMap.forEach((a) => {
-            actorOptions.push({ value: a.id, label: a.name || 'Sem Nome' });
-          });
-        }
-        if (actorOptions.length > 0 && typeof showSelectDialog === 'function') {
-          const selectedId = await showSelectDialog('Selecionar Alvo', 'Quem receberá este dano?', actorOptions);
-          if (selectedId) {
-            targetActor = window.Loom?.game?.actors?.get?.(selectedId);
-          }
-        }
-      }
+      const notify = (msg, type = 'info') => {
+        if (typeof showToast === 'function') showToast(msg, type);
+        else if (window.Loom?.showToast) window.Loom.showToast(msg, type);
+      };
 
       if (!targetActor) {
         notify('Nenhum alvo selecionado. Mire ou selecione um token no mapa!', 'warning');
         return;
       }
 
-      // 2. Resolve thresholds
+      // 2. Resolve thresholds & equipped armor (SRD 2.0 T8)
       const sys = targetActor.systemData || {};
       const derived = sys.derived || {};
-      const major = Number(derived.thresholdMajor || sys.thresholds?.major || sys.thresholds?.baseMajor || 7);
-      const severe = Number(derived.thresholdSevere || sys.thresholds?.severe || sys.thresholds?.baseSevere || 14);
-      const availableArmorSlots = Math.max(0, Number(sys.armor?.slots || 6) - Number(sys.armor?.slotsMarked || 0));
+      const major = Number(derived.thresholdMajor ?? sys.thresholds?.major ?? 7);
+      const severe = Number(derived.thresholdSevere ?? sys.thresholds?.severe ?? 14);
+
+      // Find equipped armor item (null for adversaries or unarmored characters)
+      const armorItem = (targetActor.items || []).find((i) => i.type === 'armor' && i.data?.equipped) || null;
+      const armorScore = Math.min(12, Number(derived.armorScore ?? (armorItem ? (Number(armorItem.data?.baseScore ?? 0) + Number(sys.bonus?.armorScore ?? 0)) : 0)));
+      const slotsMarked = Number(armorItem?.data?.slotsMarked ?? 0);
+      const availableArmorSlots = armorItem && armorScore > 0 ? Math.max(0, armorScore - slotsMarked) : 0;
 
       const baseResolution = resolveDamage(damage, { major, severe }, 0);
 
-      // 3. Armor mitigation prompt if target has available armor slots and base severity > 0
+      // 3. Armor mitigation prompt if target has equipped armor with available slots and baseHpToMark > 0 (L6025)
       let slotsToSpend = 0;
       if (availableArmorSlots > 0 && baseResolution.baseHpToMark > 0 && typeof showSelectDialog === 'function') {
         const options = [
           { value: '0', label: `Não gastar armadura (${baseResolution.baseHpToMark} HP marcados)` }
         ];
-        if (availableArmorSlots >= 1 && baseResolution.baseHpToMark >= 1) {
-          options.push({ value: '1', label: `Gastar 1 Slot de Armadura (${Math.max(0, baseResolution.baseHpToMark - 1)} HP)` });
-        }
-        if (availableArmorSlots >= 2 && baseResolution.baseHpToMark >= 2) {
-          options.push({ value: '2', label: `Gastar 2 Slots de Armadura (${Math.max(0, baseResolution.baseHpToMark - 2)} HP)` });
-        }
-        if (availableArmorSlots >= 3 && baseResolution.baseHpToMark >= 3) {
-          options.push({ value: '3', label: `Gastar 3 Slots de Armadura (${Math.max(0, baseResolution.baseHpToMark - 3)} HP)` });
+        const maxSpend = Math.min(availableArmorSlots, baseResolution.baseHpToMark);
+        for (let n = 1; n <= maxSpend; n++) {
+          options.push({
+            value: String(n),
+            label: `Gastar ${n} Slot${n > 1 ? 's' : ''} de Armadura (${baseResolution.baseHpToMark - n} HP)`,
+          });
         }
 
         const choice = await showSelectDialog(
@@ -349,9 +279,9 @@ export function registerChatCardListeners() {
         slotsToSpend = choice !== null && choice !== undefined ? Number(choice) : 0;
       }
 
-      // 4. Apply damage to actor
+      // 4. Apply damage to actor & spend armor slots on item if equipped
       const finalResolution = resolveDamage(damage, { major, severe }, slotsToSpend);
-      const result = await applyDamageToActor(targetActor, finalResolution);
+      const result = await applyDamageToActor(targetActor, finalResolution, armorItem);
 
       const msg = `${targetActor.name} sofreu ${damage} de dano [${finalResolution.baseSeverity}]: ` +
         `${result.hpMarked} HP marcado(s)` +

@@ -1,0 +1,756 @@
+[
+  {
+    "id": "0b86c3fa-19ec-47c0-9a83-791c37882b6e",
+    "name": "Shadow",
+    "type": "subclass",
+    "data": {
+      "class": "Assassin",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Shadow Foundation",
+          "text": "Característica inicial da subclasse Shadow."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Shadow Specialization",
+          "text": "Característica de especialização da subclasse Shadow."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Shadow Mastery",
+          "text": "Característica de maestria da subclasse Shadow."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Assassin."
+    }
+  },
+  {
+    "id": "19fe3b5e-b526-4cdf-816d-9042f5916740",
+    "name": "Poisoner",
+    "type": "subclass",
+    "data": {
+      "class": "Assassin",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Poisoner Foundation",
+          "text": "Característica inicial da subclasse Poisoner."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Poisoner Specialization",
+          "text": "Característica de especialização da subclasse Poisoner."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Poisoner Mastery",
+          "text": "Característica de maestria da subclasse Poisoner."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Assassin."
+    }
+  },
+  {
+    "id": "04886fa8-7b17-49df-8ad3-6f1057f50bbc",
+    "name": "Troubadour",
+    "type": "subclass",
+    "data": {
+      "class": "Bard",
+      "spellcastTrait": "presence",
+      "foundation": [
+        {
+          "name": "Troubadour Foundation",
+          "text": "Característica inicial da subclasse Troubadour."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Troubadour Specialization",
+          "text": "Característica de especialização da subclasse Troubadour."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Troubadour Mastery",
+          "text": "Característica de maestria da subclasse Troubadour."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Bard."
+    }
+  },
+  {
+    "id": "5646eca9-e225-41a9-b92b-220341b334f2",
+    "name": "Wordsmith",
+    "type": "subclass",
+    "data": {
+      "class": "Bard",
+      "spellcastTrait": "presence",
+      "foundation": [
+        {
+          "name": "Wordsmith Foundation",
+          "text": "Característica inicial da subclasse Wordsmith."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Wordsmith Specialization",
+          "text": "Característica de especialização da subclasse Wordsmith."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Wordsmith Mastery",
+          "text": "Característica de maestria da subclasse Wordsmith."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Bard."
+    }
+  },
+  {
+    "id": "01385199-f79b-4341-9b59-b2fdfbce74d4",
+    "name": "Bruiser",
+    "type": "subclass",
+    "data": {
+      "class": "Brawler",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Bruiser Foundation",
+          "text": "Característica inicial da subclasse Bruiser."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Bruiser Specialization",
+          "text": "Característica de especialização da subclasse Bruiser."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Bruiser Mastery",
+          "text": "Característica de maestria da subclasse Bruiser."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Brawler."
+    }
+  },
+  {
+    "id": "729f4126-8497-44c8-9244-ec0910b7161c",
+    "name": "Gladiator",
+    "type": "subclass",
+    "data": {
+      "class": "Brawler",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Gladiator Foundation",
+          "text": "Característica inicial da subclasse Gladiator."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Gladiator Specialization",
+          "text": "Característica de especialização da subclasse Gladiator."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Gladiator Mastery",
+          "text": "Característica de maestria da subclasse Gladiator."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Brawler."
+    }
+  },
+  {
+    "id": "69995fca-2bab-49e5-8b44-509fa82cb327",
+    "name": "Warden of Renewal",
+    "type": "subclass",
+    "data": {
+      "class": "Druid",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Warden of Renewal Foundation",
+          "text": "Característica inicial da subclasse Warden of Renewal."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Warden of Renewal Specialization",
+          "text": "Característica de especialização da subclasse Warden of Renewal."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Warden of Renewal Mastery",
+          "text": "Característica de maestria da subclasse Warden of Renewal."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Druid."
+    }
+  },
+  {
+    "id": "798fd572-a871-4c41-831a-9fb67c6dba80",
+    "name": "Warden of the Elements",
+    "type": "subclass",
+    "data": {
+      "class": "Druid",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Warden of the Elements Foundation",
+          "text": "Característica inicial da subclasse Warden of the Elements."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Warden of the Elements Specialization",
+          "text": "Característica de especialização da subclasse Warden of the Elements."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Warden of the Elements Mastery",
+          "text": "Característica de maestria da subclasse Warden of the Elements."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Druid."
+    }
+  },
+  {
+    "id": "00b477f8-fb55-4ce0-84d7-812a4525bdfb",
+    "name": "Stalwart",
+    "type": "subclass",
+    "data": {
+      "class": "Guardian",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Stalwart Foundation",
+          "text": "Característica inicial da subclasse Stalwart."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Stalwart Specialization",
+          "text": "Característica de especialização da subclasse Stalwart."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Stalwart Mastery",
+          "text": "Característica de maestria da subclasse Stalwart."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Guardian."
+    }
+  },
+  {
+    "id": "5273d18f-a62f-4287-bdac-ec0668e417c1",
+    "name": "Vengeance",
+    "type": "subclass",
+    "data": {
+      "class": "Guardian",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Vengeance Foundation",
+          "text": "Característica inicial da subclasse Vengeance."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Vengeance Specialization",
+          "text": "Característica de especialização da subclasse Vengeance."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Vengeance Mastery",
+          "text": "Característica de maestria da subclasse Vengeance."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Guardian."
+    }
+  },
+  {
+    "id": "cb42f3f6-b8b6-4bc0-b591-cebc5b6730ac",
+    "name": "Beastbound",
+    "type": "subclass",
+    "data": {
+      "class": "Ranger",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Beastbound Foundation",
+          "text": "Característica inicial da subclasse Beastbound."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Beastbound Specialization",
+          "text": "Característica de especialização da subclasse Beastbound."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Beastbound Mastery",
+          "text": "Característica de maestria da subclasse Beastbound."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Ranger."
+    }
+  },
+  {
+    "id": "98bfc0d9-dee2-4421-8b06-ea65cbad7cd5",
+    "name": "Wayfinder",
+    "type": "subclass",
+    "data": {
+      "class": "Ranger",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Wayfinder Foundation",
+          "text": "Característica inicial da subclasse Wayfinder."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Wayfinder Specialization",
+          "text": "Característica de especialização da subclasse Wayfinder."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Wayfinder Mastery",
+          "text": "Característica de maestria da subclasse Wayfinder."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Ranger."
+    }
+  },
+  {
+    "id": "80d25e7e-e888-4165-98af-5254a907526b",
+    "name": "Nightwalker",
+    "type": "subclass",
+    "data": {
+      "class": "Rogue",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Nightwalker Foundation",
+          "text": "Característica inicial da subclasse Nightwalker."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Nightwalker Specialization",
+          "text": "Característica de especialização da subclasse Nightwalker."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Nightwalker Mastery",
+          "text": "Característica de maestria da subclasse Nightwalker."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Rogue."
+    }
+  },
+  {
+    "id": "78ced2f3-5875-4a1e-b18f-527c9869861d",
+    "name": "Syndicate",
+    "type": "subclass",
+    "data": {
+      "class": "Rogue",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Syndicate Foundation",
+          "text": "Característica inicial da subclasse Syndicate."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Syndicate Specialization",
+          "text": "Característica de especialização da subclasse Syndicate."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Syndicate Mastery",
+          "text": "Característica de maestria da subclasse Syndicate."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Rogue."
+    }
+  },
+  {
+    "id": "a4209bb8-a002-4fb6-b992-ed58179c1a7b",
+    "name": "Divine Wielder",
+    "type": "subclass",
+    "data": {
+      "class": "Seraph",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Divine Wielder Foundation",
+          "text": "Característica inicial da subclasse Divine Wielder."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Divine Wielder Specialization",
+          "text": "Característica de especialização da subclasse Divine Wielder."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Divine Wielder Mastery",
+          "text": "Característica de maestria da subclasse Divine Wielder."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Seraph."
+    }
+  },
+  {
+    "id": "9a300f7c-9330-4223-ac8f-4ad9e623be20",
+    "name": "Winged Sentinel",
+    "type": "subclass",
+    "data": {
+      "class": "Seraph",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Winged Sentinel Foundation",
+          "text": "Característica inicial da subclasse Winged Sentinel."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Winged Sentinel Specialization",
+          "text": "Característica de especialização da subclasse Winged Sentinel."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Winged Sentinel Mastery",
+          "text": "Característica de maestria da subclasse Winged Sentinel."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Seraph."
+    }
+  },
+  {
+    "id": "32f5f44e-bcfa-4c1a-8645-25977cd38d55",
+    "name": "Elemental Origin",
+    "type": "subclass",
+    "data": {
+      "class": "Sorcerer",
+      "spellcastTrait": "presence",
+      "foundation": [
+        {
+          "name": "Elemental Origin Foundation",
+          "text": "Característica inicial da subclasse Elemental Origin."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Elemental Origin Specialization",
+          "text": "Característica de especialização da subclasse Elemental Origin."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Elemental Origin Mastery",
+          "text": "Característica de maestria da subclasse Elemental Origin."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Sorcerer."
+    }
+  },
+  {
+    "id": "a89e0fe4-c40e-40b6-9bd5-85b33de63e77",
+    "name": "Primal Origin",
+    "type": "subclass",
+    "data": {
+      "class": "Sorcerer",
+      "spellcastTrait": "presence",
+      "foundation": [
+        {
+          "name": "Primal Origin Foundation",
+          "text": "Característica inicial da subclasse Primal Origin."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Primal Origin Specialization",
+          "text": "Característica de especialização da subclasse Primal Origin."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Primal Origin Mastery",
+          "text": "Característica de maestria da subclasse Primal Origin."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Sorcerer."
+    }
+  },
+  {
+    "id": "5628db30-d659-422f-b35c-fce54266a2db",
+    "name": "Pact of the Blade",
+    "type": "subclass",
+    "data": {
+      "class": "Warlock",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Pact of the Blade Foundation",
+          "text": "Característica inicial da subclasse Pact of the Blade."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Pact of the Blade Specialization",
+          "text": "Característica de especialização da subclasse Pact of the Blade."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Pact of the Blade Mastery",
+          "text": "Característica de maestria da subclasse Pact of the Blade."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Warlock."
+    }
+  },
+  {
+    "id": "e0de7138-2f30-4f26-b82d-8e3dc5dc4e1b",
+    "name": "Pact of the Chain",
+    "type": "subclass",
+    "data": {
+      "class": "Warlock",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Pact of the Chain Foundation",
+          "text": "Característica inicial da subclasse Pact of the Chain."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Pact of the Chain Specialization",
+          "text": "Característica de especialização da subclasse Pact of the Chain."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Pact of the Chain Mastery",
+          "text": "Característica de maestria da subclasse Pact of the Chain."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Warlock."
+    }
+  },
+  {
+    "id": "76f2e9d2-5d73-4407-9c05-eb184cd085c9",
+    "name": "Call of the Brave",
+    "type": "subclass",
+    "data": {
+      "class": "Warrior",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Call of the Brave Foundation",
+          "text": "Característica inicial da subclasse Call of the Brave."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Call of the Brave Specialization",
+          "text": "Característica de especialização da subclasse Call of the Brave."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Call of the Brave Mastery",
+          "text": "Característica de maestria da subclasse Call of the Brave."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Warrior."
+    }
+  },
+  {
+    "id": "9460b4cf-337b-4ba1-bac8-366a11c835b4",
+    "name": "Call of the Slayer",
+    "type": "subclass",
+    "data": {
+      "class": "Warrior",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Call of the Slayer Foundation",
+          "text": "Característica inicial da subclasse Call of the Slayer."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Call of the Slayer Specialization",
+          "text": "Característica de especialização da subclasse Call of the Slayer."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Call of the Slayer Mastery",
+          "text": "Característica de maestria da subclasse Call of the Slayer."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Warrior."
+    }
+  },
+  {
+    "id": "ef45b9e0-5a65-4970-b1cf-fbe41e752a3f",
+    "name": "Coven of Curses",
+    "type": "subclass",
+    "data": {
+      "class": "Witch",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Coven of Curses Foundation",
+          "text": "Característica inicial da subclasse Coven of Curses."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Coven of Curses Specialization",
+          "text": "Característica de especialização da subclasse Coven of Curses."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Coven of Curses Mastery",
+          "text": "Característica de maestria da subclasse Coven of Curses."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Witch."
+    }
+  },
+  {
+    "id": "1684256e-47d6-4f8e-953c-d46fb42c32cb",
+    "name": "Coven of Shadows",
+    "type": "subclass",
+    "data": {
+      "class": "Witch",
+      "spellcastTrait": "instinct",
+      "foundation": [
+        {
+          "name": "Coven of Shadows Foundation",
+          "text": "Característica inicial da subclasse Coven of Shadows."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Coven of Shadows Specialization",
+          "text": "Característica de especialização da subclasse Coven of Shadows."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Coven of Shadows Mastery",
+          "text": "Característica de maestria da subclasse Coven of Shadows."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Witch."
+    }
+  },
+  {
+    "id": "97ec297c-47ce-4fac-80dd-6b4b9c412c00",
+    "name": "School of Knowledge",
+    "type": "subclass",
+    "data": {
+      "class": "Wizard",
+      "spellcastTrait": "knowledge",
+      "foundation": [
+        {
+          "name": "School of Knowledge Foundation",
+          "text": "Característica inicial da subclasse School of Knowledge."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "School of Knowledge Specialization",
+          "text": "Característica de especialização da subclasse School of Knowledge."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "School of Knowledge Mastery",
+          "text": "Característica de maestria da subclasse School of Knowledge."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Wizard."
+    }
+  },
+  {
+    "id": "8127e411-ed85-46cb-ac14-0e0cbfa1730d",
+    "name": "School of War",
+    "type": "subclass",
+    "data": {
+      "class": "Wizard",
+      "spellcastTrait": "knowledge",
+      "foundation": [
+        {
+          "name": "School of War Foundation",
+          "text": "Característica inicial da subclasse School of War."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "School of War Specialization",
+          "text": "Característica de especialização da subclasse School of War."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "School of War Mastery",
+          "text": "Característica de maestria da subclasse School of War."
+        }
+      ],
+      "unlocked": "foundation",
+      "description": "Subclasse de Wizard."
+    }
+  }
+]

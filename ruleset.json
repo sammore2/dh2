@@ -12,7 +12,8 @@
   "license": "DPCGL-2.0",
   "licenseNotice": "This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.",
   "styles": [
-    "styles/dh.css"
+    "styles/dh.css",
+    "styles/game-sheets.css"
   ],
   "languages": [
     {
@@ -35,6 +36,10 @@
     "weapon",
     "armor",
     "domainCard",
+    "class",
+    "subclass",
+    "ancestry",
+    "community",
     "feature",
     "consumable",
     "equipment"
@@ -42,6 +47,11 @@
   "compendiums": [
     "packs/weapons.sqlite",
     "packs/armors.sqlite",
-    "packs/domain-cards.sqlite"
+    "packs/domain-cards.sqlite",
+    "packs/classes.sqlite",
+    "packs/subclasses.sqlite",
+    "packs/ancestries.sqlite",
+    "packs/communities.sqlite",
+    "packs/items.sqlite"
   ]
 }

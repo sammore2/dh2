@@ -1,64 +1,118 @@
-<form class="dh-sheet dh-item-sheet" autocomplete="off">
-  <header class="dh-sheet-header">
-    <div class="dh-portrait-block">
-      <img class="dh-portrait" src="{{document.imgUrl}}" alt="{{document.name}}" data-edit="imgUrl" />
+<form class="cs-sheet cs-item dh-item-sheet" autocomplete="off">
+  <header class="cs-banner">
+    <div class="cs-portrait-medal">
+      {{#if document.imgUrl}}
+        <img class="cs-portrait" src="{{document.imgUrl}}" alt="{{document.name}}" data-edit="imgUrl" />
+      {{else}}
+        <img class="cs-portrait is-default" src="/icons/svg/adventurer.svg" alt="{{document.name}}" data-edit="imgUrl" />
+      {{/if}}
     </div>
 
-    <div class="dh-header-details">
-      <input class="dh-item-name" name="name" type="text" value="{{document.name}}" placeholder="Nome do Item" />
-      <span class="dh-item-type-badge">{{localize (concat "DH.ItemType." document.type)}}</span>
+    <div class="cs-identity">
+      <input class="cs-name" name="name" type="text" value="{{document.name}}" placeholder="Nome do item" />
+      <span class="cs-type">{{localize (concat "DH.ItemType." document.type)}}</span>
     </div>
   </header>
 
-  <div class="dh-item-fields">
-    {{#if (eq document.type "weapon")}}
-      <div class="dh-form-row">
-        <label>Alcance</label>
-        <input name="systemData.range" type="text" value="{{system.range}}" placeholder="Melee, Very Close, Close, Far, Very Far" />
-      </div>
-      <div class="dh-form-row">
-        <label>Dano</label>
-        <input name="systemData.damage" type="text" value="{{system.damage}}" placeholder="ex: 1d8+2 Físico" />
-      </div>
-      <div class="dh-form-row">
-        <label>Traço Associado</label>
-        <input name="systemData.trait" type="text" value="{{system.trait}}" placeholder="agility, strength, etc." />
-      </div>
-    {{/if}}
+  <div class="cs-body single">
+    <div class="cs-panel">
+      {{#if (eq document.type "weapon")}}
+        <div class="cs-row">
+          <label>Tier<input name="data.tier" type="number" value="{{system.tier}}" /></label>
+          <label>Categoria<select name="data.category"><option value="primary" {{#if (eq system.category "primary")}}selected{{/if}}>Primária</option><option value="secondary" {{#if (eq system.category "secondary")}}selected{{/if}}>Secundária</option></select></label>
+          <label>Fardo<select name="data.burden"><option value="one" {{#if (eq system.burden "one")}}selected{{/if}}>Uma mão</option><option value="two" {{#if (eq system.burden "two")}}selected{{/if}}>Duas mãos</option></select></label>
+        </div>
+        <div class="cs-row">
+          <label>Traço<input name="data.trait" type="text" value="{{system.trait}}" placeholder="agility, strength..." /></label>
+          <label>Alcance<input name="data.range" type="text" value="{{system.range}}" placeholder="Melee, Very Close, Close..." /></label>
+        </div>
+        <div class="cs-row">
+          <label>Dado (dN)<input name="data.dice" type="number" value="{{system.dice}}" /></label>
+          <label>Fixo<input name="data.flat" type="number" value="{{system.flat}}" /></label>
+          <label>Tipo<select name="data.damageType"><option value="phy" {{#if (eq system.damageType "phy")}}selected{{/if}}>Físico</option><option value="mag" {{#if (eq system.damageType "mag")}}selected{{/if}}>Mágico</option></select></label>
+        </div>
+        <label class="cs-wide-label">Característica<input name="data.feature.name" type="text" value="{{system.feature.name}}" /></label>
+        <label class="cs-wide-label">Texto da característica<textarea name="data.feature.text" rows="3">{{system.feature.text}}</textarea></label>
+      {{/if}}
 
-    {{#if (eq document.type "armor")}}
-      <div class="dh-form-row">
-        <label>Limiar Major</label>
-        <input name="systemData.thresholdMajor" type="number" value="{{system.thresholdMajor}}" />
-      </div>
-      <div class="dh-form-row">
-        <label>Limiar Severe</label>
-        <input name="systemData.thresholdSevere" type="number" value="{{system.thresholdSevere}}" />
-      </div>
-      <div class="dh-form-row">
-        <label>Slots de Armadura</label>
-        <input name="systemData.armorSlots" type="number" value="{{system.armorSlots}}" />
-      </div>
-    {{/if}}
+      {{#if (eq document.type "armor")}}
+        <div class="cs-row">
+          <label>Tier<input name="data.tier" type="number" value="{{system.tier}}" /></label>
+          <label>Limiar Maior<input name="data.baseMajor" type="number" value="{{system.baseMajor}}" /></label>
+          <label>Limiar Severo<input name="data.baseSevere" type="number" value="{{system.baseSevere}}" /></label>
+          <label>Armor Score<input name="data.baseScore" type="number" value="{{system.baseScore}}" /></label>
+          <label>Evasão<input name="data.modifiers.evasion" type="number" value="{{system.modifiers.evasion}}" /></label>
+        </div>
+        <label class="cs-wide-label">Característica<input name="data.feature.name" type="text" value="{{system.feature.name}}" /></label>
+        <label class="cs-wide-label">Texto da característica<textarea name="data.feature.text" rows="3">{{system.feature.text}}</textarea></label>
+      {{/if}}
 
-    {{#if (eq document.type "domainCard")}}
-      <div class="dh-form-row">
-        <label>Domínio</label>
-        <input name="systemData.domain" type="text" value="{{system.domain}}" placeholder="ex: Blade, Bone, Codex, Fear, Grace..." />
-      </div>
-      <div class="dh-form-row">
-        <label>Nível da Carta</label>
-        <input name="systemData.level" type="number" value="{{system.level}}" />
-      </div>
-      <div class="dh-form-row">
-        <label>Custo (Hope / Stress)</label>
-        <input name="systemData.cost" type="text" value="{{system.cost}}" placeholder="ex: 1 Hope" />
-      </div>
-    {{/if}}
+      {{#if (eq document.type "domainCard")}}
+        <div class="cs-row">
+          <label>Domínio<input name="data.domain" type="text" value="{{system.domain}}" placeholder="Blade, Bone, Codex..." /></label>
+          <label>Nível<input name="data.level" type="number" value="{{system.level}}" /></label>
+          <label>Tipo<select name="data.type"><option value="ability" {{#if (eq system.type "ability")}}selected{{/if}}>Ability</option><option value="spell" {{#if (eq system.type "spell")}}selected{{/if}}>Spell</option><option value="grimoire" {{#if (eq system.type "grimoire")}}selected{{/if}}>Grimoire</option></select></label>
+          <label>Recall (Estresse)<input name="data.recallCost" type="number" value="{{system.recallCost}}" /></label>
+        </div>
+        <label class="cs-wide-label">Texto<textarea name="data.text" rows="6">{{system.text}}</textarea></label>
+      {{/if}}
 
-    <div class="dh-form-row">
-      <label>Descrição & Regras</label>
-      <textarea name="systemData.description" rows="5">{{system.description}}</textarea>
+      {{#if (eq document.type "class")}}
+        <div class="cs-row">
+          <label>Evasão<input name="data.evasion" type="number" value="{{system.evasion}}" /></label>
+          <label>HP<input name="data.hp" type="number" value="{{system.hp}}" /></label>
+          <label>Domínio 1<input name="data.domains.0" type="text" value="{{system.domains.0}}" /></label>
+          <label>Domínio 2<input name="data.domains.1" type="text" value="{{system.domains.1}}" /></label>
+        </div>
+        <div class="cs-row">
+          <label>Subclasse 1<input name="data.subclasses.0" type="text" value="{{system.subclasses.0}}" /></label>
+          <label>Subclasse 2<input name="data.subclasses.1" type="text" value="{{system.subclasses.1}}" /></label>
+        </div>
+        <label class="cs-wide-label">Hope Feature<input name="data.hopeFeature.name" type="text" value="{{system.hopeFeature.name}}" /></label>
+        <label class="cs-wide-label">Texto da Hope Feature (custo {{system.hopeFeature.cost}})<textarea name="data.hopeFeature.text" rows="3">{{system.hopeFeature.text}}</textarea></label>
+        <label class="cs-wide-label">Características de classe</label>
+        {{#each system.features as |f i|}}
+          <label class="cs-wide-label"><input name="data.features.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.features.{{i}}.text" rows="2">{{f.text}}</textarea></label>
+        {{/each}}
+        <button type="button" data-add-entry="features">+ Característica</button>
+      {{/if}}
+
+      {{#if (eq document.type "subclass")}}
+        <div class="cs-row">
+          <label>Classe<input name="data.class" type="text" value="{{system.class}}" /></label>
+          <label>Spellcast<input name="data.spellcastTrait" type="text" value="{{system.spellcastTrait}}" placeholder="presence, knowledge..." /></label>
+        </div>
+        <label class="cs-wide-label">Foundation</label>
+        {{#each system.foundation as |f i|}}
+          <label class="cs-wide-label"><input name="data.foundation.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.foundation.{{i}}.text" rows="2">{{f.text}}</textarea></label>
+        {{/each}}
+        <button type="button" data-add-entry="foundation">+ Foundation</button>
+        <label class="cs-wide-label">Specialization</label>
+        {{#each system.specialization as |f i|}}
+          <label class="cs-wide-label"><input name="data.specialization.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.specialization.{{i}}.text" rows="2">{{f.text}}</textarea></label>
+        {{/each}}
+        <button type="button" data-add-entry="specialization">+ Specialization</button>
+        <label class="cs-wide-label">Mastery</label>
+        {{#each system.mastery as |f i|}}
+          <label class="cs-wide-label"><input name="data.mastery.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.mastery.{{i}}.text" rows="2">{{f.text}}</textarea></label>
+        {{/each}}
+        <button type="button" data-add-entry="mastery">+ Mastery</button>
+      {{/if}}
+
+      {{#if (eq document.type "ancestry")}}
+        <label class="cs-wide-label">Característica 1 (de cima)<input name="data.features.0.name" type="text" value="{{system.features.0.name}}" /><textarea name="data.features.0.text" rows="3">{{system.features.0.text}}</textarea></label>
+        <label class="cs-wide-label">Característica 2 (de baixo)<input name="data.features.1.name" type="text" value="{{system.features.1.name}}" /><textarea name="data.features.1.text" rows="3">{{system.features.1.text}}</textarea></label>
+      {{/if}}
+
+      {{#if (eq document.type "community")}}
+        <label class="cs-wide-label">Característica<input name="data.feature.name" type="text" value="{{system.feature.name}}" /><textarea name="data.feature.text" rows="3">{{system.feature.text}}</textarea></label>
+      {{/if}}
+
+      {{#if (or (eq document.type "consumable") (eq document.type "equipment"))}}
+        <label>Quantidade<input name="data.quantity" type="number" value="{{system.quantity}}" /></label>
+      {{/if}}
+
+      <label class="cs-wide-label">Descrição &amp; Regras<textarea name="data.description" rows="8">{{system.description}}</textarea></label>
     </div>
   </div>
 </form>

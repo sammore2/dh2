@@ -1,0 +1,1026 @@
+/* ==========================================================================
+   DAGGERHEART — GAME SHEETS (character + item)
+   Scoped under .cs-sheet so it does not fight the older dh.css rules.
+   Look: dark stone, worn gold trim, medallion portraits, tactile pips.
+   ========================================================================== */
+
+.cs-sheet {
+  --cs-stone: #0f0b16;
+  --cs-panel: #1a1526;
+  --cs-trim: #7a6630;
+  --cs-gold: #e3c36a;
+  --cs-ink: #f3effb;
+  --cs-dim: #b0a8c4;
+  --cs-hp: #d1495b;
+  --cs-stress: #9b6bd6;
+  --cs-hope: #f0c75e;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  color: var(--cs-ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+}
+
+.cs-sheet input,
+.cs-sheet select,
+.cs-sheet textarea {
+  background: #0b0812;
+  border: 1px solid #3b3052;
+  border-radius: 3px;
+  color: var(--cs-ink);
+  font: inherit;
+  padding: 4px 6px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.cs-sheet input:focus,
+.cs-sheet select:focus,
+.cs-sheet textarea:focus {
+  outline: none;
+  border-color: var(--cs-gold);
+}
+
+.cs-sheet label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.78rem;
+  color: var(--cs-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.cs-sheet h3 {
+  margin: 0 0 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--cs-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── Banner ───────────────────────────────────────────────────────────────── */
+.cs-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--cs-trim);
+  background: linear-gradient(180deg, #241d36 0%, #0d0b1f 100%);
+  box-shadow: inset 0 -1px 0 rgba(227, 195, 106, 0.2);
+}
+
+.cs-portrait-medal {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  padding: 4px;
+  background: radial-gradient(circle at 35% 30%, #7a6630 0%, #201a32 100%);
+  box-shadow: 0 0 0 2px #0b0907, 0 0 0 3px var(--cs-trim), 0 6px 14px rgba(0, 0, 0, 0.7);
+}
+
+.cs-portrait,
+.cs-portrait-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.cs-portrait-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: var(--cs-gold);
+  background: #0b0812;
+}
+
+.cs-identity {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cs-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cs-gold);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--cs-trim);
+  border-radius: 0;
+  padding: 2px 0;
+}
+
+.cs-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.cs-level {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: 2px solid var(--cs-gold);
+  border-radius: 6px;
+  background: #1a1526;
+  font-size: 0.7rem;
+  color: var(--cs-dim);
+  text-transform: uppercase;
+}
+
+.cs-level input {
+  width: 56px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--cs-gold);
+}
+
+/* ── Body grid ────────────────────────────────────────────────────────────── */
+.cs-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.cs-body.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ── Left column: traits and defenses ────────────────────────────────────── */
+/* Pips: tactile, filled when marked */
+.dh-dots-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.dh-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--cs-trim);
+  background: #0b0812;
+  cursor: pointer;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+.dh-dot.hp.marked { background: var(--cs-hp); border-color: #7a2c20; }
+.dh-dot.stress.marked { background: var(--cs-stress); border-color: #4f3a7a; }
+.dh-dot.hope.marked { background: var(--cs-hope); border-color: #8a7432; }
+.dh-dot.prof.marked,
+.dh-dot.coin.marked,
+.dh-dot.bag.marked,
+.dh-dot.chest.marked { background: var(--cs-gold); border-color: #8a7432; }
+.dh-dot.bag { border-radius: 3px; }
+
+/* Tab dock. lib/side-tabs.mjs moves it out of the window, so it sits outside .cs-sheet and needs literal colors. */
+.cs-tabs {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+.cs-side-tabs {
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  background: rgba(15, 11, 22, 0.95);
+  border: 1px solid #7a6630;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 4px 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.cs-side-tabs .dh-tab-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  flex: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: #a9a3c9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* The dock is rebuilt on every re-render and the active class is added after insertion: a transition would
+     replay the highlight (and the old dh.css one too) as a blink after each save. */
+  transition: none;
+}
+
+.cs-side-tabs .dh-tab-btn i {
+  font-size: 16px;
+  opacity: 1;
+  color: inherit;
+}
+
+.cs-side-tabs .dh-tab-btn:hover {
+  color: #f3effb;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #7a6630;
+}
+
+.cs-side-tabs .dh-tab-btn.active {
+  color: #fff;
+  background: rgba(227, 195, 106, 0.15);
+  border-color: #e3c36a;
+  box-shadow: 0 0 8px rgba(227, 195, 106, 0.2);
+}
+
+.cs-pane-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.dh-tab-pane {
+  display: none;
+}
+
+.dh-tab-pane.active {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-prof {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid var(--cs-trim);
+  border-radius: 6px;
+  background: var(--cs-panel);
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  color: var(--cs-gold);
+  text-transform: uppercase;
+}
+
+.cs-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.cs-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--cs-trim);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #1d1830 0%, #120e1c 100%);
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.12), 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.cs-panel textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.cs-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--cs-dim);
+  font-style: italic;
+}
+
+.cs-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.cs-wide,
+.cs-wide-label {
+  width: 100%;
+}
+
+.cs-wide-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cs-pair {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cs-pair input {
+  width: 100%;
+}
+
+/* Weapons */
+.cs-weapon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid #3b3052;
+}
+
+.cs-weapon:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.cs-weapon-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.cs-weapon-name {
+  flex: 1;
+  font-family: 'Cinzel', serif;
+  color: var(--cs-gold);
+}
+
+/* Buttons */
+.cs-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--cs-trim);
+  background: linear-gradient(180deg, #241d36 0%, #1a1526 100%);
+  color: var(--cs-ink);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cs-btn:hover {
+  border-color: var(--cs-gold);
+  color: var(--cs-gold);
+}
+
+.cs-btn.danger {
+  color: #e28474;
+  border-color: #6b2c22;
+}
+
+/* Loadout */
+.cs-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-toolbar h3 {
+  margin: 0;
+}
+
+.cs-count {
+  margin-left: 8px;
+  color: var(--cs-ink);
+}
+
+.cs-count.full {
+  color: var(--cs-hope);
+}
+
+.cs-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.cs-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--cs-trim);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #221a10 0%, #120e1c 100%);
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.12);
+}
+
+.cs-card.vault {
+  opacity: 0.8;
+}
+
+.cs-card-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--cs-dim);
+  text-transform: uppercase;
+}
+
+.cs-card-cost {
+  color: var(--cs-hope);
+}
+
+.cs-card-name {
+  font-family: 'Cinzel', serif;
+  color: var(--cs-gold);
+}
+
+.cs-card-desc {
+  font-size: 0.85rem;
+  color: var(--cs-ink);
+}
+
+.cs-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.cs-empty {
+  grid-column: 1 / -1;
+  padding: 18px;
+  text-align: center;
+  border: 1px dashed var(--cs-trim);
+  border-radius: 8px;
+  color: var(--cs-dim);
+  font-style: italic;
+}
+
+/* Experiences */
+.cs-exp {
+  display: grid;
+  grid-template-columns: auto 1fr 64px auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.cs-exp-mark {
+  color: var(--cs-gold);
+}
+
+/* Gold */
+.cs-gold {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cs-gold > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--cs-dim);
+  text-transform: uppercase;
+}
+
+.cs-chest {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Item sheet: type badge */
+.cs-type {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--cs-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Narrow windows: stack the body so nothing runs off the edge */
+@media (max-width: 760px) {
+  .cs-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cs-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Two-column sheet: tall portrait on the left, identity and traits on the right */
+.cs-portrait-frame {
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--cs-trim);
+  background: #0b0812;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.cs-portrait-frame .cs-portrait {
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.cs-portrait-frame .cs-portrait.is-default {
+  object-fit: contain;
+  padding: 18%;
+  box-sizing: border-box;
+  opacity: 0.6;
+}
+
+.cs-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.cs-head .cs-name {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The sheet re-renders after every save; the old fade-in animation made the content blink each time */
+.cs-sheet .dh-tab-pane {
+  animation: none;
+}
+
+
+/* ==========================================================================
+   Roll20-style top: header, shields, bands, tracks. Text never overflows its box.
+   ========================================================================== */
+.rs-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 112px;
+  padding: 40px 18px 12px;
+  box-sizing: border-box;
+  /* The art comes from the window banner (see _onRender); this only darkens the bottom so the text stays readable */
+  background: linear-gradient(180deg, transparent 20%, rgba(15, 11, 22, 0.35) 100%);
+}
+
+.rs-portrait {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid var(--cs-gold);
+  background: #0b0812;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #0b0812, 0 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+.rs-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.rs-portrait-img.is-default {
+  object-fit: contain;
+  padding: 14%;
+  box-sizing: border-box;
+  opacity: 0.7;
+}
+
+.rs-id {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Name as plain bold text over the art; a box only shows while editing */
+.loom-window .cs-sheet input.rs-name {
+  align-self: flex-start;
+  width: auto;
+  min-width: 6ch;
+  max-width: 100%;
+  field-sizing: content;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  text-overflow: ellipsis;
+  outline: none !important;
+}
+
+.loom-window .cs-sheet input.rs-name:focus {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--cs-gold) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Class line in gold, same look as "RIDGEBORNE GIANT BARD" in the reference */
+.rs-id-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+}
+
+.loom-window .cs-sheet .rs-id-line input {
+  flex: 0 0 auto;
+  width: auto;
+  field-sizing: content;
+  min-width: 4ch;
+  max-width: 100%;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid transparent !important;
+  border-radius: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--cs-gold);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  text-overflow: ellipsis;
+  outline: none !important;
+}
+
+.loom-window .cs-sheet .rs-id-line input::placeholder {
+  color: rgba(227, 195, 106, 0.45);
+}
+
+.loom-window .cs-sheet .rs-id-line input:hover,
+.loom-window .cs-sheet .rs-id-line input:focus {
+  border-bottom-color: var(--cs-gold) !important;
+}
+
+/* Level shield in the header: smaller, and the input has no box of its own */
+.rs-top .rs-shield {
+  width: 62px;
+  height: 72px;
+  font-size: 1.4rem;
+}
+
+.loom-window .cs-sheet .rs-shield.rs-level input {
+  width: 46px;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  text-align: center;
+  font: inherit;
+  color: #1a1630 !important;
+  -webkit-text-fill-color: #1a1630;
+}
+
+.rs-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The sheet fills the window edge to edge: no gutter between the window frame and the sheet (same as wod20th) */
+.loom-window.cs-window .loom-window-body {
+  padding: 0 !important;
+  height: 100% !important;
+}
+
+/* Heater shield: gold rim, cream face */
+.rs-shield {
+  --rs-shape: polygon(50% 0, 100% 10%, 100% 66%, 50% 100%, 0 66%, 0 10%);
+  position: relative;
+  isolation: isolate;
+  width: 76px;
+  height: 88px;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: var(--rs-shape);
+  background: linear-gradient(180deg, #f3d98a 0%, #b8923a 100%);
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1630;
+  line-height: 1;
+}
+
+.rs-shield::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  clip-path: var(--rs-shape);
+  background: linear-gradient(180deg, #faf5e6 0%, #e4dcc0 100%);
+}
+
+.rs-shield b {
+  font-weight: 700;
+}
+
+button.rs-shield {
+  cursor: pointer;
+}
+
+button.rs-shield:hover::before {
+  background: linear-gradient(180deg, #fffaf0 0%, #f0e6c2 100%);
+}
+
+.rs-shield.rs-level input {
+  width: 46px;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font: inherit;
+  color: #1a1630;
+  padding: 0;
+}
+
+.rs-badge {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rs-ribbon {
+  display: block;
+  max-width: 100%;
+  padding: 2px 10px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #f3d98a 0%, #b8923a 100%);
+  color: #1a1630;
+  font-family: 'Cinzel', serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.rs-badge .rs-ribbon {
+  margin-top: -10px;
+  position: relative;
+}
+
+.rs-defense {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.rs-armor-slots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.rs-pill {
+  padding: 3px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--cs-trim);
+  background: #241d36;
+  color: var(--cs-ink);
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dh-armor-pips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dh-armor-pip {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cs-trim);
+  border-radius: 3px;
+  background: #0b0812;
+  cursor: pointer;
+}
+
+.dh-armor-pip.marked {
+  background: var(--cs-gold);
+}
+
+.rs-traits {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.rs-trait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rs-trait .rs-ribbon {
+  width: 100%;
+  font-size: 0.6rem;
+  padding: 2px 4px;
+}
+
+.rs-trait .rs-shield {
+  width: 66px;
+  height: 78px;
+  font-size: 1.4rem;
+  margin-top: -2px;
+}
+
+.rs-trait-sub {
+  width: 100%;
+  min-height: 2.4em;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--cs-dim);
+  overflow-wrap: anywhere;
+}
+
+.rs-trait-edit {
+  width: 46px;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 2px;
+  opacity: 0.75;
+}
+
+.rs-band {
+  margin-top: 4px;
+  padding: 4px 0;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cs-ink);
+  border-top: 1px solid var(--cs-gold);
+  border-bottom: 1px solid var(--cs-gold);
+  background: linear-gradient(90deg, transparent 0%, #0b0812 12%, #0b0812 88%, transparent 100%);
+}
+
+.rs-thresholds {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rs-th {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 14px;
+  background: #2f2878;
+  color: var(--cs-ink);
+  text-align: center;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.rs-th b {
+  max-width: 100%;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rs-th small {
+  font-size: 0.6rem;
+  color: var(--cs-dim);
+  text-transform: none;
+}
+
+.rs-th-num {
+  flex: 0 0 auto;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--cs-gold);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #faf5e6 0%, #e4dcc0 100%);
+  color: #1a1630;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+}
+
+.rs-tracks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rs-track.hope {
+  grid-column: 1 / -1;
+}
+
+.rs-track {
+  min-width: 0;
+  border: 2px solid var(--cs-trim);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #120e1c;
+}
+
+.rs-track.hp { border-color: #8a3040; }
+.rs-track.stress { border-color: #5b4294; }
+
+.rs-track-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 10px;
+  background: #241d36;
+  font-family: 'Cinzel', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--cs-ink);
+}
+
+.rs-track .dh-dots-row {
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+}
+
+/* Pips as pills (hope stays a diamond) */
+.rs-track .dh-dot {
+  width: 24px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+.rs-track .dh-dot.hope {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* The character name is already in the header: hide the window title text (hidden, not removed, so the controls keep their place) */
+.loom-window.cs-window .loom-window-title {
+  visibility: hidden;
+}
+
+/* The sheet still scrolls down when it needs to, but the scrollbar does not take room from the layout */
+.rs-scroll {
+  scrollbar-width: none;
+}
+
+.rs-scroll::-webkit-scrollbar {
+  display: none;
+}
