@@ -273,9 +273,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  border: 1px solid var(--cs-trim);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 6px;
-  background: var(--cs-panel);
+  background: rgba(26, 21, 38, 0.4);
   font-family: 'Cinzel', serif;
   font-size: 0.78rem;
   color: var(--cs-gold);
@@ -293,10 +293,10 @@
   flex-direction: column;
   gap: 8px;
   padding: 12px;
-  border: 1px solid var(--cs-trim);
-  border-radius: 8px;
-  background: linear-gradient(180deg, #1d1830 0%, #120e1c 100%);
-  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.12), 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  background: rgba(22, 17, 32, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .cs-panel textarea {
@@ -1154,4 +1154,80 @@ button.rs-shield:hover::before {
 .loom-window .cs-sheet .rs-trait-edit:focus {
   border-color: var(--cs-gold);
   outline: none;
+}
+
+/* ── Trait shield group: corner-pinned edit badge ───────────────────────── */
+.rs-trait-shield-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rs-trait-shield-group .rs-shield {
+  width: 54px;
+  height: 64px;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.loom-window .cs-sheet .rs-trait-shield-group .rs-trait-edit {
+  position: absolute;
+  right: -4px;
+  bottom: 0px;
+  width: 26px;
+  height: 22px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0;
+  background: #0d0916 !important;
+  border: 1px solid #7a6630 !important;
+  border-radius: 4px;
+  color: #f3effb !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+  cursor: text;
+}
+
+.loom-window .cs-sheet .rs-trait-shield-group .rs-trait-edit:focus {
+  border-color: var(--cs-gold) !important;
+  color: #fff !important;
+  outline: none;
+}
+
+/* ── Discrete + buttons for adding items ───────────────────────────────── */
+.cs-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-btn-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(227, 195, 106, 0.4);
+  color: var(--cs-gold);
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.15s ease;
+}
+
+.cs-btn-add:hover {
+  background: rgba(227, 195, 106, 0.2);
+  border-color: var(--cs-gold);
+  color: #fff;
+  transform: scale(1.1);
 }

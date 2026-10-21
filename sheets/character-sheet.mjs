@@ -2,6 +2,7 @@ import { LoomActorSheet, LoomHandlebarsMixin, api, dispatchRoll, showToast } fro
 import { attachSideTabs, detachSideTabs } from '../lib/side-tabs.mjs';
 import { saveActor } from '../lib/save-actor.mjs';
 import { DaggerheartLevelUpDialog } from './level-up-dialog.mjs';
+import { DaggerheartItemSheet } from './item-sheet.mjs';
 import { hasLegacyData, planLegacyMigration } from '../lib/migrate-legacy.mjs';
 import { checkDrop } from '../lib/drop-rules.mjs';
 import { addGold } from '../lib/gold.mjs';
@@ -28,7 +29,7 @@ const DOT_FALLBACKS = { proficiency: 1 };
 
 export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorSheet) {
   // Size goes in `position` (the mixin ignores loose width/height); the template goes in PARTS
-  static DEFAULT_OPTIONS = { position: { width: 820, height: 900 } };
+  static DEFAULT_OPTIONS = { position: { width: 840, height: 980 } };
   static PARTS = { main: { template: '/marketplace/rulesets/dh/templates/character-sheet.hbs' } };
 
   constructor(props) {
@@ -485,6 +486,40 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
           case 'qty':
             await put(item, { quantity: Math.max(0, Number(item.data?.quantity ?? 1) + Number(btn.dataset.delta)) });
             break;
+          case 'editItem':
+            new DaggerheartItemSheet({ itemId: item.id }).render(true);
+            return;
+          case 'createItem': {
+            const type = btn.dataset.type || 'equipment';
+            const defaultNames = {
+              weapon: 'Nova Arma',
+              armor: 'Nova Armadura',
+              domainCard: 'Nova Carta de Domínio',
+              equipment: 'Novo Item',
+              consumable: 'Novo Consumível',
+              feature: 'Nova Habilidade'
+            };
+            const defaultData = {
+              weapon: { trait: 'agility', range: 'Melee', dice: 8, flat: 0, damageType: 'phy', burden: 'one', slot: 'inventory' },
+              armor: { baseMajor: 5, baseSevere: 11, baseScore: 2, slotsMarked: 0, equipped: false },
+              domainCard: { level: 1, domain: 'Blade', recallCost: 0, inLoadout: false, type: 'ability' },
+              equipment: { quantity: 1 },
+              consumable: { quantity: 1 }
+            };
+            const created = await api.post('/items', {
+              worldId: window.Loom?.world?.id || doc.worldId,
+              name: defaultNames[type] || 'Novo Item',
+              type: type,
+              imgUrl: '',
+              data: defaultData[type] || {},
+              actorId: doc.id
+            });
+            await this._reloadDocument();
+            if (created?.id) {
+              new DaggerheartItemSheet({ itemId: created.id }).render(true);
+            }
+            return;
+          }
           case 'deleteItem':
             await api.delete('/items/' + item.id);
             break;

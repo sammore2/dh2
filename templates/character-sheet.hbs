@@ -125,11 +125,13 @@
       {{#each traits as |trait key|}}
         <div class="rs-trait">
           <span class="rs-ribbon">{{localize trait.label}}</span>
-          <button type="button" class="dh-trait-score-btn rs-shield" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
-            <b>{{numberFormat trait.value sign=true}}</b>
-          </button>
+          <div class="rs-trait-shield-group">
+            <button type="button" class="dh-trait-score-btn rs-shield" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
+              <b>{{numberFormat trait.value sign=true}}</b>
+            </button>
+            <input class="rs-trait-edit" name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" min="-5" max="10" title="Editar valor de {{localize trait.label}}" />
+          </div>
           <span class="rs-trait-sub">{{localize trait.subLabel}}</span>
-          <input class="rs-trait-edit" name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" min="-5" max="10" title="Valor de {{localize trait.label}}" />
         </div>
       {{/each}}
     </section>
@@ -148,7 +150,10 @@
 
             <div class="cs-panels">
               <div class="cs-panel">
-                <h3>{{localize 'DH.Combat.ActiveWeapons'}}</h3>
+                <div class="cs-panel-head">
+                  <h3>{{localize 'DH.Combat.ActiveWeapons'}}</h3>
+                  <button type="button" class="cs-btn-add" data-act="createItem" data-type="weapon" title="Adicionar Nova Arma"><i class="fa-solid fa-plus"></i></button>
+                </div>
                 {{#each weaponRows as |row|}}
                   <div class="cs-weapon">
                     {{#if row.w}}
@@ -156,6 +161,7 @@
                         <span class="cs-weapon-name">{{row.w.name}}</span>
                         <button type="button" class="cs-btn" data-action="rollWeaponAttack" data-slot="{{row.slot}}" title="Rolar Ataque"><i class="fa-solid fa-dice-d20"></i></button>
                         <button type="button" class="cs-btn danger" data-action="rollWeaponDamage" data-slot="{{row.slot}}" title="Rolar Dano"><i class="fa-solid fa-bolt"></i></button>
+                        <button type="button" class="cs-btn" data-act="editItem" data-id="{{row.w.id}}" title="Editar Arma"><i class="fa-solid fa-pen"></i></button>
                       </div>
                       <div class="cs-row">
                         <span>{{row.w.data.trait}} · {{row.w.data.range}}</span>
@@ -171,9 +177,15 @@
               </div>
 
               <div class="cs-panel">
-                <h3>{{localize 'DH.Combat.ActiveArmor'}}</h3>
+                <div class="cs-panel-head">
+                  <h3>{{localize 'DH.Combat.ActiveArmor'}}</h3>
+                  <button type="button" class="cs-btn-add" data-act="createItem" data-type="armor" title="Adicionar Nova Armadura"><i class="fa-solid fa-plus"></i></button>
+                </div>
                 {{#if armor}}
-                  <div class="cs-weapon-head"><span class="cs-weapon-name">{{armor.name}}</span></div>
+                  <div class="cs-weapon-head">
+                    <span class="cs-weapon-name">{{armor.name}}</span>
+                    <button type="button" class="cs-btn" data-act="editItem" data-id="{{armor.id}}" title="Editar Armadura"><i class="fa-solid fa-pen"></i></button>
+                  </div>
                   <div class="cs-row">
                     <span>Limiares base {{armor.data.baseMajor}} / {{armor.data.baseSevere}}</span>
                     <span>Armor Score {{derived.armorScore}}</span>
@@ -191,7 +203,10 @@
           <section class="tab dh-tab-pane" data-group="primary" data-tab="loadout">
             <div class="cs-toolbar">
               <h3>Loadout Ativo <span class="cs-count {{#if (eq activeLoadoutCount 5)}}full{{/if}}">{{activeLoadoutCount}}/5</span></h3>
-              <button type="button" class="cs-btn {{#if restMode}}active{{/if}}" data-act="rest" title="Em descanso, mover cartas não custa Estresse">Modo descanso</button>
+              <div class="cs-toolbar-actions">
+                <button type="button" class="cs-btn-add" data-act="createItem" data-type="domainCard" title="Criar Nova Carta de Domínio"><i class="fa-solid fa-plus"></i></button>
+                <button type="button" class="cs-btn {{#if restMode}}active{{/if}}" data-act="rest" title="Em descanso, mover cartas não custa Estresse">Modo descanso</button>
+              </div>
             </div>
 
             <div class="cs-cards">
@@ -206,6 +221,7 @@
                   <div class="cs-card-actions">
                     {{#if (eq card.type 'spell')}}<button type="button" class="cs-btn" data-act="cast" data-id="{{card.id}}">Conjurar</button>{{/if}}
                     <button type="button" class="cs-btn" data-action="activateDomainCard" data-card-id="{{card.id}}" title="Anunciar no chat">Ativar</button>
+                    <button type="button" class="cs-btn" data-act="editItem" data-id="{{card.id}}" title="Editar Carta"><i class="fa-solid fa-pen"></i></button>
                     <button type="button" class="cs-btn" data-act="toVault" data-id="{{card.id}}" title="Guardar no Vault">Vault</button>
                     <button type="button" class="cs-btn danger" data-action="deleteDomainCard" data-card-id="{{card.id}}" title="Remover"><i class="fa-solid fa-trash"></i></button>
                   </div>
@@ -294,11 +310,15 @@
               </div>
             </div>
             <div class="cs-panel">
-              <h3>Armas no inventário</h3>
+              <div class="cs-panel-head">
+                <h3>Armas no inventário</h3>
+                <button type="button" class="cs-btn-add" data-act="createItem" data-type="weapon" title="Criar Nova Arma"><i class="fa-solid fa-plus"></i></button>
+              </div>
               {{#each weapons.inventory as |w|}}
                 <div class="cs-weapon" draggable="true" data-drag-item-id="{{w.id}}" data-drag-item-name="{{w.name}}">
                   <div class="cs-weapon-head">
                     <span class="cs-weapon-name">{{w.name}}</span>
+                    <button type="button" class="cs-btn" data-act="editItem" data-id="{{w.id}}" title="Editar"><i class="fa-solid fa-pen"></i></button>
                     <button type="button" class="cs-btn" data-act="equipWeapon" data-id="{{w.id}}">Equipar</button>
                     <button type="button" class="cs-btn danger" data-act="deleteItem" data-id="{{w.id}}" title="Remover"><i class="fa-solid fa-trash"></i></button>
                   </div>
@@ -308,13 +328,17 @@
               {{/each}}
             </div>
             <div class="cs-panel">
-              <h3>Itens</h3>
+              <div class="cs-panel-head">
+                <h3>Itens</h3>
+                <button type="button" class="cs-btn-add" data-act="createItem" data-type="equipment" title="Criar Novo Item"><i class="fa-solid fa-plus"></i></button>
+              </div>
               {{#each inventoryItems as |it|}}
                 <div class="cs-weapon" draggable="true" data-drag-item-id="{{it.id}}" data-drag-item-name="{{it.name}}">
                   <div class="cs-weapon-head">
                     <span class="cs-weapon-name">{{it.name}} &times;{{it.data.quantity}}</span>
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="-1">−</button>
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="1">+</button>
+                    <button type="button" class="cs-btn" data-act="editItem" data-id="{{it.id}}" title="Editar"><i class="fa-solid fa-pen"></i></button>
                     <button type="button" class="cs-btn danger" data-act="deleteItem" data-id="{{it.id}}" title="Remover"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </div>
