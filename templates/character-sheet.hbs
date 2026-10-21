@@ -30,9 +30,9 @@
         <input name="systemData.level" type="number" value="{{system.level}}" min="1" max="10" />
       </div>
       <span class="rs-ribbon">{{localize 'DH.Header.Level'}}</span>
-      <button type="button" class="cs-btn" data-action="levelUp" title="Subir de Nível" style="font-size: 10px; padding: 2px 6px; margin-top: 2px;">Subir de Nível</button>
+      <button type="button" class="rs-level-up-btn" data-action="levelUp" title="Subir de Nível">Subir de Nível</button>
       {{#if hasLegacyData}}
-        <button type="button" class="cs-btn warning" data-action="migrateLegacy" title="Migrar dados legados para itens" style="font-size: 10px; padding: 2px 6px; margin-top: 2px;">Migrar ficha antiga</button>
+        <button type="button" class="rs-level-up-btn warning" data-action="migrateLegacy" title="Migrar dados legados para itens">Migrar ficha antiga</button>
       {{/if}}
     </div>
   </header>
@@ -104,13 +104,23 @@
       </div>
     </div>
 
-    {{!-- Limiares de Dano --}}
+    {{!-- Limiares de Dano (Damage Thresholds: Menor, Maior, Severo) --}}
     <div class="rs-thresholds">
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Minor'}}</b><small>Marca 1 HP</small></span>
-      <span class="rs-th-num">{{derived.thresholdMajor}}</span>
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Major'}}</b><small>Marca 2 HP</small></span>
-      <span class="rs-th-num">{{derived.thresholdSevere}}</span>
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Severe'}}</b><small>Marca 3 HP</small></span>
+      <div class="rs-th-card minor">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Minor'}}</span>
+        <span class="rs-th-range">&lt; {{derived.thresholdMajor}}</span>
+        <span class="rs-th-hp">Marca 1 HP</span>
+      </div>
+      <div class="rs-th-card major">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Major'}}</span>
+        <span class="rs-th-range">&ge; {{derived.thresholdMajor}}</span>
+        <span class="rs-th-hp">Marca 2 HP</span>
+      </div>
+      <div class="rs-th-card severe">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Severe'}}</span>
+        <span class="rs-th-range">&ge; {{derived.thresholdSevere}}</span>
+        <span class="rs-th-hp">Marca 3 HP</span>
+      </div>
     </div>
 
     {{!-- 6 Atributos Centrais --}}

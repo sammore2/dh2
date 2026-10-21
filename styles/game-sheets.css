@@ -688,7 +688,7 @@
   font-size: 1.25rem;
 }
 .rs-level-badge {
-  margin-top: 18px;
+  margin-top: 6px;
 }
 
 .loom-window .cs-sheet .rs-shield.rs-level input {
@@ -910,54 +910,74 @@ button.rs-shield:hover::before {
 }
 
 .rs-thresholds {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-.rs-th {
-  flex: 1;
-  min-width: 0;
+.rs-th-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4px 8px;
-  border-radius: 14px;
-  background: #2f2878;
-  color: var(--cs-ink);
-  text-align: center;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-}
-
-.rs-th b {
-  max-width: 100%;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.rs-th small {
-  font-size: 0.6rem;
-  color: var(--cs-dim);
-  text-transform: none;
-}
-
-.rs-th-num {
-  flex: 0 0 auto;
-  min-width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border: 3px solid var(--cs-gold);
-  border-radius: 6px;
-  background: linear-gradient(180deg, #faf5e6 0%, #e4dcc0 100%);
-  color: #1a1630;
+  gap: 2px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(28, 22, 40, 0.75) 0%, rgba(14, 10, 20, 0.85) 100%);
+  border: 1px solid #3b3052;
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.12), 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: border-color 0.15s ease;
+}
+
+.rs-th-card:hover {
+  border-color: var(--cs-gold);
+}
+
+.rs-th-card .rs-th-title {
   font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--cs-gold);
+}
+
+.rs-th-card .rs-th-range {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f3effb;
+  line-height: 1.2;
+}
+
+.rs-th-card .rs-th-hp {
+  font-size: 0.68rem;
+  color: var(--cs-dim);
+}
+
+.rs-level-up-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-top: 6px;
+  background: linear-gradient(180deg, #2a203a 0%, #151020 100%);
+  border: 1px solid #7a6630;
+  color: #e3c36a;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.15), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+}
+
+.rs-level-up-btn:hover {
+  background: linear-gradient(180deg, #3d2f54 0%, #1f172f 100%);
+  border-color: #e3c36a;
+  color: #fff;
 }
 
 .rs-tracks {
