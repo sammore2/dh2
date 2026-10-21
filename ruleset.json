@@ -5,7 +5,7 @@
   "name": "dh",
   "title": "Daggerheart",
   "version": "0.1.0",
-  "description": "Daggerheart Ruleset Compatible with LoomVTT (SRD 2.0)",
+  "description": "Daggerheart ruleset for Loom VTT based on the Daggerheart SRD 2.0: Duality Dice (Hope and Fear), traits, damage thresholds, HP and Stress, domain cards and adversaries. Released under the Darrington Press Community Gaming License (DPCGL) 2.0; code under MIT.",
   "author": "SamDev",
   "repository": "https://github.com/sammore2/dh2",
   "bugs": "https://github.com/sammore2/dh2/issues",
