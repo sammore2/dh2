@@ -1059,6 +1059,14 @@ button.rs-shield:hover::before {
   gap: 16px;
 }
 
+.dh-adv-vitals-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
 .rs-defense-center {
   display: flex;
   align-items: center;
@@ -1249,13 +1257,20 @@ button.rs-shield:hover::before {
 }
 
 .rs-max-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 0.68rem;
   color: var(--cs-dim);
   font-family: inherit;
+  padding: 1px 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  border: 1px solid rgba(227, 195, 106, 0.2);
 }
 
 .rs-inline-input {
-  width: 26px;
+  width: 28px;
   padding: 0;
   background: transparent !important;
   border: none !important;
@@ -1263,6 +1278,14 @@ button.rs-shield:hover::before {
   font: inherit;
   font-weight: 700;
   text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.rs-inline-input::-webkit-outer-spin-button,
+.rs-inline-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .rs-th-input {

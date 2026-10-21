@@ -33,9 +33,9 @@
     </div>
   </header>
 
-  {{!-- ── PAINEL FIXO SUPERIOR (HP à esquerda, Limiares no centro, Estresse à direita) ── --}}
+  {{!-- ── PAINEL FIXO SUPERIOR (HP à esquerda, Estresse à direita, Limiares abaixo) ── --}}
   <div class="rs-fixed-top">
-    <div class="rs-vitals-defense-row">
+    <div class="dh-adv-vitals-row">
       {{!-- Esquerda: Pontos de Vida (HP) --}}
       <div class="rs-vital-clean hp">
         <div class="rs-vital-clean-head">
@@ -50,38 +50,34 @@
         </div>
       </div>
 
-      {{!-- Centro: Limiares de Dano --}}
-      <div class="rs-thresholds-wrap">
-        <div class="rs-thresholds">
-          <div class="rs-th-card minor">
-            <span class="rs-th-title">{{localize 'DH.Thresholds.Minor'}}</span>
-            <span class="rs-th-range">&lt; {{system.thresholds.major}}</span>
-          </div>
-          <div class="rs-th-card major">
-            <span class="rs-th-title">{{localize 'DH.Thresholds.Major'}}</span>
-            <input class="rs-th-input" name="systemData.thresholds.major" type="number" value="{{system.thresholds.major}}" />
-          </div>
-          <div class="rs-th-card severe">
-            <span class="rs-th-title">{{localize 'DH.Thresholds.Severe'}}</span>
-            <input class="rs-th-input" name="systemData.thresholds.severe" type="number" value="{{system.thresholds.severe}}" />
-          </div>
+      {{!-- Direita: Estresse --}}
+      <div class="rs-vital-clean stress right">
+        <div class="rs-vital-clean-head">
+          <span class="rs-max-pill">Max: <input class="rs-inline-input" name="systemData.stress.max" type="number" value="{{system.stress.max}}" min="0" /></span>
+          <b>{{system.stress.value}} / {{system.stress.max}}</b>
+          <span>{{localize 'DH.Resources.Stress'}}</span>
+        </div>
+        <div class="dh-dots-row" data-resource="stress">
+          {{#numLoop system.stress.max start=0}}
+            <span class="dh-dot stress {{#if (lt this ../system.stress.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar Estresse"></span>
+          {{/numLoop}}
         </div>
       </div>
+    </div>
 
-      {{!-- Direita: Estresse --}}
-      <div class="rs-vital-clean-col right">
-        <div class="rs-vital-clean stress">
-          <div class="rs-vital-clean-head">
-            <span>{{localize 'DH.Resources.Stress'}}</span>
-            <b>{{system.stress.value}} / {{system.stress.max}}</b>
-            <span class="rs-max-pill">Max: <input class="rs-inline-input" name="systemData.stress.max" type="number" value="{{system.stress.max}}" min="0" /></span>
-          </div>
-          <div class="dh-dots-row" data-resource="stress">
-            {{#numLoop system.stress.max start=0}}
-              <span class="dh-dot stress {{#if (lt this ../system.stress.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar Estresse"></span>
-            {{/numLoop}}
-          </div>
-        </div>
+    {{!-- Abaixo: Limiares de Dano --}}
+    <div class="rs-thresholds">
+      <div class="rs-th-card minor">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Minor'}}</span>
+        <span class="rs-th-range">&lt; {{system.thresholds.major}}</span>
+      </div>
+      <div class="rs-th-card major">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Major'}}</span>
+        <input class="rs-th-input" name="systemData.thresholds.major" type="number" value="{{system.thresholds.major}}" />
+      </div>
+      <div class="rs-th-card severe">
+        <span class="rs-th-title">{{localize 'DH.Thresholds.Severe'}}</span>
+        <input class="rs-th-input" name="systemData.thresholds.severe" type="number" value="{{system.thresholds.severe}}" />
       </div>
     </div>
   </div>
