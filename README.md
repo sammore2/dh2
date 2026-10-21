@@ -1,6 +1,7 @@
 # Daggerheart Ruleset for LoomVTT
 
-[![Loom VTT](https://img.shields.io/badge/Loom%20VTT-2.0.5--alpha-blueviolet)](https://loomvtt.com)
+[![Loom VTT](https://img.shields.io/badge/Loom%20VTT-2.0.5--alpha-blueviolet)](https://loomvtt.com)
+[![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsammore2%2Fdh2%2Fmain%2Fruleset.json&query=%24.version&label=version&color=c99738)](https://github.com/sammore2/dh2/releases)
 [![License](https://img.shields.io/badge/license-MIT%20AND%20DPCGL--2.0-blue)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/sammore2/dh2/latest/dh.zip?label=downloads)](https://github.com/sammore2/dh2/releases/latest)
 
