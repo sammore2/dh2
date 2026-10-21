@@ -124,13 +124,15 @@
     <section class="rs-traits">
       {{#each traits as |trait key|}}
         <div class="rs-trait">
-          <button type="button" class="rs-ribbon dh-trait-score-btn" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
-            {{localize trait.label}} <i class="fa-solid fa-dice-d20" style="font-size: 8px; margin-left: 2px;"></i>
+          <span class="rs-ribbon">{{localize trait.label}}</span>
+          <button type="button" class="dh-trait-score-btn rs-shield" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
+            <b>{{numberFormat trait.value sign=true}}</b>
           </button>
-          <div class="rs-shield rs-trait-shield">
-            <input name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" min="-5" max="10" title="Modificador de {{localize trait.label}} (clique para editar)" />
-          </div>
           <span class="rs-trait-sub">{{localize trait.subLabel}}</span>
+          <div class="rs-trait-edit-wrap" title="Modificador de {{localize trait.label}} (-1 a +5)">
+            <span class="rs-trait-mod-tag">Mod</span>
+            <input class="rs-trait-edit" name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" min="-5" max="10" />
+          </div>
         </div>
       {{/each}}
     </section>
