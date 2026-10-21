@@ -74,7 +74,7 @@
         {{#each system.features as |f i|}}
           <label class="cs-wide-label"><input name="data.features.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.features.{{i}}.text" rows="2">{{f.text}}</textarea></label>
         {{/each}}
-        <button type="button" data-add-entry="features">+ Característica</button>
+        <button type="button" class="cs-btn" data-add-entry="features">+ Característica</button>
       {{/if}}
 
       {{#if (eq document.type "subclass")}}
@@ -86,17 +86,17 @@
         {{#each system.foundation as |f i|}}
           <label class="cs-wide-label"><input name="data.foundation.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.foundation.{{i}}.text" rows="2">{{f.text}}</textarea></label>
         {{/each}}
-        <button type="button" data-add-entry="foundation">+ Foundation</button>
+        <button type="button" class="cs-btn" data-add-entry="foundation">+ Foundation</button>
         <label class="cs-wide-label">Specialization</label>
         {{#each system.specialization as |f i|}}
           <label class="cs-wide-label"><input name="data.specialization.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.specialization.{{i}}.text" rows="2">{{f.text}}</textarea></label>
         {{/each}}
-        <button type="button" data-add-entry="specialization">+ Specialization</button>
+        <button type="button" class="cs-btn" data-add-entry="specialization">+ Specialization</button>
         <label class="cs-wide-label">Mastery</label>
         {{#each system.mastery as |f i|}}
           <label class="cs-wide-label"><input name="data.mastery.{{i}}.name" type="text" value="{{f.name}}" /><textarea name="data.mastery.{{i}}.text" rows="2">{{f.text}}</textarea></label>
         {{/each}}
-        <button type="button" data-add-entry="mastery">+ Mastery</button>
+        <button type="button" class="cs-btn" data-add-entry="mastery">+ Mastery</button>
       {{/if}}
 
       {{#if (eq document.type "ancestry")}}

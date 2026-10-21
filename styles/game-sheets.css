@@ -1231,3 +1231,129 @@ button.rs-shield:hover::before {
   color: #fff;
   transform: scale(1.1);
 }
+
+/* ── Adversary & Shared Components ─────────────────────────────────────── */
+.rs-dc-badge {
+  margin-top: 14px;
+}
+
+.loom-window .cs-sheet .rs-shield.rs-dc input {
+  width: 46px;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  text-align: center;
+  font: inherit;
+  color: #1a1630 !important;
+}
+
+.rs-max-pill {
+  font-size: 0.68rem;
+  color: var(--cs-dim);
+  font-family: inherit;
+}
+
+.rs-inline-input {
+  width: 26px;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  color: var(--cs-gold) !important;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+}
+
+.rs-th-input {
+  width: 36px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  background: transparent !important;
+  border: none !important;
+  color: #f3effb !important;
+  padding: 0;
+}
+
+.cs-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(14, 10, 20, 0.6);
+  border: 1px solid #3b3052;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.08);
+  margin-bottom: 6px;
+}
+
+.cs-card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-card-title-input {
+  flex: 1;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cs-gold);
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid #3b3052 !important;
+  border-radius: 0 !important;
+  padding: 2px 0;
+}
+
+.cs-card-select {
+  width: 110px;
+  font-size: 0.78rem;
+}
+
+.cs-dmg-input-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cs-dmg-val {
+  width: 58px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.cs-dmg-type {
+  width: 76px;
+  font-size: 0.78rem;
+}
+
+.cs-card-action-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cs-card-desc-input {
+  font-size: 0.8rem;
+  color: var(--cs-dim);
+  background: transparent !important;
+  border: none !important;
+}
+
+.cs-fear-cost-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  color: #cbb2fe;
+  font-family: 'Cinzel', serif;
+}
+
+.cs-fear-cost-tag input {
+  width: 32px;
+  text-align: center;
+}

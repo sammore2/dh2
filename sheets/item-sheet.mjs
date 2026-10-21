@@ -29,8 +29,24 @@ export class DaggerheartItemSheet extends LoomHandlebarsMixin(LoomItemSheet) {
     }
   }
 
+  _editImage() {
+    const item = this.document;
+    const { windowManager, windows } = window.Loom || {};
+    if (windowManager?.open && windows?.FilePickerWindow) {
+      windowManager.open('file-picker', windows.FilePickerWindow, {
+        current: item.imgUrl || '',
+        type: 'image',
+        onSelect: (url) => this._save({ imgUrl: url }),
+      });
+    }
+  }
+
   // Plain form fields are saved here: the base sheet does not save them. An item keeps its fields in `data`.
   _onRender() {
+    this.element?.querySelector('[data-edit="imgUrl"]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this._editImage();
+    });
     // "+ entry" buttons append an empty {name,text} to a list (class features, subclass tiers)
     this.element?.querySelectorAll('[data-add-entry]').forEach((btn) => {
       btn.onclick = () => {

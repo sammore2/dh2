@@ -3,19 +3,17 @@ import { saveActor } from '../lib/save-actor.mjs';
 import { wireFieldSave } from '../lib/field-save.mjs';
 
 export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorSheet) {
-  // Size goes in `position` (the mixin ignores loose width/height); the template goes in PARTS
-  static DEFAULT_OPTIONS = { position: { width: 680, height: 780 } };
+  static DEFAULT_OPTIONS = { position: { width: 840, height: 920 } };
   static PARTS = { main: { template: '/marketplace/rulesets/dh/templates/adversary-sheet.hbs' } };
 
   constructor(props) {
     super({
       ...props,
-      // Must match the key windowManager.open uses (`actor-sheet-${actorId}`)
       id: props.id || `actor-sheet-${props.actorId}`,
       documentId: props.actorId,
       title: props.title || 'Adversário',
       showFooter: false,
-      classes: ['daggerheart', 'sheet', 'actor', 'adversary'],
+      classes: ['daggerheart', 'sheet', 'actor', 'adversary', 'cs-window'],
     });
   }
 
@@ -28,23 +26,48 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     context.isEditable = this.isEditable;
     context.attacks = sys.attacks || [];
     context.fearFeatures = sys.fearFeatures || [];
+    context.portrait = doc.avatarUrl || '/icons/svg/adventurer.svg';
 
     return context;
   }
 
-  // Saves through the API, then reloads: the WebSocket echo can be late or never reach whoever saved.
   async _save(patch) {
     await saveActor(this.document, patch);
     await this._reloadDocument();
   }
 
+  _editPortrait() {
+    const actor = this.document;
+    const { windowManager, windows } = window.Loom || {};
+    if (typeof window.Loom?.openPortraitEditor === 'function' && actor.id) {
+      window.Loom.openPortraitEditor(actor);
+      return;
+    }
+    if (windowManager?.open && windows?.FilePickerWindow) {
+      windowManager.open('file-picker', windows.FilePickerWindow, {
+        current: actor.avatarUrl || '',
+        type: 'image',
+        onSelect: (url) => this._save({ avatarUrl: url }),
+      });
+    }
+  }
+
   _onRender(context, options) {
-    // The Loom base sheet does not always define _onRender
     super._onRender?.(context, options);
     const html = this.element;
     if (!html) return;
 
-    // Plain form fields are saved here: the base sheet does not save them
+    // Window banner art support
+    const art = this.document?.avatarUrl;
+    html.classList.add('window-has-banner');
+    html.style.setProperty('--window-banner-url', art ? `url("${art}")` : 'none');
+
+    html.querySelector('[data-portrait-edit]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this._editPortrait();
+    });
+
+    // Plain form fields are saved here
     wireFieldSave(this, (name, value) => {
       if (name === 'name' || name.startsWith('systemData.')) this._save({ [name]: value });
     });
@@ -90,7 +113,7 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
         if (!attack) return;
 
         const formula = attack.damage || '1d8';
-        const name = attack.name || 'Adversary Attack';
+        const name = attack.name || 'Ataque';
         const damageType = attack.damageType || 'physical';
 
         await dispatchRoll({
@@ -117,22 +140,20 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
         if (!feat) return;
 
         const cost = feat.cost || 1;
-        const name = feat.name || 'Fear Feature';
+        const name = feat.name || 'Habilidade de Medo';
         const desc = feat.description || '';
 
-        // If GM Fear Tracker exists or toast
         if (showToast) {
-          showToast(`Habilidade de Medo ativada: ${name} (Custo: ${cost} Medo)`, 'info');
+          showToast(`Habilidade ativada: ${name} (Custo: ${cost} Medo)`, 'info');
         }
 
-        // Post announcement to chat if available
         if (window.Loom?.api?.post) {
           await window.Loom.api.post('/chat', {
             content: `
               <div class="dh-roll-card dh-fear-feature-card">
                 <div class="dh-card-header">
                   <div class="dh-card-title-group">
-                    <span class="dh-card-crest">🔮</span>
+                    <span class="dh-card-crest"><i class="fa-solid fa-skull"></i></span>
                     <span class="dh-card-title">${this.document.name} — ${name}</span>
                   </div>
                   <span class="dh-card-dc">Custo: ${cost} Medo</span>
@@ -146,25 +167,21 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     });
 
     // ── Add / Delete Attacks ─────────────────────────────────────────────────
-    const addAttackBtn = html.querySelector('[data-action="addAttack"]');
-    if (addAttackBtn) {
-      addAttackBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (this.isEditable === false) return;
-        const currentAttacks = [...(this.document.systemData?.attacks || [])];
-        currentAttacks.push({
-          name: `Ataque ${currentAttacks.length + 1}`,
-          range: 'Melee',
-          damage: '1d8+2',
-          damageType: 'physical',
-          feature: '',
-        });
-        await this._save({ 'systemData.attacks': currentAttacks });
+    html.querySelector('[data-action="addAttack"]')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (this.isEditable === false) return;
+      const currentAttacks = [...(this.document.systemData?.attacks || [])];
+      currentAttacks.push({
+        name: `Ataque ${currentAttacks.length + 1}`,
+        range: 'Melee',
+        damage: '1d8+2',
+        damageType: 'physical',
+        feature: '',
       });
-    }
+      await this._save({ 'systemData.attacks': currentAttacks });
+    });
 
-    const deleteAttackBtns = html.querySelectorAll('[data-action="deleteAttack"]');
-    deleteAttackBtns.forEach((btn) => {
+    html.querySelectorAll('[data-action="deleteAttack"]').forEach((btn) => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (this.isEditable === false) return;
@@ -176,23 +193,19 @@ export class DaggerheartAdversarySheet extends LoomHandlebarsMixin(LoomActorShee
     });
 
     // ── Add / Delete Fear Features ───────────────────────────────────────────
-    const addFearBtn = html.querySelector('[data-action="addFearFeature"]');
-    if (addFearBtn) {
-      addFearBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (this.isEditable === false) return;
-        const currentFeats = [...(this.document.systemData?.fearFeatures || [])];
-        currentFeats.push({
-          name: `Habilidade de Medo ${currentFeats.length + 1}`,
-          cost: 1,
-          description: '',
-        });
-        await this._save({ 'systemData.fearFeatures': currentFeats });
+    html.querySelector('[data-action="addFearFeature"]')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (this.isEditable === false) return;
+      const currentFeats = [...(this.document.systemData?.fearFeatures || [])];
+      currentFeats.push({
+        name: `Habilidade de Medo ${currentFeats.length + 1}`,
+        cost: 1,
+        description: '',
       });
-    }
+      await this._save({ 'systemData.fearFeatures': currentFeats });
+    });
 
-    const deleteFearBtns = html.querySelectorAll('[data-action="deleteFearFeature"]');
-    deleteFearBtns.forEach((btn) => {
+    html.querySelectorAll('[data-action="deleteFearFeature"]').forEach((btn) => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (this.isEditable === false) return;
