@@ -104,22 +104,19 @@
       </div>
     </div>
 
-    {{!-- Limiares de Dano (Damage Thresholds: Menor, Maior, Severo) --}}
+    {{!-- Limiares de Dano --}}
     <div class="rs-thresholds">
       <div class="rs-th-card minor">
         <span class="rs-th-title">{{localize 'DH.Thresholds.Minor'}}</span>
         <span class="rs-th-range">&lt; {{derived.thresholdMajor}}</span>
-        <span class="rs-th-hp">Marca 1 HP</span>
       </div>
       <div class="rs-th-card major">
         <span class="rs-th-title">{{localize 'DH.Thresholds.Major'}}</span>
-        <span class="rs-th-range">&ge; {{derived.thresholdMajor}}</span>
-        <span class="rs-th-hp">Marca 2 HP</span>
+        <span class="rs-th-range">{{derived.thresholdMajor}}+</span>
       </div>
       <div class="rs-th-card severe">
         <span class="rs-th-title">{{localize 'DH.Thresholds.Severe'}}</span>
-        <span class="rs-th-range">&ge; {{derived.thresholdSevere}}</span>
-        <span class="rs-th-hp">Marca 3 HP</span>
+        <span class="rs-th-range">{{derived.thresholdSevere}}+</span>
       </div>
     </div>
 
@@ -127,10 +124,13 @@
     <section class="rs-traits">
       {{#each traits as |trait key|}}
         <div class="rs-trait">
-          <span class="rs-ribbon">{{localize trait.label}}</span>
-          <button type="button" class="dh-trait-score-btn rs-shield" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">{{numberFormat trait.value sign=true}}</button>
+          <button type="button" class="rs-ribbon dh-trait-score-btn" data-trait="{{key}}" title="Rolar {{localize trait.label}} (2d12 Dualidade)">
+            {{localize trait.label}} <i class="fa-solid fa-dice-d20" style="font-size: 8px; margin-left: 2px;"></i>
+          </button>
+          <div class="rs-shield rs-trait-shield">
+            <input name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" min="-5" max="10" title="Modificador de {{localize trait.label}} (clique para editar)" />
+          </div>
           <span class="rs-trait-sub">{{localize trait.subLabel}}</span>
-          <input class="rs-trait-edit" name="systemData.attributes.{{key}}" type="number" value="{{trait.value}}" title="Valor do atributo" />
         </div>
       {{/each}}
     </section>

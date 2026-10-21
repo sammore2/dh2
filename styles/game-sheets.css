@@ -917,11 +917,10 @@ button.rs-shield:hover::before {
 
 .rs-th-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 5px 8px;
+  gap: 8px;
+  padding: 3px 8px;
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(28, 22, 40, 0.75) 0%, rgba(14, 10, 20, 0.85) 100%);
   border: 1px solid #3b3052;
@@ -936,7 +935,7 @@ button.rs-shield:hover::before {
 
 .rs-th-card .rs-th-title {
   font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -945,15 +944,10 @@ button.rs-shield:hover::before {
 
 .rs-th-card .rs-th-range {
   font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #f3effb;
   line-height: 1.2;
-}
-
-.rs-th-card .rs-th-hp {
-  font-size: 0.68rem;
-  color: var(--cs-dim);
 }
 
 .rs-level-up-btn {
@@ -1139,4 +1133,35 @@ button.rs-shield:hover::before {
   height: 14px;
   border-radius: 2px;
   transform: rotate(45deg);
+}
+
+/* Trait shield: the input sits inside the shield like the level badge */
+.loom-window .cs-sheet .rs-trait-shield input {
+  width: 48px;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  color: #1a1630;
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: text;
+}
+
+button.rs-ribbon.dh-trait-score-btn {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+button.rs-ribbon.dh-trait-score-btn:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
 }
