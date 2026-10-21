@@ -27,6 +27,7 @@ const { sheets } = window.Loom;
 if (sheets) {
   sheets.catalog('actor', 'character', DaggerheartCharacterSheet);
   sheets.catalog('actor', 'adversary', DaggerheartAdversarySheet);
+  sheets.catalog('actor', 'npc', DaggerheartAdversarySheet);
   sheets.catalog('item', 'weapon', DaggerheartItemSheet);
   sheets.catalog('item', 'armor', DaggerheartItemSheet);
   sheets.catalog('item', 'domainCard', DaggerheartItemSheet);
@@ -137,7 +138,7 @@ SystemRegistry.register(defineSystem({
       };
     }
 
-    if (type === 'adversary') {
+    if (type === 'adversary' || type === 'npc') {
       return {
         tier: 1,
         difficulty: 10,

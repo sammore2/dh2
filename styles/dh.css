@@ -2180,7 +2180,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   10. GM FEAR TRACKER HUD (SRD 2.0)
+   10. GM FEAR TRACKER HUD (SRD 2.0 — Dark Stone & Gold Aesthetic)
    ══════════════════════════════════════════════════════════════════════════ */
 
 #dh-gm-fear-tracker {
@@ -2188,7 +2188,7 @@
   bottom: 24px;
   right: 28px;
   z-index: 10000;
-  font-family: var(--dh-font-sans);
+  font-family: 'Crimson Pro', Georgia, serif;
   user-select: none;
 }
 
@@ -2196,41 +2196,43 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #2b1145 0%, #150624 100%);
-  border: 1.5px solid #a855f7;
-  border-radius: 20px;
-  padding: 8px 14px;
+  background: linear-gradient(180deg, #241d36 0%, #0d0b1f 100%);
+  border: 1px solid #7a6630;
+  border-radius: 18px;
+  padding: 6px 14px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 0 12px rgba(168, 85, 247, 0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 1px #050308, 0 6px 16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(227, 195, 106, 0.25);
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
 .dh-fear-mini-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 18px rgba(168, 85, 247, 0.8);
+  border-color: #e3c36a;
 }
 
 .dh-fear-mini-icon {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  color: #cbb2fe;
 }
 
 .dh-fear-mini-val {
-  font-family: var(--dh-font-display);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #f3e8ff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #e3c36a;
+  letter-spacing: 0.5px;
 }
 
 .dh-fear-tracker-card {
   width: 290px;
-  background: linear-gradient(160deg, #1f112e 0%, #0d0615 100%);
-  border: 1.5px solid #a855f7;
-  border-radius: 12px;
-  padding: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(168, 85, 247, 0.35);
+  background: linear-gradient(180deg, #1d1629 0%, #0d0a14 100%);
+  border: 1px solid #7a6630;
+  border-radius: 6px;
+  padding: 12px 14px;
+  box-shadow: 0 0 0 1px #050308, 0 14px 32px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(227, 195, 106, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .dh-fear-header {
@@ -2238,68 +2240,79 @@
   justify-content: space-between;
   align-items: center;
   cursor: move;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.3);
-  padding-bottom: 6px;
+  border-bottom: 1px solid #3b3052;
+  padding-bottom: 8px;
 }
 
 .dh-fear-title {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--dh-font-display);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: #e9d5ff;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #e3c36a;
+}
+
+.dh-fear-crest {
+  color: #cbb2fe;
+  font-size: 0.95rem;
 }
 
 .dh-fear-counter {
-  font-size: 0.8rem;
-  color: #c084fc;
+  font-size: 0.78rem;
+  color: #b0a8c4;
+  font-weight: 600;
 }
 
 .dh-fear-btn-close {
   background: transparent;
   border: none;
-  color: #a855f7;
+  color: #b0a8c4;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 3px;
+  line-height: 1;
+  transition: color 0.15s ease;
 }
 
 .dh-fear-btn-close:hover {
-  color: #fff;
-  background: rgba(168, 85, 247, 0.2);
+  color: #f3effb;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .dh-fear-tokens-strip {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
-  padding: 6px;
-  background: rgba(10, 5, 18, 0.6);
-  border-radius: 8px;
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  padding: 8px;
+  background: #08060e;
+  border-radius: 4px;
+  border: 1px solid #2d243d;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .dh-fear-token-pip {
-  height: 22px;
-  border-radius: 6px;
-  background: rgba(30, 15, 45, 0.8);
-  border: 1.5px solid rgba(168, 85, 247, 0.3);
+  height: 20px;
+  border-radius: 4px;
+  background: #140f20;
+  border: 1px solid #3b3052;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
 }
 
 .dh-fear-token-pip:hover {
-  border-color: #c084fc;
-  transform: scale(1.1);
+  border-color: #7a6630;
+  transform: scale(1.05);
 }
 
 .dh-fear-token-pip.active {
-  background: radial-gradient(circle at 40% 40%, #c084fc 0%, #7c3aed 100%);
-  border-color: #e9d5ff;
-  box-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
+  background: linear-gradient(180deg, #9b6bd6 0%, #582991 100%);
+  border-color: #e3c36a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .dh-fear-controls {
@@ -2309,40 +2322,47 @@
 
 .dh-fear-ctrl-btn {
   flex: 1;
-  background: #1e102f;
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  color: #e9d5ff;
+  background: linear-gradient(180deg, #271f36 0%, #130f1c 100%);
+  border: 1px solid #7a6630;
+  color: #f3effb;
   padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  border-radius: 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
   cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(227, 195, 106, 0.15), 0 2px 4px rgba(0, 0, 0, 0.5);
   transition: all 0.15s ease;
   text-align: center;
 }
 
 .dh-fear-ctrl-btn:hover {
-  background: #2e1747;
-  border-color: #a855f7;
+  background: linear-gradient(180deg, #382d4d 0%, #1e172c 100%);
+  border-color: #e3c36a;
   color: #fff;
 }
 
 .dh-fear-ctrl-btn.danger {
-  color: #f87171;
-  border-color: rgba(239, 68, 68, 0.3);
+  background: linear-gradient(180deg, #3a151b 0%, #1a080b 100%);
+  border-color: #7a2c20;
+  color: #ff9ca8;
 }
 
 .dh-fear-ctrl-btn.danger:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
+  background: linear-gradient(180deg, #521c25 0%, #260c10 100%);
+  border-color: #d1495b;
+  color: #fff;
 }
 
 /* Chat Card for Fear Spent */
 .dh-fear-spend-card {
-  border-color: #9333ea;
-  background: linear-gradient(160deg, #240d38 0%, #0d0416 100%);
+  border-color: #7a6630;
+  background: linear-gradient(180deg, #1d1629 0%, #0d0a14 100%);
+  box-shadow: 0 0 0 1px #050308, 0 6px 14px rgba(0, 0, 0, 0.7);
 }
 
 .dh-fear-spend-card .dh-card-crest {
-  color: #c084fc;
+  color: #cbb2fe;
 }
