@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="rs-badge" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div class="rs-badge rs-level-badge">
       <div class="rs-shield rs-level">
         <input name="systemData.level" type="number" value="{{system.level}}" min="1" max="10" />
       </div>
@@ -37,28 +37,83 @@
     </div>
   </header>
 
-  <div class="rs-scroll">
-    {{!-- ── Defenses ─────────────────────────────────────────────────────────── --}}
-    <section class="rs-defense">
-      <div class="rs-badge">
-        <div class="rs-shield"><b>{{derived.evasion}}</b></div>
-        <span class="rs-ribbon">{{localize 'DH.Resources.Evasion'}}</span>
-      </div>
-      <div class="rs-badge">
-        <div class="rs-shield"><b>{{derived.armorScore}}</b></div>
-        <span class="rs-ribbon">{{localize 'DH.Resources.ArmorScore'}}</span>
-      </div>
-      <div class="rs-armor-slots">
-        <span class="rs-pill">{{localize 'DH.Resources.ArmorSlots'}}</span>
-        <div class="dh-armor-pips-grid" data-resource="armorSlots">
-          {{#numLoop derived.armorScore start=0}}
-            <span class="dh-armor-pip {{#if (lt this ../armor.data.slotsMarked)}}marked{{/if}}" data-index="{{this}}" title="Slot de Armadura"></span>
+  {{!-- ── PAINEL FIXO SUPERIOR (HP à esquerda, Evasão/Armadura no centro, Esperança/Estresse à direita, Atributos) ── --}}
+  <div class="rs-fixed-top">
+    {{!-- Linha de Defesas e Vitals --}}
+    <div class="rs-vitals-defense-row">
+      {{!-- Esquerda: Pontos de Vida (clean, sem fundo pesado) --}}
+      <div class="rs-vital-clean hp">
+        <div class="rs-vital-clean-head">
+          <span>{{localize 'DH.Resources.HP'}}</span>
+          <b>{{system.hp.value}} / {{hpMax}}</b>
+        </div>
+        <div class="dh-dots-row" data-resource="hp">
+          {{#numLoop hpMax start=0}}
+            <span class="dh-dot hp {{#if (lt this ../system.hp.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar HP"></span>
           {{/numLoop}}
         </div>
       </div>
-    </section>
 
-    {{!-- ── Traits ───────────────────────────────────────────────────────────── --}}
+      {{!-- Centro: Evasão e Armadura --}}
+      <div class="rs-defense-center">
+        <div class="rs-badge">
+          <div class="rs-shield"><b>{{derived.evasion}}</b></div>
+          <span class="rs-ribbon">{{localize 'DH.Resources.Evasion'}}</span>
+        </div>
+        <div class="rs-badge">
+          <div class="rs-shield"><b>{{derived.armorScore}}</b></div>
+          <span class="rs-ribbon">{{localize 'DH.Resources.ArmorScore'}}</span>
+        </div>
+        {{#if armor}}
+          <div class="rs-armor-slots">
+            <span class="rs-pill">{{localize 'DH.Resources.ArmorSlots'}}</span>
+            <div class="dh-armor-pips-grid" data-resource="armorSlots">
+              {{#numLoop derived.armorScore start=0}}
+                <span class="dh-armor-pip {{#if (lt this ../armor.data.slotsMarked)}}marked{{/if}}" data-index="{{this}}" title="Slot de Armadura"></span>
+              {{/numLoop}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+
+      {{!-- Direita: Esperança em cima, Estresse embaixo (clean, sem fundo pesado) --}}
+      <div class="rs-vital-clean-col right">
+        <div class="rs-vital-clean hope">
+          <div class="rs-vital-clean-head">
+            <span>{{localize 'DH.Resources.Hope'}}</span>
+            <b>{{system.hope.value}} / {{hopeMax}}</b>
+          </div>
+          <div class="dh-dots-row" data-resource="hope">
+            {{#numLoop hopeMax start=0}}
+              <span class="dh-dot hope {{#if (lt this ../system.hope.value)}}marked{{/if}}" data-index="{{this}}" title="Slot de Esperança"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+
+        <div class="rs-vital-clean stress">
+          <div class="rs-vital-clean-head">
+            <span>{{localize 'DH.Resources.Stress'}}</span>
+            <b>{{system.stress.value}} / {{stressMax}}</b>
+          </div>
+          <div class="dh-dots-row" data-resource="stress">
+            {{#numLoop stressMax start=0}}
+              <span class="dh-dot stress {{#if (lt this ../system.stress.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar Estresse"></span>
+            {{/numLoop}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Limiares de Dano --}}
+    <div class="rs-thresholds">
+      <span class="rs-th"><b>{{localize 'DH.Thresholds.Minor'}}</b><small>Marca 1 HP</small></span>
+      <span class="rs-th-num">{{derived.thresholdMajor}}</span>
+      <span class="rs-th"><b>{{localize 'DH.Thresholds.Major'}}</b><small>Marca 2 HP</small></span>
+      <span class="rs-th-num">{{derived.thresholdSevere}}</span>
+      <span class="rs-th"><b>{{localize 'DH.Thresholds.Severe'}}</b><small>Marca 3 HP</small></span>
+    </div>
+
+    {{!-- 6 Atributos Centrais --}}
     <section class="rs-traits">
       {{#each traits as |trait key|}}
         <div class="rs-trait">
@@ -69,56 +124,10 @@
         </div>
       {{/each}}
     </section>
+  </div>
 
-    {{!-- ── Hit points, stress, hope ─────────────────────────────────────────── --}}
-    <div class="rs-band">Pontos de Vida &amp; Estresse</div>
-
-    <div class="rs-thresholds">
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Minor'}}</b><small>Marca 1 HP</small></span>
-      <span class="rs-th-num">{{derived.thresholdMajor}}</span>
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Major'}}</b><small>Marca 2 HP</small></span>
-      <span class="rs-th-num">{{derived.thresholdSevere}}</span>
-      <span class="rs-th"><b>{{localize 'DH.Thresholds.Severe'}}</b><small>Marca 3 HP</small></span>
-    </div>
-
-    <section class="rs-tracks">
-      <div class="rs-track hp">
-        <div class="rs-track-head">
-          <span>{{localize 'DH.Resources.HP'}}</span>
-          <span>{{system.hp.value}} / {{hpMax}}</span>
-        </div>
-        <div class="dh-dots-row" data-resource="hp">
-          {{#numLoop hpMax start=0}}
-            <span class="dh-dot hp {{#if (lt this ../system.hp.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar HP"></span>
-          {{/numLoop}}
-        </div>
-      </div>
-
-      <div class="rs-track stress">
-        <div class="rs-track-head">
-          <span>{{localize 'DH.Resources.Stress'}}</span>
-          <span>{{system.stress.value}} / {{stressMax}}</span>
-        </div>
-        <div class="dh-dots-row" data-resource="stress">
-          {{#numLoop stressMax start=0}}
-            <span class="dh-dot stress {{#if (lt this ../system.stress.value)}}marked{{/if}}" data-index="{{this}}" title="Marcar/Desmarcar Stress"></span>
-          {{/numLoop}}
-        </div>
-      </div>
-
-      <div class="rs-track hope">
-        <div class="rs-track-head">
-          <span>{{localize 'DH.Resources.Hope'}}</span>
-          <span>{{system.hope.value}} / {{hopeMax}}</span>
-        </div>
-        <div class="dh-dots-row" data-resource="hope">
-          {{#numLoop hopeMax start=0}}
-            <span class="dh-dot hope {{#if (lt this ../system.hope.value)}}marked{{/if}}" data-index="{{this}}" title="Slot de Esperança"></span>
-          {{/numLoop}}
-        </div>
-      </div>
-    </section>
-
+  {{!-- ── ÁREA ROLÁVEL COM ABAS QUE TRANSITAM ───────────────────────────── --}}
+  <div class="rs-scroll">
       <div class="cs-tabs">
         <div class="cs-pane-area">
           {{!-- COMBAT --}}
@@ -294,7 +303,7 @@
               {{#each inventoryItems as |it|}}
                 <div class="cs-weapon" draggable="true" data-drag-item-id="{{it.id}}" data-drag-item-name="{{it.name}}">
                   <div class="cs-weapon-head">
-                    <span class="cs-weapon-name">{{it.name}} Ã—{{it.data.quantity}}</span>
+                    <span class="cs-weapon-name">{{it.name}} &times;{{it.data.quantity}}</span>
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="-1">−</button>
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="1">+</button>
                     <button type="button" class="cs-btn danger" data-act="deleteItem" data-id="{{it.id}}" title="Remover"><i class="fa-solid fa-trash"></i></button>
