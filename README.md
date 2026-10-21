@@ -2,7 +2,7 @@
 
 [![Loom VTT](https://img.shields.io/badge/Loom%20VTT-2.0.5--alpha-blueviolet)](https://loomvtt.com)
 [![License](https://img.shields.io/badge/license-MIT%20AND%20DPCGL--2.0-blue)](LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/sammore2/dh2/latest/dh.zip?label=downloads)](https://github.com/sammore2/dh2/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/sammore2/dh2/latest/dh.zip?label=downloads)](https://github.com/sammore2/dh2/releases/latest)
 
 A ruleset compatible with **Daggerheart**, built for the **LoomVTT** platform.
 
@@ -13,11 +13,11 @@ A ruleset compatible with **Daggerheart**, built for the **LoomVTT** platform.
 This project uses material under the terms of the **Darrington Press Community Gaming License (DPCGL) v2.0** (August 26, 2026).
 
 > **Official attribution notice:**
-> *"This product includes materials from the Daggerheart System Reference Document 2.0, Â© Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com. There are no previous modifications by others."*
+> *"This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com. There are no previous modifications by others."*
 
 ### Trademarks
-* **Darrington Pressâ„¢** and the Darrington Press Authorized Work logo are trademarks of Critical Role, LLC and are used with permission.
-* **Daggerheartâ„¢** is a trademark of Critical Role, LLC.
+* **Darrington Press™** and the Darrington Press Authorized Work logo are trademarks of Critical Role, LLC and are used with permission.
+* **Daggerheart™** is a trademark of Critical Role, LLC.
 
 For the full license terms, see the [LICENSE](LICENSE) file and the official Darrington Press documents:
 - [DPCGL 2.0 PDF](https://darringtonpress.com/wp-content/uploads/2026/08/DPCGL_2.0_AUG_26_2026.pdf)
@@ -34,7 +34,7 @@ For the full license terms, see the [LICENSE](LICENSE) file and the official Dar
 * Adversary structure and action difficulties.
 
 <details>
-<summary>PortuguÃªs (pt-BR)</summary>
+<summary>Português (pt-BR)</summary>
 
 Sistema de regras compatível com **Daggerheart**, implementado para a plataforma **LoomVTT**.
 
