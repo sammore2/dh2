@@ -5,6 +5,7 @@ import { DaggerheartItemSheet } from './sheets/item-sheet.mjs';
 import { renderDaggerheartRollCard, registerChatCardListeners } from './cards/roll-card.mjs';
 import { initFearTracker } from './lib/fear-tracker.mjs';
 import { deriveCharacter } from './lib/derive.mjs';
+import { registerSettings } from './lib/settings.mjs';
 
 // ── Custom Actor Document Class ──────────────────────────────────────────────
 class DaggerheartActor extends CONFIG.Actor.documentClass {
@@ -45,7 +46,8 @@ if (wraps?.renderRollCard) {
   });
 }
 
-// Global click delegation for interactive chat card buttons
+// System settings and global click delegation for interactive chat card buttons
+registerSettings();
 registerChatCardListeners();
 
 // ── GM Fear Tracker HUD ──────────────────────────────────────────────────────

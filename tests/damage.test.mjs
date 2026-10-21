@@ -65,3 +65,18 @@ assert.equal(putCalled.path, '/items/arm1');
 assert.equal(putCalled.body.data.slotsMarked, 3);
 
 console.log('damage ok');
+
+// Healing clears marked HP, never below zero
+import { applyHealToActor } from '../lib/damage.mjs';
+{
+  const saved = [];
+  const save = async (_a, patch) => saved.push(patch);
+  const actor = { systemData: { hp: { value: 4, max: 6 } } };
+  let r = await applyHealToActor(actor, 3, { saveActor: save });
+  assert.equal(r.currentHp, 1);
+  assert.equal(r.cleared, 3);
+  assert.deepEqual(saved[0], { 'systemData.hp.value': 1 });
+  r = await applyHealToActor(actor, 9, { saveActor: save });
+  assert.equal(r.currentHp, 0);
+  assert.equal(r.cleared, 4);
+}

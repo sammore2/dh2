@@ -10,8 +10,9 @@
 
     <div class="cs-identity">
       <input class="cs-name" name="name" type="text" value="{{document.name}}" placeholder="Nome do item" />
-      <span class="cs-type">{{localize (concat "DH.ItemType." document.type)}}</span>
+      <span class="cs-type">{{localize (concat "DH.ItemType." typeKey)}}</span>
     </div>
+    {{#if isEditable}}<button type="button" class="cs-btn danger" data-delete-item title="Excluir item"><i class="fa-solid fa-trash"></i></button>{{/if}}
   </header>
 
   <div class="cs-body single">
@@ -23,8 +24,8 @@
           <label>Fardo<select name="data.burden"><option value="one" {{#if (eq system.burden "one")}}selected{{/if}}>Uma mão</option><option value="two" {{#if (eq system.burden "two")}}selected{{/if}}>Duas mãos</option></select></label>
         </div>
         <div class="cs-row">
-          <label>Traço<input name="data.trait" type="text" value="{{system.trait}}" placeholder="agility, strength..." /></label>
-          <label>Alcance<input name="data.range" type="text" value="{{system.range}}" placeholder="Melee, Very Close, Close..." /></label>
+          <label>Traço<select name="data.trait">{{#each options.trait as |o|}}<option value="{{o.value}}" {{#if (eq o.value @root.system.trait)}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
+          <label>Alcance<select name="data.range">{{#each options.range as |o|}}<option value="{{o.value}}" {{#if (eq o.value @root.system.range)}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
         </div>
         <div class="cs-row">
           <label>Dado (dN)<input name="data.dice" type="number" value="{{system.dice}}" /></label>
@@ -49,7 +50,7 @@
 
       {{#if (eq document.type "domainCard")}}
         <div class="cs-row">
-          <label>Domínio<input name="data.domain" type="text" value="{{system.domain}}" placeholder="Blade, Bone, Codex..." /></label>
+          <label>Domínio<select name="data.domain">{{#each options.domain as |o|}}<option value="{{o.value}}" {{#if (eq o.value @root.system.domain)}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
           <label>Nível<input name="data.level" type="number" value="{{system.level}}" /></label>
           <label>Tipo<select name="data.type"><option value="ability" {{#if (eq system.type "ability")}}selected{{/if}}>Ability</option><option value="spell" {{#if (eq system.type "spell")}}selected{{/if}}>Spell</option><option value="grimoire" {{#if (eq system.type "grimoire")}}selected{{/if}}>Grimoire</option></select></label>
           <label>Recall (Estresse)<input name="data.recallCost" type="number" value="{{system.recallCost}}" /></label>
@@ -61,12 +62,12 @@
         <div class="cs-row">
           <label>Evasão<input name="data.evasion" type="number" value="{{system.evasion}}" /></label>
           <label>HP<input name="data.hp" type="number" value="{{system.hp}}" /></label>
-          <label>Domínio 1<input name="data.domains.0" type="text" value="{{system.domains.0}}" /></label>
-          <label>Domínio 2<input name="data.domains.1" type="text" value="{{system.domains.1}}" /></label>
+          <label>Domínio 1<select name="data.domains.0"><option value="">—</option>{{#each options.domain as |o|}}<option value="{{o.value}}" {{#if (eq o.value (lookup @root.system.domains 0))}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
+          <label>Domínio 2<select name="data.domains.1"><option value="">—</option>{{#each options.domain as |o|}}<option value="{{o.value}}" {{#if (eq o.value (lookup @root.system.domains 1))}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
         </div>
         <div class="cs-row">
-          <label>Subclasse 1<input name="data.subclasses.0" type="text" value="{{system.subclasses.0}}" /></label>
-          <label>Subclasse 2<input name="data.subclasses.1" type="text" value="{{system.subclasses.1}}" /></label>
+          <label>Subclasse 1<input name="data.subclasses.0" type="text" value="{{lookup system.subclasses 0}}" /></label>
+          <label>Subclasse 2<input name="data.subclasses.1" type="text" value="{{lookup system.subclasses 1}}" /></label>
         </div>
         <label class="cs-wide-label">Hope Feature<input name="data.hopeFeature.name" type="text" value="{{system.hopeFeature.name}}" /></label>
         <label class="cs-wide-label">Texto da Hope Feature (custo {{system.hopeFeature.cost}})<textarea name="data.hopeFeature.text" rows="3">{{system.hopeFeature.text}}</textarea></label>
@@ -80,7 +81,7 @@
       {{#if (eq document.type "subclass")}}
         <div class="cs-row">
           <label>Classe<input name="data.class" type="text" value="{{system.class}}" /></label>
-          <label>Spellcast<input name="data.spellcastTrait" type="text" value="{{system.spellcastTrait}}" placeholder="presence, knowledge..." /></label>
+          <label>Spellcast<select name="data.spellcastTrait"><option value="">—</option>{{#each options.trait as |o|}}<option value="{{o.value}}" {{#if (eq o.value @root.system.spellcastTrait)}}selected{{/if}}>{{o.label}}</option>{{/each}}</select></label>
         </div>
         <label class="cs-wide-label">Foundation</label>
         {{#each system.foundation as |f i|}}
@@ -100,8 +101,8 @@
       {{/if}}
 
       {{#if (eq document.type "ancestry")}}
-        <label class="cs-wide-label">Característica 1 (de cima)<input name="data.features.0.name" type="text" value="{{system.features.0.name}}" /><textarea name="data.features.0.text" rows="3">{{system.features.0.text}}</textarea></label>
-        <label class="cs-wide-label">Característica 2 (de baixo)<input name="data.features.1.name" type="text" value="{{system.features.1.name}}" /><textarea name="data.features.1.text" rows="3">{{system.features.1.text}}</textarea></label>
+        <label class="cs-wide-label">Característica 1 (de cima)<input name="data.features.0.name" type="text" value="{{lookup (lookup system.features 0) 'name'}}" /><textarea name="data.features.0.text" rows="3">{{lookup (lookup system.features 0) 'text'}}</textarea></label>
+        <label class="cs-wide-label">Característica 2 (de baixo)<input name="data.features.1.name" type="text" value="{{lookup (lookup system.features 1) 'name'}}" /><textarea name="data.features.1.text" rows="3">{{lookup (lookup system.features 1) 'text'}}</textarea></label>
       {{/if}}
 
       {{#if (eq document.type "community")}}
@@ -110,6 +111,7 @@
 
       {{#if (or (eq document.type "consumable") (eq document.type "equipment"))}}
         <label>Quantidade<input name="data.quantity" type="number" value="{{system.quantity}}" /></label>
+        {{#if (eq document.type "consumable")}}<label>Cura (HP)<input name="data.heal" type="text" value="{{system.heal}}" placeholder="ex.: 1d4+1 (vazio = sem cura)" /></label>{{/if}}
       {{/if}}
 
       <label class="cs-wide-label">Descrição &amp; Regras<textarea name="data.description" rows="8">{{system.description}}</textarea></label>

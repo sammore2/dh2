@@ -7,6 +7,9 @@ import { hasLegacyData, planLegacyMigration } from '../lib/migrate-legacy.mjs';
 import { checkDrop } from '../lib/drop-rules.mjs';
 import { addGold } from '../lib/gold.mjs';
 import { wireFieldSave } from '../lib/field-save.mjs';
+import { TRAIT_LABELS, buildActionRoll, buildDamageFormula, healFormula } from '../lib/action-roll.mjs';
+import { askActionRoll, askDamageRoll } from '../lib/roll-dialog.mjs';
+import { currentTargets } from '../lib/targets.mjs';
 
 /** Pip rows in the sheet and the document path each one writes. */
 const DOT_RESOURCE_PATHS = {
@@ -141,7 +144,8 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
     context.activeLoadout = context.loadout;
     context.vaultCards = context.vault;
     context.activeLoadoutCount = context.loadout.length;
-    context.inventoryItems = [...ofType('consumable'), ...ofType('equipment')];
+    context.inventoryItems = [...ofType('consumable'), ...ofType('equipment')]
+      .map((i) => ({ id: i.id, name: i.name, data: i.data, canUse: i.type === 'consumable' }));
     context.hpMax = derived.hpMax ?? 6;
     context.stressMax = derived.stressMax ?? 6;
     context.hopeMax = derived.hopeMax ?? 6;
@@ -220,13 +224,11 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
 
       const doc = this.document;
       for (const it of itemsToCreate) {
-        await api.post('/items', {
-          worldId: window.Loom?.world?.id || doc.worldId,
+        await api.post(`/actors/${doc.id}/items`, {
           name: it.name,
           type: it.type,
           imgUrl: '',
           data: it.data,
-          actorId: doc.id,
         });
       }
 
@@ -275,10 +277,14 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
         e.preventDefault();
         const w = weaponOf(btn.dataset.slot);
         if (!w) return;
-        await dispatchRoll({
+        const targets = currentTargets();
+        dispatchRoll({
           formula: w.damage,
           actorId: this.document.id,
-          meta: { system: 'Daggerheart', rollType: 'damage', weapon: w.name, damageType: w.damageType },
+          meta: {
+            system: 'Daggerheart', rollType: 'damage', weapon: w.name, damageType: w.damageType,
+            targets: targets.map((t) => t.id), targetNames: targets.map((t) => t.name),
+          },
         });
       });
     });
@@ -453,7 +459,7 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
           case 'cast': {
             const trait = d.spellcastTrait;
             if (!trait) return showToast('Sem traço de Spellcast: arraste uma subclasse.', 'warning');
-            return await this._rollDuality(trait, d.traitMod?.[trait] ?? 0, { name: item.name });
+            return await this._rollDuality(trait, d.traitMod?.[trait] ?? 0, { name: item.name }, { spell: true });
           }
           case 'toVault':
             await put(item, { inLoadout: false });
@@ -463,9 +469,10 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
             if (stress + cost > (d.stressMax ?? 6)) return showToast('Estresse estouraria o limite.', 'warning');
             const loadout = items.filter((i) => i.type === 'domainCard' && i.data?.inLoadout !== false);
             if (loadout.length >= 5) {
-              const n = Number(window.prompt('Loadout cheio. Qual carta vai ao Vault?\n' + loadout.map((c, i) => `${i + 1}. ${c.name}`).join('\n')));
-              if (!loadout[n - 1]) return;
-              await put(loadout[n - 1], { inLoadout: false });
+              const pick = await window.Loom.showSelectDialog('Loadout cheio', 'Qual carta vai ao Vault?', loadout.map((c) => ({ value: c.id, label: c.name })));
+              const out = loadout.find((c) => c.id === pick);
+              if (!out) return;
+              await put(out, { inLoadout: false });
             }
             await put(item, { inLoadout: true });
             if (cost) await saveActor(doc, { 'systemData.stress.value': stress + cost });
@@ -500,19 +507,24 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
               feature: 'Nova Habilidade'
             };
             const defaultData = {
-              weapon: { trait: 'agility', range: 'Melee', dice: 8, flat: 0, damageType: 'phy', burden: 'one', slot: 'inventory' },
-              armor: { baseMajor: 5, baseSevere: 11, baseScore: 2, slotsMarked: 0, equipped: false },
+              weapon: { tier: 1, trait: 'agility', range: 'Melee', dice: 8, flat: 0, damageType: 'phy', burden: 'one', slot: 'inventory' },
+              armor: { tier: 1, baseMajor: 5, baseSevere: 11, baseScore: 2, slotsMarked: 0, equipped: false },
               domainCard: { level: 1, domain: 'Blade', recallCost: 0, inLoadout: false, type: 'ability' },
               equipment: { quantity: 1 },
               consumable: { quantity: 1 }
             };
-            const created = await api.post('/items', {
-              worldId: window.Loom?.world?.id || doc.worldId,
+            // Created from the active-gear panels, so it lands there: free weapon slot / equipped armor (the panels only list those).
+            if (type === 'weapon') {
+              const taken = (s) => items.some((i) => i.type === 'weapon' && i.data?.slot === s);
+              const slot = !taken('primary') ? 'primary' : !taken('secondary') ? 'secondary' : 'inventory';
+              Object.assign(defaultData.weapon, { slot, category: slot === 'secondary' ? 'secondary' : 'primary', equipped: slot !== 'inventory' });
+            }
+            if (type === 'armor') defaultData.armor.equipped = !items.some((i) => i.type === 'armor' && i.data?.equipped);
+            const created = await api.post(`/actors/${doc.id}/items`, {
               name: defaultNames[type] || 'Novo Item',
               type: type,
               imgUrl: '',
               data: defaultData[type] || {},
-              actorId: doc.id
             });
             await this._reloadDocument();
             if (created?.id) {
@@ -523,6 +535,30 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
           case 'deleteItem':
             await api.delete('/items/' + item.id);
             break;
+          case 'use': {
+            const qty = Number(item.data?.quantity ?? 1);
+            if (qty <= 0) return showToast(`Sem unidades de ${item.name}.`, 'warning');
+            const heal = healFormula(item);
+            if (heal) {
+              // Healing items roll their cure; the card's button applies it to the target (or to who used it)
+              const targets = currentTargets();
+              const picked = await askDamageRoll({ title: `${item.name} — cura`, formula: heal, heal: true, targetName: targets.map((t) => t.name).join(', ') });
+              if (!picked) return;
+              dispatchRoll({
+                formula: buildDamageFormula(picked.formula, { bonus: picked.bonus }),
+                actorId: doc.id,
+                meta: { system: 'Daggerheart', rollType: 'heal', weapon: item.name, damageType: 'heal', targets: targets.map((t) => t.id), targetNames: targets.map((t) => t.name) },
+              });
+            } else if (!window.confirm(`Usar ${item.name}?`)) {
+              return;
+            } else {
+              await window.Loom?.api?.post?.('/chat', {
+                content: `<div class="dh-roll-card dh-domain-chat-card"><div class="dh-card-header"><div class="dh-card-title-group"><span class="dh-card-crest">🧪</span><span class="dh-card-title">${doc.name} usou ${item.name}</span></div></div><div class="dh-outcome-desc">${item.data?.description ?? ''}</div></div>`,
+              });
+            }
+            await put(item, { quantity: qty - 1 });
+            break;
+          }
           case 'hopeFeature': {
             const f = d.classItem?.data?.hopeFeature;
             const hope = Number(sys.hope?.value ?? 0);
@@ -589,13 +625,11 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
 
       for (const u of result.updates ?? []) await api.put('/items/' + u.id, { data: u.data });
       if (!result.skipCreate) {
-        await api.post('/items', {
-          worldId: window.Loom?.world?.id || doc.worldId,
+        await api.post(`/actors/${doc.id}/items`, {
           name: source.name,
           type: source.type,
           imgUrl: source.imgUrl || source.img || '',
           data: result.patch,
-          actorId: doc.id,
         });
       }
       if (result.warn) showToast(result.warn, 'warning');
@@ -626,30 +660,31 @@ export class DaggerheartCharacterSheet extends LoomHandlebarsMixin(LoomActorShee
   }
 
   // ── Helper: Duality Dice Roll Resolution ───────────────────────────────────
-  async _rollDuality(traitKey, traitVal, weapon = null) {
-    const modStr = traitVal >= 0 ? `+${traitVal}` : `${traitVal}`;
-    const formula = `2d12${modStr}`;
+  // Opens the roll dialog (advantage, Experiences, bonus, difficulty), then rolls. Targeted tokens ride along with the roll.
+  // `spell` also asks for the spell's damage, since domain cards carry no damage of their own.
+  async _rollDuality(traitKey, traitVal, weapon = null, { spell = false } = {}) {
+    const doc = this.document;
+    const hope = Number(doc.systemData?.hope?.value ?? 0);
+    const experiences = (doc.systemData?.experiences ?? [])
+      .filter((e) => e?.name)
+      .map((e) => ({ name: e.name, modifier: Number(e.modifier) || 0 }));
+    const targets = currentTargets();
 
-    const meta = {
-      system: 'Daggerheart',
-      trait: traitKey.toUpperCase(),
-      modifier: traitVal,
-    };
-
-    if (weapon) {
-      if (typeof weapon === 'object' && weapon !== null) {
-        meta.weapon = weapon.name;
-        if (weapon.damage) meta.weaponDamage = weapon.damage;
-        if (weapon.damageType) meta.damageType = weapon.damageType;
-      } else {
-        meta.weapon = String(weapon);
-      }
-    }
-
-    await dispatchRoll({
-      formula,
-      actorId: this.document.id,
-      meta,
+    const choice = await askActionRoll({
+      title: weapon?.name || TRAIT_LABELS[traitKey] || 'Rolagem',
+      traitLabel: TRAIT_LABELS[traitKey] || traitKey,
+      traitMod: traitVal,
+      experiences,
+      hope,
+      difficulty: targets[0]?.difficulty ?? null,
+      targetName: targets.map((t) => t.name).join(', '),
+      askDamage: spell,
     });
+    if (!choice) return;
+
+    const attack = spell && choice.damage ? { name: weapon?.name, damage: choice.damage, damageType: choice.damageType } : weapon;
+    const { formula, meta, hopeSpent } = buildActionRoll({ traitKey, traitMod: traitVal, experiences, choice, weapon: attack, targets });
+    if (hopeSpent) await this._save({ 'systemData.hope.value': hope - hopeSpent });
+    dispatchRoll({ formula, actorId: doc.id, meta });
   }
 }

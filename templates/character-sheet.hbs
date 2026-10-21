@@ -336,6 +336,7 @@
                 <div class="cs-weapon" draggable="true" data-drag-item-id="{{it.id}}" data-drag-item-name="{{it.name}}">
                   <div class="cs-weapon-head">
                     <span class="cs-weapon-name">{{it.name}} &times;{{it.data.quantity}}</span>
+                    {{#if it.canUse}}<button type="button" class="cs-btn" data-act="use" data-id="{{it.id}}" title="Usar (gasta 1 unidade)"><i class="fa-solid fa-flask"></i></button>{{/if}}
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="-1">−</button>
                     <button type="button" class="cs-btn" data-act="qty" data-id="{{it.id}}" data-delta="1">+</button>
                     <button type="button" class="cs-btn" data-act="editItem" data-id="{{it.id}}" title="Editar"><i class="fa-solid fa-pen"></i></button>
