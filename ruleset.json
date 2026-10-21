@@ -7,10 +7,18 @@
   "version": "0.1.0",
   "description": "Daggerheart Ruleset Compatible with LoomVTT (SRD 2.0)",
   "author": "SamDev",
+  "repository": "https://github.com/sammore2/dh2",
+  "bugs": "https://github.com/sammore2/dh2/issues",
+  "manifest": "https://raw.githubusercontent.com/sammore2/dh2/main/ruleset.json",
+  "download": "https://github.com/sammore2/dh2/releases/latest/download/dh.zip",
+  "backgroundUrl": "/marketplace/rulesets/dh/assets/dh-bg.png",
   "client": "client.js",
   "active": true,
   "license": "DPCGL-2.0",
-  "licenseNotice": "This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.",
+  "licenseNotice": {
+    "title": "Daggerheart SRD 2.0",
+    "html": "This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at <a href=\"https://www.daggerheart.com\" target=\"_blank\" rel=\"noopener\">daggerheart.com</a>."
+  },
   "styles": [
     "styles/dh.css",
     "styles/game-sheets.css"
