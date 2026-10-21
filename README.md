@@ -1,5 +1,9 @@
 # Daggerheart Ruleset for LoomVTT
 
+[![Loom VTT](https://img.shields.io/badge/Loom%20VTT-2.0.5--alpha-blueviolet)](https://loomvtt.com)
+[![License](https://img.shields.io/badge/license-MIT%20AND%20DPCGL--2.0-blue)](LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/sammore2/dh2/latest/dh.zip?label=downloads)](https://github.com/sammore2/dh2/releases/latest)
+
 Sistema de regras compatível com **Daggerheart**, implementado para a plataforma **LoomVTT**.
 
 ---
