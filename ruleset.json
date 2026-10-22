@@ -9,7 +9,7 @@
   "author": "SamDev",
   "repository": "https://github.com/sammore2/dh2",
   "bugs": "https://github.com/sammore2/dh2/issues",
-  "manifest": "https://raw.githubusercontent.com/sammore2/dh2/main/ruleset.json",
+  "manifest": "https://github.com/sammore2/dh2/releases/latest/download/ruleset.json",
   "download": "https://github.com/sammore2/dh2/releases/latest/download/dh.zip",
   "backgroundUrl": "/marketplace/rulesets/dh/assets/dh-bg.png",
   "client": "client.js",
